@@ -11,21 +11,39 @@ public class Clock implements ActionListener {
 	private Timer timer;
 	private int clockSpeedMilliseconds;
 
+	private ProcessGenerator generator;
+	private SJFScheduler sjfScheduler;
+	private CPU cpu;
+
 	protected static int ticks; // current ticks of clock
 
 	// constructor
-	public Clock(int clockSpeedMilliseconds) {
+	public Clock(int clockSpeedMilliseconds, ProcessGenerator generator, SJFScheduler sjfScheduler, CPU cpu) {
 
 		this.clockSpeedMilliseconds = clockSpeedMilliseconds;
 		timer = new Timer(clockSpeedMilliseconds, this);
 
-		setClockRunning(false);
+		clockRunning = false;
+		ticks = -1;
+
+		this.generator = generator;
+		this.sjfScheduler = sjfScheduler;
+		this.cpu = cpu;
+
 	}
 
 	// increasing ticks of clock by 1
 	public void Time_Run() {
 
-		this.notify();
+		System.out.println("\nTick " + ticks);
+		generator.runGenerator(ShowTime());
+		sjfScheduler.SJF();
+		cpu.execute();
+
+		ticks++;
+
+		if (ticks > 100)
+			stopClock();
 
 	}
 
@@ -40,20 +58,17 @@ public class Clock implements ActionListener {
 	}
 
 	public void startClock() {
-		setClockRunning(true);
+		clockRunning = true;
 		timer.start();
 	}
 
 	public void stopClock() {
-		setClockRunning(false);
+		clockRunning = false;
 		timer.stop();
 	}
 
-	public boolean isClockRunning() {
+	public boolean isRunning() {
 		return clockRunning;
 	}
 
-	public void setClockRunning(boolean clockRunning) {
-		this.clockRunning = clockRunning;
-	}
 }

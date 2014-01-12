@@ -26,6 +26,7 @@ public class Process {
 	// changing remaining time
 	public void changeCpuRemainingTime(int newCpuRemainingTime) {
 
+		cpuRemainingTime = newCpuRemainingTime;
 	}
 
 	public int getPid() {
@@ -66,6 +67,19 @@ public class Process {
 
 	public void setCurrentState(int currentState) {
 		this.currentState = currentState;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder string = new StringBuilder();
+
+		string.append(" PID: " + pid);
+		string.append(" - ARRIVAL: " + arrivalTime);
+		string.append(" - BURST: " + cpuTotalTime);
+		string.append(" - REMAINING: " + cpuRemainingTime);
+
+		return string.toString();
+
 	}
 
 }

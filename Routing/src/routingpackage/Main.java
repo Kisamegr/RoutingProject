@@ -7,21 +7,33 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 
-		// Clock clock = new Clock(100);
-		//
-		// CPU cpu = new CPU(clock);
-		//
-		// SJFScheduler sjfScheduler = new SJFScheduler(false);
+		CPU cpu = new CPU();
+		SJFScheduler sjfScheduler = new SJFScheduler(false, cpu);
+		ProcessGenerator generator = new ProcessGenerator("output.txt", false, sjfScheduler);
 
-		// ReadyProcessesList processesList = new ReadyProcessesList();
-		//
-		// processesList.addProcess(new Process(0, 0, 10));
-		// processesList.addProcess(new Process(1, 0, 20));
-		// processesList.addProcess(new Process(2, 0, 15));
-		// processesList.addProcess(new Process(3, 0, 1));
-		//
-		// processesList.printList();
+		int clockSpeed = 100;
+		final Clock clock = new Clock(clockSpeed, generator, sjfScheduler, cpu);
 
+		Thread t = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				clock.startClock();
+
+			}
+		});
+		t.start();
+
+		try {
+			Thread.sleep(clockSpeed * 2);
+
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		System.out.println("Main ended");
 	}
 
 }
