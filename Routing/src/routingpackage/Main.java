@@ -8,9 +8,11 @@ public class Main {
 	public static void main(String[] args) {
 
 		CPU cpu = new CPU();
-		SJFScheduler sjfScheduler = new SJFScheduler(false, cpu);
+		Statistics stats = new Statistics("C:/Users/Levas/Documents/Out.txt");
+		SJFScheduler sjfScheduler = new SJFScheduler(false, cpu,stats);
 		ProcessGenerator generator = new ProcessGenerator("output.txt", false, sjfScheduler);
-
+		
+		
 		int clockSpeed = 100;
 		final Clock clock = new Clock(clockSpeed, generator, sjfScheduler, cpu);
 

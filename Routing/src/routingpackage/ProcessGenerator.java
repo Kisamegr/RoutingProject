@@ -57,11 +57,16 @@ public class ProcessGenerator {
 
 			System.out.println("+RDY: Added process to ready list:");
 			System.out.println(firstNewProcess.toString());
-
+			
+			sjfScheduler.addTotalNumberOfProcesses(1);//edit
+			
 			firstNewProcess = newList.peekFirst();
 
 		}
-
+		
+		sjfScheduler.totalNumberOfProcessesUpdate();//checks the ready queue and updates, if necessary, 
+													//the maximumLengthOfReadyProcessesList.
+													//edit
 	}
 
 	// creating new process with pseudo-random characteristics

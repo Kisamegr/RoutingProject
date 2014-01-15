@@ -1,0 +1,511 @@
+Total waiting time : 3757, Average Waiting Time: 65.91228, Average response time: -10.25, Max length readylist: 36Total waiting time : 0, Average Waiting Time: 0.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 0Total waiting time : 1, Average Waiting Time: 1.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1Total waiting time : 3, Average Waiting Time: 1.5, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1Total waiting time : 5, Average Waiting Time: 2.5, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1Total waiting time : 7, Average Waiting Time: 3.5, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1Total waiting time : 9, Average Waiting Time: 4.5, Finished P.: 1, total respond time: 4, Average response time: 4.0, Max length readylist: 1Total waiting time : 10, Average Waiting Time: 5.0, Finished P.: 1, total respond time: 4, Average response time: 4.0, Max length readylist: 1Total waiting time : 10, Average Waiting Time: 5.0, Finished P.: 1, total respond time: 4, Average response time: 4.0, Max length readylist: 1Total waiting time : 12, Average Waiting Time: 4.0, Finished P.: 1, total respond time: 4, Average response time: 4.0, Max length readylist: 1Total waiting time : 18, Average Waiting Time: 3.6, Finished P.: 1, total respond time: 4, Average response time: 4.0, Max length readylist: 3Total waiting time : 24, Average Waiting Time: 4.8, Finished P.: 1, total respond time: 4, Average response time: 4.0, Max length readylist: 3Total waiting time : 30, Average Waiting Time: 6.0, Finished P.: 1, total respond time: 4, Average response time: 4.0, Max length readylist: 3Total waiting time : 36, Average Waiting Time: 7.2, Finished P.: 2, total respond time: 14, Average response time: 7.0, Max length readylist: 3Total waiting time : 45, Average Waiting Time: 6.428571, Finished P.: 2, total respond time: 14, Average response time: 7.0, Max length readylist: 5Total waiting time : 53, Average Waiting Time: 7.571429, Finished P.: 2, total respond time: 14, Average response time: 7.0, Max length readylist: 5Total waiting time : 63, Average Waiting Time: 7.875, Finished P.: 2, total respond time: 14, Average response time: 7.0, Max length readylist: 5Total waiting time : 73, Average Waiting Time: 9.125, Finished P.: 3, total respond time: 22, Average response time: 7.3333335, Max length readylist: 5Total waiting time : 84, Average Waiting Time: 9.333333, Finished P.: 3, total respond time: 22, Average response time: 7.3333335, Max length readylist: 6Total waiting time : 96, Average Waiting Time: 9.6, Finished P.: 3, total respond time: 22, Average response time: 7.3333335, Max length readylist: 6Total waiting time : 108, Average Waiting Time: 10.8, Finished P.: 3, total respond time: 22, Average response time: 7.3333335, Max length readylist: 6Total waiting time : 120, Average Waiting Time: 12.0, Finished P.: 3, total respond time: 22, Average response time: 7.3333335, Max length readylist: 6Total waiting time : 134, Average Waiting Time: 12.181818, Finished P.: 4, total respond time: 34, Average response time: 8.5, Max length readylist: 7Total waiting time : 149, Average Waiting Time: 12.416667, Finished P.: 4, total respond time: 34, Average response time: 8.5, Max length readylist: 8Total waiting time : 163, Average Waiting Time: 13.583333, Finished P.: 4, total respond time: 34, Average response time: 8.5, Max length readylist: 8Total waiting time : 177, Average Waiting Time: 14.75, Finished P.: 4, total respond time: 34, Average response time: 8.5, Max length readylist: 8Total waiting time : 193, Average Waiting Time: 14.846154, Finished P.: 4, total respond time: 34, Average response time: 8.5, Max length readylist: 8Total waiting time : 211, Average Waiting Time: 15.071428, Finished P.: 5, total respond time: 39, Average response time: 7.8, Max length readylist: 9Total waiting time : 228, Average Waiting Time: 16.285715, Finished P.: 5, total respond time: 39, Average response time: 7.8, Max length readylist: 9Total waiting time : 244, Average Waiting Time: 17.428572, Finished P.: 5, total respond time: 39, Average response time: 7.8, Max length readylist: 9Total waiting time : 260, Average Waiting Time: 18.571428, Finished P.: 5, total respond time: 39, Average response time: 7.8, Max length readylist: 9Total waiting time : 276, Average Waiting Time: 19.714285, Finished P.: 5, total respond time: 39, Average response time: 7.8, Max length readylist: 9Total waiting time : 292, Average Waiting Time: 20.857143, Finished P.: 6, total respond time: 44, Average response time: 7.3333335, Max length readylist: 9Total waiting time : 307, Average Waiting Time: 21.928572, Finished P.: 6, total respond time: 44, Average response time: 7.3333335, Max length readylist: 9Total waiting time : 323, Average Waiting Time: 21.533333, Finished P.: 6, total respond time: 44, Average response time: 7.3333335, Max length readylist: 9Total waiting time : 339, Average Waiting Time: 22.6, Finished P.: 6, total respond time: 44, Average response time: 7.3333335, Max length readylist: 9Total waiting time : 355, Average Waiting Time: 23.666666, Finished P.: 6, total respond time: 44, Average response time: 7.3333335, Max length readylist: 9Total waiting time : 373, Average Waiting Time: 23.3125, Finished P.: 6, total respond time: 44, Average response time: 7.3333335, Max length readylist: 9Total waiting time : 393, Average Waiting Time: 23.117647, Finished P.: 6, total respond time: 44, Average response time: 7.3333335, Max length readylist: 10Total waiting time : 413, Average Waiting Time: 24.294117, Finished P.: 7, total respond time: 60, Average response time: 8.571428, Max length readylist: 10Total waiting time : 432, Average Waiting Time: 25.411764, Finished P.: 7, total respond time: 60, Average response time: 8.571428, Max length readylist: 10Total waiting time : 450, Average Waiting Time: 26.470589, Finished P.: 7, total respond time: 60, Average response time: 8.571428, Max length readylist: 10Total waiting time : 468, Average Waiting Time: 27.529411, Finished P.: 7, total respond time: 60, Average response time: 8.571428, Max length readylist: 10Total waiting time : 488, Average Waiting Time: 27.11111, Finished P.: 7, total respond time: 60, Average response time: 8.571428, Max length readylist: 10Total waiting time : 508, Average Waiting Time: 28.222221, Finished P.: 7, total respond time: 60, Average response time: 8.571428, Max length readylist: 10Total waiting time : 528, Average Waiting Time: 29.333334, Finished P.: 7, total respond time: 60, Average response time: 8.571428, Max length readylist: 10Total waiting time : 550, Average Waiting Time: 28.947369, Finished P.: 8, total respond time: 92, Average response time: 11.5, Max length readylist: 11Total waiting time : 571, Average Waiting Time: 30.052631, Finished P.: 8, total respond time: 92, Average response time: 11.5, Max length readylist: 11Total waiting time : 591, Average Waiting Time: 31.105263, Finished P.: 8, total respond time: 92, Average response time: 11.5, Max length readylist: 11Total waiting time : 613, Average Waiting Time: 30.65, Finished P.: 8, total respond time: 92, Average response time: 11.5, Max length readylist: 11Total waiting time : 635, Average Waiting Time: 31.75, Finished P.: 8, total respond time: 92, Average response time: 11.5, Max length readylist: 11Total waiting time : 659, Average Waiting Time: 31.380953, Finished P.: 9, total respond time: 100, Average response time: 11.111111, Max length readylist: 12Total waiting time : 682, Average Waiting Time: 32.47619, Finished P.: 9, total respond time: 100, Average response time: 11.111111, Max length readylist: 12Total waiting time : 706, Average Waiting Time: 32.090908, Finished P.: 9, total respond time: 100, Average response time: 11.111111, Max length readylist: 12Total waiting time : 730, Average Waiting Time: 33.18182, Finished P.: 10, total respond time: 103, Average response time: 10.3, Max length readylist: 12Total waiting time : 755, Average Waiting Time: 32.826088, Finished P.: 10, total respond time: 103, Average response time: 10.3, Max length readylist: 13Total waiting time : 779, Average Waiting Time: 33.869564, Finished P.: 10, total respond time: 103, Average response time: 10.3, Max length readylist: 13Total waiting time : 803, Average Waiting Time: 34.913044, Finished P.: 11, total respond time: 107, Average response time: 9.727273, Max length readylist: 13Total waiting time : 826, Average Waiting Time: 35.913044, Finished P.: 11, total respond time: 107, Average response time: 9.727273, Max length readylist: 13Total waiting time : 848, Average Waiting Time: 36.869564, Finished P.: 11, total respond time: 107, Average response time: 9.727273, Max length readylist: 13Total waiting time : 872, Average Waiting Time: 36.333332, Finished P.: 11, total respond time: 107, Average response time: 9.727273, Max length readylist: 13Total waiting time : 896, Average Waiting Time: 37.333332, Finished P.: 11, total respond time: 107, Average response time: 9.727273, Max length readylist: 13Total waiting time : 922, Average Waiting Time: 36.88, Finished P.: 11, total respond time: 107, Average response time: 9.727273, Max length readylist: 13Total waiting time : 952, Average Waiting Time: 35.25926, Finished P.: 11, total respond time: 107, Average response time: 9.727273, Max length readylist: 15Total waiting time : 986, Average Waiting Time: 34.0, Finished P.: 12, total respond time: 125, Average response time: 10.416667, Max length readylist: 17Total waiting time : 1019, Average Waiting Time: 35.13793, Finished P.: 12, total respond time: 125, Average response time: 10.416667, Max length readylist: 17Total waiting time : 1051, Average Waiting Time: 36.24138, Finished P.: 12, total respond time: 125, Average response time: 10.416667, Max length readylist: 17Total waiting time : 1083, Average Waiting Time: 37.344826, Finished P.: 13, total respond time: 128, Average response time: 9.846154, Max length readylist: 17Total waiting time : 1114, Average Waiting Time: 38.41379, Finished P.: 13, total respond time: 128, Average response time: 9.846154, Max length readylist: 17Total waiting time : 1144, Average Waiting Time: 39.448277, Finished P.: 13, total respond time: 128, Average response time: 9.846154, Max length readylist: 17Total waiting time : 1174, Average Waiting Time: 40.482758, Finished P.: 13, total respond time: 128, Average response time: 9.846154, Max length readylist: 17Total waiting time : 1206, Average Waiting Time: 40.2, Finished P.: 14, total respond time: 137, Average response time: 9.785714, Max length readylist: 17Total waiting time : 1237, Average Waiting Time: 41.233334, Finished P.: 14, total respond time: 137, Average response time: 9.785714, Max length readylist: 17Total waiting time : 1267, Average Waiting Time: 42.233334, Finished P.: 14, total respond time: 137, Average response time: 9.785714, Max length readylist: 17Total waiting time : 1297, Average Waiting Time: 43.233334, Finished P.: 14, total respond time: 137, Average response time: 9.785714, Max length readylist: 17Total waiting time : 1327, Average Waiting Time: 44.233334, Finished P.: 14, total respond time: 137, Average response time: 9.785714, Max length readylist: 17Total waiting time : 1357, Average Waiting Time: 45.233334, Finished P.: 14, total respond time: 137, Average response time: 9.785714, Max length readylist: 17Total waiting time : 1389, Average Waiting Time: 44.80645, Finished P.: 15, total respond time: 154, Average response time: 10.266666, Max length readylist: 17Total waiting time : 1420, Average Waiting Time: 45.80645, Finished P.: 15, total respond time: 154, Average response time: 10.266666, Max length readylist: 17Total waiting time : 1450, Average Waiting Time: 46.774193, Finished P.: 15, total respond time: 154, Average response time: 10.266666, Max length readylist: 17Total waiting time : 1484, Average Waiting Time: 44.969696, Finished P.: 15, total respond time: 154, Average response time: 10.266666, Max length readylist: 17Total waiting time : 1518, Average Waiting Time: 46.0, Finished P.: 15, total respond time: 154, Average response time: 10.266666, Max length readylist: 17Total waiting time : 1554, Average Waiting Time: 45.705883, Finished P.: 15, total respond time: 154, Average response time: 10.266666, Max length readylist: 18Total waiting time : 1592, Average Waiting Time: 45.485714, Finished P.: 15, total respond time: 154, Average response time: 10.266666, Max length readylist: 19Total waiting time : 1630, Average Waiting Time: 46.57143, Finished P.: 15, total respond time: 154, Average response time: 10.266666, Max length readylist: 19Total waiting time : 1668, Average Waiting Time: 47.657143, Finished P.: 15, total respond time: 154, Average response time: 10.266666, Max length readylist: 19Total waiting time : 1710, Average Waiting Time: 46.216217, Finished P.: 15, total respond time: 154, Average response time: 10.266666, Max length readylist: 21Total waiting time : 1756, Average Waiting Time: 45.025642, Finished P.: 16, total respond time: 177, Average response time: 11.0625, Max length readylist: 23Total waiting time : 1801, Average Waiting Time: 46.179485, Finished P.: 16, total respond time: 177, Average response time: 11.0625, Max length readylist: 23Total waiting time : 1849, Average Waiting Time: 45.09756, Finished P.: 16, total respond time: 177, Average response time: 11.0625, Max length readylist: 24Total waiting time : 1897, Average Waiting Time: 46.26829, Finished P.: 16, total respond time: 177, Average response time: 11.0625, Max length readylist: 24Total waiting time : 1945, Average Waiting Time: 47.439026, Finished P.: 17, total respond time: 188, Average response time: 11.058824, Max length readylist: 24Total waiting time : 1994, Average Waiting Time: 47.47619, Finished P.: 17, total respond time: 188, Average response time: 11.058824, Max length readylist: 25Total waiting time : 2042, Average Waiting Time: 48.61905, Finished P.: 17, total respond time: 188, Average response time: 11.058824, Max length readylist: 25Total waiting time : 2092, Average Waiting Time: 48.65116, Finished P.: 17, total respond time: 188, Average response time: 11.058824, Max length readylist: 25Total waiting time : 2144, Average Waiting Time: 48.727272, Finished P.: 17, total respond time: 188, Average response time: 11.058824, Max length readylist: 26Total waiting time : 2198, Average Waiting Time: 48.844444, Finished P.: 18, total respond time: 198, Average response time: 11.0, Max length readylist: 27Total waiting time : 2251, Average Waiting Time: 50.02222, Finished P.: 18, total respond time: 198, Average response time: 11.0, Max length readylist: 27Total waiting time : 2303, Average Waiting Time: 51.177776, Finished P.: 19, total respond time: 202, Average response time: 10.631579, Max length readylist: 27Total waiting time : 2356, Average Waiting Time: 51.217392, Finished P.: 19, total respond time: 202, Average response time: 10.631579, Max length readylist: 27Total waiting time : 2410, Average Waiting Time: 51.276596, Finished P.: 19, total respond time: 202, Average response time: 10.631579, Max length readylist: 27Total waiting time : 2466, Average Waiting Time: 51.375, Finished P.: 20, total respond time: 207, Average response time: 10.35, Max length readylist: 28Total waiting time : 2523, Average Waiting Time: 51.489796, Finished P.: 20, total respond time: 207, Average response time: 10.35, Max length readylist: 29
+Total waiting time : 0, Average Waiting Time: 0.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 0
+Total waiting time : 0, Average Waiting Time: 0.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 0
+Total waiting time : 0, Average Waiting Time: 0.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 0
+Total waiting time : 3, Average Waiting Time: 1.5, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 2
+Total waiting time : 7, Average Waiting Time: 2.3333333, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 2
+Total waiting time : 11, Average Waiting Time: 3.6666667, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 2
+Total waiting time : 17, Average Waiting Time: 4.25, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 3
+Total waiting time : 23, Average Waiting Time: 5.75, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 3
+Total waiting time : 29, Average Waiting Time: 7.25, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 3
+Total waiting time : 35, Average Waiting Time: 8.75, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 3
+Total waiting time : 43, Average Waiting Time: 8.6, Finished P.: 1, total respond time: 7, Average response time: 7.0, Max length readylist: 4
+Total waiting time : 50, Average Waiting Time: 10.0, Finished P.: 1, total respond time: 7, Average response time: 7.0, Max length readylist: 4
+Total waiting time : 58, Average Waiting Time: 9.666667, Finished P.: 1, total respond time: 7, Average response time: 7.0, Max length readylist: 4
+Total waiting time : 66, Average Waiting Time: 11.0, Finished P.: 1, total respond time: 7, Average response time: 7.0, Max length readylist: 4
+Total waiting time : 76, Average Waiting Time: 10.857142, Finished P.: 1, total respond time: 7, Average response time: 7.0, Max length readylist: 5
+Total waiting time : 86, Average Waiting Time: 12.285714, Finished P.: 2, total respond time: 16, Average response time: 8.0, Max length readylist: 5
+Total waiting time : 99, Average Waiting Time: 11.0, Finished P.: 2, total respond time: 16, Average response time: 8.0, Max length readylist: 7
+Total waiting time : 111, Average Waiting Time: 12.333333, Finished P.: 2, total respond time: 16, Average response time: 8.0, Max length readylist: 7
+Total waiting time : 125, Average Waiting Time: 12.5, Finished P.: 2, total respond time: 16, Average response time: 8.0, Max length readylist: 7
+Total waiting time : 139, Average Waiting Time: 13.9, Finished P.: 2, total respond time: 16, Average response time: 8.0, Max length readylist: 7
+Total waiting time : 153, Average Waiting Time: 15.3, Finished P.: 2, total respond time: 16, Average response time: 8.0, Max length readylist: 7
+Total waiting time : 169, Average Waiting Time: 15.363636, Finished P.: 3, total respond time: 23, Average response time: 7.6666665, Max length readylist: 8
+Total waiting time : 184, Average Waiting Time: 16.727272, Finished P.: 3, total respond time: 23, Average response time: 7.6666665, Max length readylist: 8
+Total waiting time : 202, Average Waiting Time: 15.538462, Finished P.: 3, total respond time: 23, Average response time: 7.6666665, Max length readylist: 9
+Total waiting time : 220, Average Waiting Time: 16.923077, Finished P.: 3, total respond time: 23, Average response time: 7.6666665, Max length readylist: 9
+Total waiting time : 238, Average Waiting Time: 18.307692, Finished P.: 3, total respond time: 23, Average response time: 7.6666665, Max length readylist: 9
+Total waiting time : 256, Average Waiting Time: 19.692308, Finished P.: 3, total respond time: 23, Average response time: 7.6666665, Max length readylist: 9
+Total waiting time : 276, Average Waiting Time: 19.714285, Finished P.: 4, total respond time: 34, Average response time: 8.5, Max length readylist: 10
+Total waiting time : 299, Average Waiting Time: 18.6875, Finished P.: 4, total respond time: 34, Average response time: 8.5, Max length readylist: 12
+Total waiting time : 323, Average Waiting Time: 19.0, Finished P.: 4, total respond time: 34, Average response time: 8.5, Max length readylist: 12
+Total waiting time : 347, Average Waiting Time: 20.411764, Finished P.: 5, total respond time: 41, Average response time: 8.2, Max length readylist: 12
+Total waiting time : 370, Average Waiting Time: 21.764706, Finished P.: 5, total respond time: 41, Average response time: 8.2, Max length readylist: 12
+Total waiting time : 392, Average Waiting Time: 23.058823, Finished P.: 5, total respond time: 41, Average response time: 8.2, Max length readylist: 12
+Total waiting time : 416, Average Waiting Time: 23.11111, Finished P.: 6, total respond time: 46, Average response time: 7.6666665, Max length readylist: 12
+Total waiting time : 441, Average Waiting Time: 23.210526, Finished P.: 6, total respond time: 46, Average response time: 7.6666665, Max length readylist: 13
+Total waiting time : 465, Average Waiting Time: 24.473684, Finished P.: 6, total respond time: 46, Average response time: 7.6666665, Max length readylist: 13
+Total waiting time : 489, Average Waiting Time: 25.736841, Finished P.: 6, total respond time: 46, Average response time: 7.6666665, Max length readylist: 13
+Total waiting time : 515, Average Waiting Time: 25.75, Finished P.: 6, total respond time: 46, Average response time: 7.6666665, Max length readylist: 13
+Total waiting time : 543, Average Waiting Time: 25.857143, Finished P.: 6, total respond time: 46, Average response time: 7.6666665, Max length readylist: 14
+Total waiting time : 573, Average Waiting Time: 26.045454, Finished P.: 7, total respond time: 58, Average response time: 8.285714, Max length readylist: 15
+Total waiting time : 602, Average Waiting Time: 27.363636, Finished P.: 7, total respond time: 58, Average response time: 8.285714, Max length readylist: 15
+Total waiting time : 630, Average Waiting Time: 28.636364, Finished P.: 7, total respond time: 58, Average response time: 8.285714, Max length readylist: 15
+Total waiting time : 660, Average Waiting Time: 28.695652, Finished P.: 7, total respond time: 58, Average response time: 8.285714, Max length readylist: 15
+Total waiting time : 692, Average Waiting Time: 28.833334, Finished P.: 7, total respond time: 58, Average response time: 8.285714, Max length readylist: 16
+Total waiting time : 724, Average Waiting Time: 30.166666, Finished P.: 8, total respond time: 64, Average response time: 8.0, Max length readylist: 16
+Total waiting time : 757, Average Waiting Time: 30.28, Finished P.: 8, total respond time: 64, Average response time: 8.0, Max length readylist: 17
+Total waiting time : 789, Average Waiting Time: 31.56, Finished P.: 8, total respond time: 64, Average response time: 8.0, Max length readylist: 17
+Total waiting time : 821, Average Waiting Time: 32.84, Finished P.: 8, total respond time: 64, Average response time: 8.0, Max length readylist: 17
+Total waiting time : 855, Average Waiting Time: 32.884617, Finished P.: 8, total respond time: 64, Average response time: 8.0, Max length readylist: 17
+Total waiting time : 889, Average Waiting Time: 34.192307, Finished P.: 9, total respond time: 74, Average response time: 8.222222, Max length readylist: 17
+Total waiting time : 922, Average Waiting Time: 35.46154, Finished P.: 9, total respond time: 74, Average response time: 8.222222, Max length readylist: 17
+Total waiting time : 954, Average Waiting Time: 36.692307, Finished P.: 9, total respond time: 74, Average response time: 8.222222, Max length readylist: 17
+Total waiting time : 986, Average Waiting Time: 37.923077, Finished P.: 9, total respond time: 74, Average response time: 8.222222, Max length readylist: 17
+Total waiting time : 1022, Average Waiting Time: 36.5, Finished P.: 9, total respond time: 74, Average response time: 8.222222, Max length readylist: 18
+Total waiting time : 1058, Average Waiting Time: 37.785713, Finished P.: 9, total respond time: 74, Average response time: 8.222222, Max length readylist: 18
+Total waiting time : 1094, Average Waiting Time: 39.07143, Finished P.: 10, total respond time: 100, Average response time: 10.0, Max length readylist: 18
+Total waiting time : 1133, Average Waiting Time: 37.766666, Finished P.: 10, total respond time: 100, Average response time: 10.0, Max length readylist: 20
+Total waiting time : 1171, Average Waiting Time: 39.033333, Finished P.: 10, total respond time: 100, Average response time: 10.0, Max length readylist: 20
+Total waiting time : 1209, Average Waiting Time: 40.3, Finished P.: 10, total respond time: 100, Average response time: 10.0, Max length readylist: 20
+Total waiting time : 1247, Average Waiting Time: 41.566666, Finished P.: 10, total respond time: 100, Average response time: 10.0, Max length readylist: 20
+Total waiting time : 1287, Average Waiting Time: 41.51613, Finished P.: 10, total respond time: 100, Average response time: 10.0, Max length readylist: 20
+Total waiting time : 1329, Average Waiting Time: 41.53125, Finished P.: 11, total respond time: 105, Average response time: 9.545455, Max length readylist: 21
+Total waiting time : 1372, Average Waiting Time: 41.575756, Finished P.: 11, total respond time: 105, Average response time: 9.545455, Max length readylist: 22
+Total waiting time : 1416, Average Waiting Time: 41.64706, Finished P.: 11, total respond time: 105, Average response time: 9.545455, Max length readylist: 22
+Total waiting time : 1464, Average Waiting Time: 40.666668, Finished P.: 12, total respond time: 109, Average response time: 9.083333, Max length readylist: 24
+Total waiting time : 1511, Average Waiting Time: 41.97222, Finished P.: 12, total respond time: 109, Average response time: 9.083333, Max length readylist: 24
+Total waiting time : 1557, Average Waiting Time: 43.25, Finished P.: 12, total respond time: 109, Average response time: 9.083333, Max length readylist: 24
+Total waiting time : 1605, Average Waiting Time: 43.37838, Finished P.: 12, total respond time: 109, Average response time: 9.083333, Max length readylist: 24
+Total waiting time : 1655, Average Waiting Time: 43.55263, Finished P.: 12, total respond time: 109, Average response time: 9.083333, Max length readylist: 25
+Total waiting time : 1707, Average Waiting Time: 43.76923, Finished P.: 12, total respond time: 109, Average response time: 9.083333, Max length readylist: 26
+Total waiting time : 1759, Average Waiting Time: 45.102566, Finished P.: 12, total respond time: 109, Average response time: 9.083333, Max length readylist: 26
+Total waiting time : 1811, Average Waiting Time: 46.435898, Finished P.: 13, total respond time: 157, Average response time: 12.076923, Max length readylist: 26
+Total waiting time : 1864, Average Waiting Time: 46.6, Finished P.: 13, total respond time: 157, Average response time: 12.076923, Max length readylist: 27
+Total waiting time : 1918, Average Waiting Time: 46.780487, Finished P.: 13, total respond time: 157, Average response time: 12.076923, Max length readylist: 27
+Total waiting time : 1976, Average Waiting Time: 45.953487, Finished P.: 13, total respond time: 157, Average response time: 12.076923, Max length readylist: 29
+Total waiting time : 2036, Average Waiting Time: 46.272728, Finished P.: 14, total respond time: 164, Average response time: 11.714286, Max length readylist: 30
+Total waiting time : 2097, Average Waiting Time: 46.6, Finished P.: 14, total respond time: 164, Average response time: 11.714286, Max length readylist: 31
+Total waiting time : 2157, Average Waiting Time: 47.933334, Finished P.: 14, total respond time: 164, Average response time: 11.714286, Max length readylist: 31
+Total waiting time : 2217, Average Waiting Time: 49.266666, Finished P.: 15, total respond time: 168, Average response time: 11.2, Max length readylist: 31
+Total waiting time : 2278, Average Waiting Time: 49.52174, Finished P.: 15, total respond time: 168, Average response time: 11.2, Max length readylist: 31
+Total waiting time : 2338, Average Waiting Time: 50.826088, Finished P.: 15, total respond time: 168, Average response time: 11.2, Max length readylist: 31
+Total waiting time : 2400, Average Waiting Time: 51.06383, Finished P.: 15, total respond time: 168, Average response time: 11.2, Max length readylist: 31
+Total waiting time : 2466, Average Waiting Time: 50.32653, Finished P.: 15, total respond time: 168, Average response time: 11.2, Max length readylist: 33
+Total waiting time : 2532, Average Waiting Time: 51.67347, Finished P.: 16, total respond time: 178, Average response time: 11.125, Max length readylist: 33
+Total waiting time : 2597, Average Waiting Time: 53.0, Finished P.: 16, total respond time: 178, Average response time: 11.125, Max length readylist: 33
+Total waiting time : 2663, Average Waiting Time: 53.26, Finished P.: 16, total respond time: 178, Average response time: 11.125, Max length readylist: 33
+Total waiting time : 2731, Average Waiting Time: 53.54902, Finished P.: 17, total respond time: 183, Average response time: 10.764706, Max length readylist: 34
+Total waiting time : 2800, Average Waiting Time: 53.846153, Finished P.: 17, total respond time: 183, Average response time: 10.764706, Max length readylist: 35
+Total waiting time : 2868, Average Waiting Time: 55.153847, Finished P.: 17, total respond time: 183, Average response time: 10.764706, Max length readylist: 35
+Total waiting time : 2936, Average Waiting Time: 56.46154, Finished P.: 18, total respond time: 185, Average response time: 10.277778, Max length readylist: 35
+Total waiting time : 3005, Average Waiting Time: 56.698112, Finished P.: 18, total respond time: 185, Average response time: 10.277778, Max length readylist: 35
+Total waiting time : 3073, Average Waiting Time: 57.981133, Finished P.: 18, total respond time: 185, Average response time: 10.277778, Max length readylist: 35
+Total waiting time : 3141, Average Waiting Time: 59.264153, Finished P.: 18, total respond time: 185, Average response time: 10.277778, Max length readylist: 35
+Total waiting time : 3209, Average Waiting Time: 60.54717, Finished P.: 19, total respond time: 196, Average response time: 10.315789, Max length readylist: 35
+Total waiting time : 3276, Average Waiting Time: 61.81132, Finished P.: 19, total respond time: 196, Average response time: 10.315789, Max length readylist: 35
+Total waiting time : 3344, Average Waiting Time: 61.925926, Finished P.: 19, total respond time: 196, Average response time: 10.315789, Max length readylist: 35
+Total waiting time : 3412, Average Waiting Time: 63.185184, Finished P.: 19, total respond time: 196, Average response time: 10.315789, Max length readylist: 35
+Total waiting time : 3482, Average Waiting Time: 63.30909, Finished P.: 19, total respond time: 196, Average response time: 10.315789, Max length readylist: 35
+Total waiting time : 3552, Average Waiting Time: 64.58182, Finished P.: 19, total respond time: 196, Average response time: 10.315789, Max length readylist: 35
+Total waiting time : 3624, Average Waiting Time: 64.71429, Finished P.: 20, total respond time: 213, Average response time: 10.65, Max length readylist: 36
+Total waiting time : 3695, Average Waiting Time: 65.98214, Finished P.: 20, total respond time: 213, Average response time: 10.65, Max length readylist: 36
+Total waiting time : 3765, Average Waiting Time: 67.23214, Finished P.: 20, total respond time: 213, Average response time: 10.65, Max length readylist: 36
+Total waiting time : 0, Average Waiting Time: 0.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 0
+Total waiting time : 0, Average Waiting Time: 0.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 0
+Total waiting time : 1, Average Waiting Time: 1.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 1, Average Waiting Time: 1.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 3, Average Waiting Time: 1.5, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 5, Average Waiting Time: 2.5, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 7, Average Waiting Time: 3.5, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 9, Average Waiting Time: 4.5, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 11, Average Waiting Time: 5.5, Finished P.: 1, total respond time: 6, Average response time: 6.0, Max length readylist: 1
+Total waiting time : 12, Average Waiting Time: 6.0, Finished P.: 1, total respond time: 6, Average response time: 6.0, Max length readylist: 1
+Total waiting time : 12, Average Waiting Time: 6.0, Finished P.: 1, total respond time: 6, Average response time: 6.0, Max length readylist: 1
+Total waiting time : 12, Average Waiting Time: 6.0, Finished P.: 1, total respond time: 6, Average response time: 6.0, Max length readylist: 1
+Total waiting time : 12, Average Waiting Time: 6.0, Finished P.: 1, total respond time: 6, Average response time: 6.0, Max length readylist: 1
+Total waiting time : 12, Average Waiting Time: 6.0, Finished P.: 1, total respond time: 6, Average response time: 6.0, Max length readylist: 1
+Total waiting time : 14, Average Waiting Time: 4.6666665, Finished P.: 1, total respond time: 6, Average response time: 6.0, Max length readylist: 1
+Total waiting time : 22, Average Waiting Time: 3.6666667, Finished P.: 2, total respond time: 17, Average response time: 8.5, Max length readylist: 4
+Total waiting time : 29, Average Waiting Time: 4.8333335, Finished P.: 2, total respond time: 17, Average response time: 8.5, Max length readylist: 4
+Total waiting time : 35, Average Waiting Time: 5.8333335, Finished P.: 2, total respond time: 17, Average response time: 8.5, Max length readylist: 4
+Total waiting time : 41, Average Waiting Time: 6.8333335, Finished P.: 2, total respond time: 17, Average response time: 8.5, Max length readylist: 4
+Total waiting time : 47, Average Waiting Time: 7.8333335, Finished P.: 2, total respond time: 17, Average response time: 8.5, Max length readylist: 4
+Total waiting time : 53, Average Waiting Time: 8.833333, Finished P.: 2, total respond time: 17, Average response time: 8.5, Max length readylist: 4
+Total waiting time : 59, Average Waiting Time: 9.833333, Finished P.: 3, total respond time: 23, Average response time: 7.6666665, Max length readylist: 4
+Total waiting time : 66, Average Waiting Time: 9.428572, Finished P.: 3, total respond time: 23, Average response time: 7.6666665, Max length readylist: 4
+Total waiting time : 72, Average Waiting Time: 10.285714, Finished P.: 3, total respond time: 23, Average response time: 7.6666665, Max length readylist: 4
+Total waiting time : 82, Average Waiting Time: 9.111111, Finished P.: 3, total respond time: 23, Average response time: 7.6666665, Max length readylist: 5
+Total waiting time : 94, Average Waiting Time: 9.4, Finished P.: 3, total respond time: 23, Average response time: 7.6666665, Max length readylist: 6
+Total waiting time : 108, Average Waiting Time: 9.818182, Finished P.: 3, total respond time: 23, Average response time: 7.6666665, Max length readylist: 7
+Total waiting time : 122, Average Waiting Time: 11.090909, Finished P.: 3, total respond time: 23, Average response time: 7.6666665, Max length readylist: 7
+Total waiting time : 138, Average Waiting Time: 11.5, Finished P.: 3, total respond time: 23, Average response time: 7.6666665, Max length readylist: 8
+Total waiting time : 154, Average Waiting Time: 12.833333, Finished P.: 4, total respond time: 38, Average response time: 9.5, Max length readylist: 8
+Total waiting time : 169, Average Waiting Time: 14.083333, Finished P.: 4, total respond time: 38, Average response time: 9.5, Max length readylist: 8
+Total waiting time : 185, Average Waiting Time: 14.230769, Finished P.: 5, total respond time: 43, Average response time: 8.6, Max length readylist: 8
+Total waiting time : 202, Average Waiting Time: 14.428572, Finished P.: 5, total respond time: 43, Average response time: 8.6, Max length readylist: 9
+Total waiting time : 218, Average Waiting Time: 15.571428, Finished P.: 5, total respond time: 43, Average response time: 8.6, Max length readylist: 9
+Total waiting time : 234, Average Waiting Time: 16.714285, Finished P.: 6, total respond time: 46, Average response time: 7.6666665, Max length readylist: 9
+Total waiting time : 251, Average Waiting Time: 16.733334, Finished P.: 6, total respond time: 46, Average response time: 7.6666665, Max length readylist: 9
+Total waiting time : 267, Average Waiting Time: 17.8, Finished P.: 6, total respond time: 46, Average response time: 7.6666665, Max length readylist: 9
+Total waiting time : 283, Average Waiting Time: 18.866667, Finished P.: 6, total respond time: 46, Average response time: 7.6666665, Max length readylist: 9
+Total waiting time : 303, Average Waiting Time: 17.82353, Finished P.: 7, total respond time: 60, Average response time: 8.571428, Max length readylist: 10
+Total waiting time : 324, Average Waiting Time: 18.0, Finished P.: 7, total respond time: 60, Average response time: 8.571428, Max length readylist: 11
+Total waiting time : 346, Average Waiting Time: 18.210526, Finished P.: 7, total respond time: 60, Average response time: 8.571428, Max length readylist: 11
+Total waiting time : 368, Average Waiting Time: 19.368422, Finished P.: 7, total respond time: 60, Average response time: 8.571428, Max length readylist: 11
+Total waiting time : 390, Average Waiting Time: 20.526316, Finished P.: 8, total respond time: 67, Average response time: 8.375, Max length readylist: 11
+Total waiting time : 411, Average Waiting Time: 21.631578, Finished P.: 8, total respond time: 67, Average response time: 8.375, Max length readylist: 11
+Total waiting time : 431, Average Waiting Time: 22.68421, Finished P.: 8, total respond time: 67, Average response time: 8.375, Max length readylist: 11
+Total waiting time : 451, Average Waiting Time: 23.736841, Finished P.: 8, total respond time: 67, Average response time: 8.375, Max length readylist: 11
+Total waiting time : 471, Average Waiting Time: 24.789474, Finished P.: 9, total respond time: 74, Average response time: 8.222222, Max length readylist: 11
+Total waiting time : 492, Average Waiting Time: 24.6, Finished P.: 9, total respond time: 74, Average response time: 8.222222, Max length readylist: 11
+Total waiting time : 514, Average Waiting Time: 24.47619, Finished P.: 9, total respond time: 74, Average response time: 8.222222, Max length readylist: 11
+Total waiting time : 536, Average Waiting Time: 25.52381, Finished P.: 10, total respond time: 76, Average response time: 7.6, Max length readylist: 11
+Total waiting time : 557, Average Waiting Time: 26.52381, Finished P.: 10, total respond time: 76, Average response time: 7.6, Max length readylist: 11
+Total waiting time : 579, Average Waiting Time: 26.318182, Finished P.: 11, total respond time: 79, Average response time: 7.181818, Max length readylist: 11
+Total waiting time : 602, Average Waiting Time: 26.173914, Finished P.: 11, total respond time: 79, Average response time: 7.181818, Max length readylist: 12
+Total waiting time : 628, Average Waiting Time: 25.12, Finished P.: 12, total respond time: 80, Average response time: 6.6666665, Max length readylist: 13
+Total waiting time : 655, Average Waiting Time: 25.192308, Finished P.: 12, total respond time: 80, Average response time: 6.6666665, Max length readylist: 14
+Total waiting time : 683, Average Waiting Time: 25.296297, Finished P.: 12, total respond time: 80, Average response time: 6.6666665, Max length readylist: 14
+Total waiting time : 713, Average Waiting Time: 25.464285, Finished P.: 13, total respond time: 83, Average response time: 6.3846154, Max length readylist: 15
+Total waiting time : 742, Average Waiting Time: 26.5, Finished P.: 13, total respond time: 83, Average response time: 6.3846154, Max length readylist: 15
+Total waiting time : 772, Average Waiting Time: 26.62069, Finished P.: 13, total respond time: 83, Average response time: 6.3846154, Max length readylist: 15
+Total waiting time : 802, Average Waiting Time: 27.655172, Finished P.: 13, total respond time: 83, Average response time: 6.3846154, Max length readylist: 15
+Total waiting time : 832, Average Waiting Time: 28.689655, Finished P.: 14, total respond time: 90, Average response time: 6.428571, Max length readylist: 15
+Total waiting time : 863, Average Waiting Time: 28.766666, Finished P.: 14, total respond time: 90, Average response time: 6.428571, Max length readylist: 16
+Total waiting time : 897, Average Waiting Time: 28.03125, Finished P.: 14, total respond time: 90, Average response time: 6.428571, Max length readylist: 17
+Total waiting time : 935, Average Waiting Time: 27.5, Finished P.: 15, total respond time: 92, Average response time: 6.133333, Max length readylist: 19
+Total waiting time : 972, Average Waiting Time: 28.588236, Finished P.: 15, total respond time: 92, Average response time: 6.133333, Max length readylist: 19
+Total waiting time : 1008, Average Waiting Time: 29.647058, Finished P.: 15, total respond time: 92, Average response time: 6.133333, Max length readylist: 19
+Total waiting time : 1044, Average Waiting Time: 30.705883, Finished P.: 15, total respond time: 92, Average response time: 6.133333, Max length readylist: 19
+Total waiting time : 1080, Average Waiting Time: 31.764706, Finished P.: 16, total respond time: 105, Average response time: 6.5625, Max length readylist: 19
+Total waiting time : 1117, Average Waiting Time: 31.914286, Finished P.: 16, total respond time: 105, Average response time: 6.5625, Max length readylist: 19
+Total waiting time : 1153, Average Waiting Time: 32.942856, Finished P.: 16, total respond time: 105, Average response time: 6.5625, Max length readylist: 19
+Total waiting time : 1189, Average Waiting Time: 33.971428, Finished P.: 16, total respond time: 105, Average response time: 6.5625, Max length readylist: 19
+Total waiting time : 1227, Average Waiting Time: 34.083332, Finished P.: 16, total respond time: 105, Average response time: 6.5625, Max length readylist: 19
+Total waiting time : 1265, Average Waiting Time: 35.13889, Finished P.: 17, total respond time: 145, Average response time: 8.529411, Max length readylist: 19
+Total waiting time : 1302, Average Waiting Time: 36.166668, Finished P.: 17, total respond time: 145, Average response time: 8.529411, Max length readylist: 19
+Total waiting time : 1338, Average Waiting Time: 37.166668, Finished P.: 17, total respond time: 145, Average response time: 8.529411, Max length readylist: 19
+Total waiting time : 1374, Average Waiting Time: 38.166668, Finished P.: 17, total respond time: 145, Average response time: 8.529411, Max length readylist: 19
+Total waiting time : 1410, Average Waiting Time: 39.166668, Finished P.: 17, total respond time: 145, Average response time: 8.529411, Max length readylist: 19
+Total waiting time : 1448, Average Waiting Time: 39.135136, Finished P.: 17, total respond time: 145, Average response time: 8.529411, Max length readylist: 19
+Total waiting time : 1486, Average Waiting Time: 40.162163, Finished P.: 18, total respond time: 199, Average response time: 11.055555, Max length readylist: 19
+Total waiting time : 1523, Average Waiting Time: 41.162163, Finished P.: 18, total respond time: 199, Average response time: 11.055555, Max length readylist: 19
+Total waiting time : 1561, Average Waiting Time: 41.07895, Finished P.: 18, total respond time: 199, Average response time: 11.055555, Max length readylist: 19
+Total waiting time : 1599, Average Waiting Time: 42.07895, Finished P.: 18, total respond time: 199, Average response time: 11.055555, Max length readylist: 19
+Total waiting time : 1637, Average Waiting Time: 43.07895, Finished P.: 18, total respond time: 199, Average response time: 11.055555, Max length readylist: 19
+Total waiting time : 1675, Average Waiting Time: 44.07895, Finished P.: 18, total respond time: 199, Average response time: 11.055555, Max length readylist: 19
+Total waiting time : 1715, Average Waiting Time: 43.974358, Finished P.: 19, total respond time: 255, Average response time: 13.421053, Max length readylist: 20
+Total waiting time : 1756, Average Waiting Time: 43.9, Finished P.: 19, total respond time: 255, Average response time: 13.421053, Max length readylist: 21
+Total waiting time : 1796, Average Waiting Time: 44.9, Finished P.: 20, total respond time: 257, Average response time: 12.85, Max length readylist: 21
+Total waiting time : 1837, Average Waiting Time: 44.80488, Finished P.: 20, total respond time: 257, Average response time: 12.85, Max length readylist: 21
+Total waiting time : 1879, Average Waiting Time: 44.738094, Finished P.: 20, total respond time: 257, Average response time: 12.85, Max length readylist: 21
+Total waiting time : 1923, Average Waiting Time: 44.720932, Finished P.: 20, total respond time: 257, Average response time: 12.85, Max length readylist: 22
+Total waiting time : 1967, Average Waiting Time: 45.744186, Finished P.: 20, total respond time: 257, Average response time: 12.85, Max length readylist: 22
+Total waiting time : 2011, Average Waiting Time: 46.76744, Finished P.: 20, total respond time: 257, Average response time: 12.85, Max length readylist: 22
+Total waiting time : 2055, Average Waiting Time: 47.7907, Finished P.: 21, total respond time: 311, Average response time: 14.809524, Max length readylist: 22
+Total waiting time : 2098, Average Waiting Time: 48.7907, Finished P.: 21, total respond time: 311, Average response time: 14.809524, Max length readylist: 22
+Total waiting time : 2142, Average Waiting Time: 48.68182, Finished P.: 21, total respond time: 311, Average response time: 14.809524, Max length readylist: 22
+Total waiting time : 2186, Average Waiting Time: 49.68182, Finished P.: 21, total respond time: 311, Average response time: 14.809524, Max length readylist: 22
+Total waiting time : 2230, Average Waiting Time: 50.68182, Finished P.: 21, total respond time: 311, Average response time: 14.809524, Max length readylist: 22
+Total waiting time : 2276, Average Waiting Time: 50.577778, Finished P.: 21, total respond time: 311, Average response time: 14.809524, Max length readylist: 23
+Total waiting time : 2322, Average Waiting Time: 51.6, Finished P.: 22, total respond time: 384, Average response time: 17.454546, Max length readylist: 23
+Total waiting time : 2367, Average Waiting Time: 52.6, Finished P.: 22, total respond time: 384, Average response time: 17.454546, Max length readylist: 23
+Total waiting time : 2411, Average Waiting Time: 53.577778, Finished P.: 22, total respond time: 384, Average response time: 17.454546, Max length readylist: 23
+Total waiting time : 2455, Average Waiting Time: 54.555557, Finished P.: 22, total respond time: 384, Average response time: 17.454546, Max length readylist: 23
+Total waiting time : 0, Average Waiting Time: 0.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 0
+Total waiting time : 1, Average Waiting Time: 1.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 1, Average Waiting Time: 1.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 1, Average Waiting Time: 1.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 1, Average Waiting Time: 1.0, Finished P.: 1, total respond time: 3, Average response time: 3.0, Max length readylist: 1
+Total waiting time : 1, Average Waiting Time: 1.0, Finished P.: 1, total respond time: 3, Average response time: 3.0, Max length readylist: 1
+Total waiting time : 2, Average Waiting Time: 1.0, Finished P.: 1, total respond time: 3, Average response time: 3.0, Max length readylist: 1
+Total waiting time : 4, Average Waiting Time: 1.3333334, Finished P.: 1, total respond time: 3, Average response time: 3.0, Max length readylist: 1
+Total waiting time : 8, Average Waiting Time: 2.0, Finished P.: 2, total respond time: 5, Average response time: 2.5, Max length readylist: 2
+Total waiting time : 13, Average Waiting Time: 2.6, Finished P.: 2, total respond time: 5, Average response time: 2.5, Max length readylist: 3
+Total waiting time : 19, Average Waiting Time: 3.1666667, Finished P.: 2, total respond time: 5, Average response time: 2.5, Max length readylist: 3
+Total waiting time : 25, Average Waiting Time: 4.1666665, Finished P.: 2, total respond time: 5, Average response time: 2.5, Max length readylist: 3
+Total waiting time : 33, Average Waiting Time: 4.714286, Finished P.: 2, total respond time: 5, Average response time: 2.5, Max length readylist: 4
+Total waiting time : 43, Average Waiting Time: 5.375, Finished P.: 2, total respond time: 5, Average response time: 2.5, Max length readylist: 5
+Total waiting time : 53, Average Waiting Time: 6.625, Finished P.: 2, total respond time: 5, Average response time: 2.5, Max length readylist: 5
+Total waiting time : 63, Average Waiting Time: 7.875, Finished P.: 2, total respond time: 5, Average response time: 2.5, Max length readylist: 5
+Total waiting time : 75, Average Waiting Time: 8.333333, Finished P.: 2, total respond time: 5, Average response time: 2.5, Max length readylist: 6
+Total waiting time : 89, Average Waiting Time: 8.9, Finished P.: 2, total respond time: 5, Average response time: 2.5, Max length readylist: 7
+Total waiting time : 105, Average Waiting Time: 9.545455, Finished P.: 2, total respond time: 5, Average response time: 2.5, Max length readylist: 8
+Total waiting time : 125, Average Waiting Time: 9.615385, Finished P.: 2, total respond time: 5, Average response time: 2.5, Max length readylist: 10
+Total waiting time : 145, Average Waiting Time: 11.153846, Finished P.: 2, total respond time: 5, Average response time: 2.5, Max length readylist: 10
+Total waiting time : 171, Average Waiting Time: 10.6875, Finished P.: 2, total respond time: 5, Average response time: 2.5, Max length readylist: 13
+Total waiting time : 197, Average Waiting Time: 12.3125, Finished P.: 3, total respond time: 18, Average response time: 6.0, Max length readylist: 13
+Total waiting time : 224, Average Waiting Time: 13.176471, Finished P.: 3, total respond time: 18, Average response time: 6.0, Max length readylist: 14
+Total waiting time : 252, Average Waiting Time: 14.0, Finished P.: 3, total respond time: 18, Average response time: 6.0, Max length readylist: 14
+Total waiting time : 282, Average Waiting Time: 14.842105, Finished P.: 4, total respond time: 22, Average response time: 5.5, Max length readylist: 15
+Total waiting time : 311, Average Waiting Time: 16.368422, Finished P.: 4, total respond time: 22, Average response time: 5.5, Max length readylist: 15
+Total waiting time : 341, Average Waiting Time: 17.05, Finished P.: 4, total respond time: 22, Average response time: 5.5, Max length readylist: 15
+Total waiting time : 371, Average Waiting Time: 18.55, Finished P.: 5, total respond time: 27, Average response time: 5.4, Max length readylist: 15
+Total waiting time : 400, Average Waiting Time: 20.0, Finished P.: 5, total respond time: 27, Average response time: 5.4, Max length readylist: 15
+Total waiting time : 428, Average Waiting Time: 21.4, Finished P.: 5, total respond time: 27, Average response time: 5.4, Max length readylist: 15
+Total waiting time : 456, Average Waiting Time: 22.8, Finished P.: 5, total respond time: 27, Average response time: 5.4, Max length readylist: 15
+Total waiting time : 488, Average Waiting Time: 22.181818, Finished P.: 6, total respond time: 40, Average response time: 6.6666665, Max length readylist: 16
+Total waiting time : 521, Average Waiting Time: 22.652174, Finished P.: 6, total respond time: 40, Average response time: 6.6666665, Max length readylist: 17
+Total waiting time : 553, Average Waiting Time: 24.043478, Finished P.: 6, total respond time: 40, Average response time: 6.6666665, Max length readylist: 17
+Total waiting time : 587, Average Waiting Time: 24.458334, Finished P.: 6, total respond time: 40, Average response time: 6.6666665, Max length readylist: 17
+Total waiting time : 621, Average Waiting Time: 25.875, Finished P.: 6, total respond time: 40, Average response time: 6.6666665, Max length readylist: 17
+Total waiting time : 659, Average Waiting Time: 25.346153, Finished P.: 6, total respond time: 40, Average response time: 6.6666665, Max length readylist: 19
+Total waiting time : 697, Average Waiting Time: 26.807692, Finished P.: 7, total respond time: 61, Average response time: 8.714286, Max length readylist: 19
+Total waiting time : 734, Average Waiting Time: 28.23077, Finished P.: 7, total respond time: 61, Average response time: 8.714286, Max length readylist: 19
+Total waiting time : 774, Average Waiting Time: 27.642857, Finished P.: 7, total respond time: 61, Average response time: 8.714286, Max length readylist: 20
+Total waiting time : 814, Average Waiting Time: 29.071428, Finished P.: 7, total respond time: 61, Average response time: 8.714286, Max length readylist: 20
+Total waiting time : 856, Average Waiting Time: 29.51724, Finished P.: 7, total respond time: 61, Average response time: 8.714286, Max length readylist: 21
+Total waiting time : 898, Average Waiting Time: 30.965517, Finished P.: 7, total respond time: 61, Average response time: 8.714286, Max length readylist: 21
+Total waiting time : 940, Average Waiting Time: 32.41379, Finished P.: 8, total respond time: 73, Average response time: 9.125, Max length readylist: 21
+Total waiting time : 981, Average Waiting Time: 33.827587, Finished P.: 8, total respond time: 73, Average response time: 9.125, Max length readylist: 21
+Total waiting time : 1025, Average Waiting Time: 33.064518, Finished P.: 8, total respond time: 73, Average response time: 9.125, Max length readylist: 22
+Total waiting time : 1069, Average Waiting Time: 34.48387, Finished P.: 8, total respond time: 73, Average response time: 9.125, Max length readylist: 22
+Total waiting time : 1113, Average Waiting Time: 35.903225, Finished P.: 8, total respond time: 73, Average response time: 9.125, Max length readylist: 22
+Total waiting time : 1157, Average Waiting Time: 37.322582, Finished P.: 9, total respond time: 80, Average response time: 8.888889, Max length readylist: 22
+Total waiting time : 1202, Average Waiting Time: 37.5625, Finished P.: 9, total respond time: 80, Average response time: 8.888889, Max length readylist: 23
+Total waiting time : 1246, Average Waiting Time: 38.9375, Finished P.: 9, total respond time: 80, Average response time: 8.888889, Max length readylist: 23
+Total waiting time : 1292, Average Waiting Time: 39.151516, Finished P.: 9, total respond time: 80, Average response time: 8.888889, Max length readylist: 23
+Total waiting time : 1338, Average Waiting Time: 40.545456, Finished P.: 9, total respond time: 80, Average response time: 8.888889, Max length readylist: 23
+Total waiting time : 1386, Average Waiting Time: 40.764706, Finished P.: 9, total respond time: 80, Average response time: 8.888889, Max length readylist: 24
+Total waiting time : 1436, Average Waiting Time: 41.028572, Finished P.: 10, total respond time: 89, Average response time: 8.9, Max length readylist: 25
+Total waiting time : 1489, Average Waiting Time: 40.243244, Finished P.: 10, total respond time: 89, Average response time: 8.9, Max length readylist: 27
+Total waiting time : 1543, Average Waiting Time: 40.605263, Finished P.: 10, total respond time: 89, Average response time: 8.9, Max length readylist: 27
+Total waiting time : 1597, Average Waiting Time: 42.026318, Finished P.: 10, total respond time: 89, Average response time: 8.9, Max length readylist: 27
+Total waiting time : 1653, Average Waiting Time: 42.384617, Finished P.: 10, total respond time: 89, Average response time: 8.9, Max length readylist: 28
+Total waiting time : 1711, Average Waiting Time: 42.775, Finished P.: 11, total respond time: 93, Average response time: 8.454545, Max length readylist: 29
+Total waiting time : 1768, Average Waiting Time: 44.2, Finished P.: 11, total respond time: 93, Average response time: 8.454545, Max length readylist: 29
+Total waiting time : 1828, Average Waiting Time: 43.52381, Finished P.: 12, total respond time: 96, Average response time: 8.0, Max length readylist: 30
+Total waiting time : 1887, Average Waiting Time: 44.92857, Finished P.: 12, total respond time: 96, Average response time: 8.0, Max length readylist: 30
+Total waiting time : 1945, Average Waiting Time: 46.309525, Finished P.: 12, total respond time: 96, Average response time: 8.0, Max length readylist: 30
+Total waiting time : 2003, Average Waiting Time: 47.690475, Finished P.: 12, total respond time: 96, Average response time: 8.0, Max length readylist: 30
+Total waiting time : 2065, Average Waiting Time: 46.93182, Finished P.: 12, total respond time: 96, Average response time: 8.0, Max length readylist: 31
+Total waiting time : 2127, Average Waiting Time: 48.340908, Finished P.: 12, total respond time: 96, Average response time: 8.0, Max length readylist: 31
+Total waiting time : 2189, Average Waiting Time: 49.75, Finished P.: 13, total respond time: 104, Average response time: 8.0, Max length readylist: 31
+Total waiting time : 2254, Average Waiting Time: 49.0, Finished P.: 13, total respond time: 104, Average response time: 8.0, Max length readylist: 33
+Total waiting time : 2318, Average Waiting Time: 50.391304, Finished P.: 13, total respond time: 104, Average response time: 8.0, Max length readylist: 33
+Total waiting time : 2382, Average Waiting Time: 51.782608, Finished P.: 13, total respond time: 104, Average response time: 8.0, Max length readylist: 33
+Total waiting time : 2448, Average Waiting Time: 52.085106, Finished P.: 13, total respond time: 104, Average response time: 8.0, Max length readylist: 33
+Total waiting time : 2516, Average Waiting Time: 52.416668, Finished P.: 13, total respond time: 104, Average response time: 8.0, Max length readylist: 34
+Total waiting time : 2584, Average Waiting Time: 53.833332, Finished P.: 14, total respond time: 116, Average response time: 8.285714, Max length readylist: 34
+Total waiting time : 2651, Average Waiting Time: 55.229168, Finished P.: 14, total respond time: 116, Average response time: 8.285714, Max length readylist: 34
+Total waiting time : 2717, Average Waiting Time: 56.604168, Finished P.: 14, total respond time: 116, Average response time: 8.285714, Max length readylist: 34
+Total waiting time : 2783, Average Waiting Time: 57.979168, Finished P.: 14, total respond time: 116, Average response time: 8.285714, Max length readylist: 34
+Total waiting time : 2851, Average Waiting Time: 58.183674, Finished P.: 14, total respond time: 116, Average response time: 8.285714, Max length readylist: 34
+Total waiting time : 2919, Average Waiting Time: 59.57143, Finished P.: 14, total respond time: 116, Average response time: 8.285714, Max length readylist: 34
+Total waiting time : 2987, Average Waiting Time: 60.959183, Finished P.: 15, total respond time: 130, Average response time: 8.666667, Max length readylist: 34
+Total waiting time : 3054, Average Waiting Time: 62.32653, Finished P.: 15, total respond time: 130, Average response time: 8.666667, Max length readylist: 34
+Total waiting time : 3124, Average Waiting Time: 61.2549, Finished P.: 15, total respond time: 130, Average response time: 8.666667, Max length readylist: 35
+Total waiting time : 3196, Average Waiting Time: 61.46154, Finished P.: 16, total respond time: 135, Average response time: 8.4375, Max length readylist: 36
+Total waiting time : 3271, Average Waiting Time: 60.574074, Finished P.: 16, total respond time: 135, Average response time: 8.4375, Max length readylist: 38
+Total waiting time : 3345, Average Waiting Time: 61.944443, Finished P.: 16, total respond time: 135, Average response time: 8.4375, Max length readylist: 38
+Total waiting time : 3419, Average Waiting Time: 63.314816, Finished P.: 17, total respond time: 137, Average response time: 8.058824, Max length readylist: 38
+Total waiting time : 3494, Average Waiting Time: 63.52727, Finished P.: 17, total respond time: 137, Average response time: 8.058824, Max length readylist: 38
+Total waiting time : 3568, Average Waiting Time: 64.87273, Finished P.: 17, total respond time: 137, Average response time: 8.058824, Max length readylist: 38
+Total waiting time : 3646, Average Waiting Time: 63.964912, Finished P.: 17, total respond time: 137, Average response time: 8.058824, Max length readylist: 39
+Total waiting time : 3724, Average Waiting Time: 65.333336, Finished P.: 17, total respond time: 137, Average response time: 8.058824, Max length readylist: 39
+Total waiting time : 3802, Average Waiting Time: 66.70175, Finished P.: 18, total respond time: 145, Average response time: 8.055555, Max length readylist: 39
+Total waiting time : 3883, Average Waiting Time: 65.81356, Finished P.: 18, total respond time: 145, Average response time: 8.055555, Max length readylist: 41
+Total waiting time : 3965, Average Waiting Time: 66.083336, Finished P.: 18, total respond time: 145, Average response time: 8.055555, Max length readylist: 41
+Total waiting time : 4047, Average Waiting Time: 67.45, Finished P.: 19, total respond time: 147, Average response time: 7.736842, Max length readylist: 41
+Total waiting time : 4128, Average Waiting Time: 68.8, Finished P.: 19, total respond time: 147, Average response time: 7.736842, Max length readylist: 41
+Total waiting time : 4208, Average Waiting Time: 70.13333, Finished P.: 19, total respond time: 147, Average response time: 7.736842, Max length readylist: 41
+Total waiting time : 4288, Average Waiting Time: 71.46667, Finished P.: 19, total respond time: 147, Average response time: 7.736842, Max length readylist: 41
+Total waiting time : 4368, Average Waiting Time: 72.8, Finished P.: 19, total respond time: 147, Average response time: 7.736842, Max length readylist: 41
+Total waiting time : 4448, Average Waiting Time: 74.13333, Finished P.: 19, total respond time: 147, Average response time: 7.736842, Max length readylist: 41
+Total waiting time : 4532, Average Waiting Time: 73.09677, Finished P.: 19, total respond time: 147, Average response time: 7.736842, Max length readylist: 42
+Total waiting time : 4616, Average Waiting Time: 74.451614, Finished P.: 20, total respond time: 216, Average response time: 10.8, Max length readylist: 42
+Total waiting time : 0, Total # of processes: 0, Average Waiting Time: 0.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 0
+Total waiting time : 0, Total # of processes: 0, Average Waiting Time: 0.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 0
+Total waiting time : 0, Total # of processes: 0, Average Waiting Time: 0.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 0
+Total waiting time : 1, Total # of processes: 1, Average Waiting Time: 1.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 1, Total # of processes: 1, Average Waiting Time: 1.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 1, Total # of processes: 1, Average Waiting Time: 1.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 1, Total # of processes: 1, Average Waiting Time: 1.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 1, Total # of processes: 1, Average Waiting Time: 1.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 3, Total # of processes: 2, Average Waiting Time: 1.5, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 5, Total # of processes: 2, Average Waiting Time: 2.5, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 7, Total # of processes: 2, Average Waiting Time: 3.5, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 9, Total # of processes: 2, Average Waiting Time: 4.5, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 11, Total # of processes: 2, Average Waiting Time: 5.5, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 13, Total # of processes: 2, Average Waiting Time: 6.5, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 17, Total # of processes: 3, Average Waiting Time: 5.6666665, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 2
+Total waiting time : 27, Total # of processes: 6, Average Waiting Time: 4.5, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 5
+Total waiting time : 37, Total # of processes: 6, Average Waiting Time: 6.1666665, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 5
+Total waiting time : 47, Total # of processes: 6, Average Waiting Time: 7.8333335, Finished P.: 1, total respond time: 14, Average response time: 14.0, Max length readylist: 5
+Total waiting time : 56, Total # of processes: 6, Average Waiting Time: 9.333333, Finished P.: 1, total respond time: 14, Average response time: 14.0, Max length readylist: 5
+Total waiting time : 64, Total # of processes: 6, Average Waiting Time: 10.666667, Finished P.: 1, total respond time: 14, Average response time: 14.0, Max length readylist: 5
+Total waiting time : 72, Total # of processes: 6, Average Waiting Time: 12.0, Finished P.: 1, total respond time: 14, Average response time: 14.0, Max length readylist: 5
+Total waiting time : 80, Total # of processes: 6, Average Waiting Time: 13.333333, Finished P.: 1, total respond time: 14, Average response time: 14.0, Max length readylist: 5
+Total waiting time : 88, Total # of processes: 6, Average Waiting Time: 14.666667, Finished P.: 1, total respond time: 14, Average response time: 14.0, Max length readylist: 5
+Total waiting time : 96, Total # of processes: 6, Average Waiting Time: 16.0, Finished P.: 1, total respond time: 14, Average response time: 14.0, Max length readylist: 5
+Total waiting time : 104, Total # of processes: 6, Average Waiting Time: 17.333334, Finished P.: 1, total respond time: 14, Average response time: 14.0, Max length readylist: 5
+Total waiting time : 112, Total # of processes: 6, Average Waiting Time: 18.666666, Finished P.: 1, total respond time: 14, Average response time: 14.0, Max length readylist: 5
+Total waiting time : 124, Total # of processes: 8, Average Waiting Time: 15.5, Finished P.: 1, total respond time: 14, Average response time: 14.0, Max length readylist: 6
+Total waiting time : 136, Total # of processes: 8, Average Waiting Time: 17.0, Finished P.: 1, total respond time: 14, Average response time: 14.0, Max length readylist: 6
+Total waiting time : 150, Total # of processes: 9, Average Waiting Time: 16.666666, Finished P.: 1, total respond time: 14, Average response time: 14.0, Max length readylist: 7
+Total waiting time : 164, Total # of processes: 9, Average Waiting Time: 18.222221, Finished P.: 2, total respond time: 35, Average response time: 17.5, Max length readylist: 7
+Total waiting time : 177, Total # of processes: 9, Average Waiting Time: 19.666666, Finished P.: 2, total respond time: 35, Average response time: 17.5, Max length readylist: 7
+Total waiting time : 191, Total # of processes: 10, Average Waiting Time: 19.1, Finished P.: 2, total respond time: 35, Average response time: 17.5, Max length readylist: 7
+Total waiting time : 209, Total # of processes: 12, Average Waiting Time: 17.416666, Finished P.: 2, total respond time: 35, Average response time: 17.5, Max length readylist: 9
+Total waiting time : 231, Total # of processes: 14, Average Waiting Time: 16.5, Finished P.: 2, total respond time: 35, Average response time: 17.5, Max length readylist: 11
+Total waiting time : 253, Total # of processes: 14, Average Waiting Time: 18.071428, Finished P.: 2, total respond time: 35, Average response time: 17.5, Max length readylist: 11
+Total waiting time : 277, Total # of processes: 15, Average Waiting Time: 18.466667, Finished P.: 3, total respond time: 44, Average response time: 14.666667, Max length readylist: 12
+Total waiting time : 300, Total # of processes: 15, Average Waiting Time: 20.0, Finished P.: 3, total respond time: 44, Average response time: 14.666667, Max length readylist: 12
+Total waiting time : 324, Total # of processes: 16, Average Waiting Time: 20.25, Finished P.: 4, total respond time: 50, Average response time: 12.5, Max length readylist: 12
+Total waiting time : 347, Total # of processes: 16, Average Waiting Time: 21.6875, Finished P.: 4, total respond time: 50, Average response time: 12.5, Max length readylist: 12
+Total waiting time : 369, Total # of processes: 16, Average Waiting Time: 23.0625, Finished P.: 4, total respond time: 50, Average response time: 12.5, Max length readylist: 12
+Total waiting time : 393, Total # of processes: 17, Average Waiting Time: 23.117647, Finished P.: 4, total respond time: 50, Average response time: 12.5, Max length readylist: 12
+Total waiting time : 417, Total # of processes: 17, Average Waiting Time: 24.529411, Finished P.: 4, total respond time: 50, Average response time: 12.5, Max length readylist: 12
+Total waiting time : 441, Total # of processes: 17, Average Waiting Time: 25.941177, Finished P.: 5, total respond time: 59, Average response time: 11.8, Max length readylist: 12
+Total waiting time : 468, Total # of processes: 19, Average Waiting Time: 24.631578, Finished P.: 5, total respond time: 59, Average response time: 11.8, Max length readylist: 14
+Total waiting time : 494, Total # of processes: 19, Average Waiting Time: 26.0, Finished P.: 5, total respond time: 59, Average response time: 11.8, Max length readylist: 14
+Total waiting time : 522, Total # of processes: 20, Average Waiting Time: 26.1, Finished P.: 5, total respond time: 59, Average response time: 11.8, Max length readylist: 14
+Total waiting time : 550, Total # of processes: 20, Average Waiting Time: 27.5, Finished P.: 5, total respond time: 59, Average response time: 11.8, Max length readylist: 14
+Total waiting time : 578, Total # of processes: 20, Average Waiting Time: 28.9, Finished P.: 5, total respond time: 59, Average response time: 11.8, Max length readylist: 14
+Total waiting time : 606, Total # of processes: 20, Average Waiting Time: 30.3, Finished P.: 5, total respond time: 59, Average response time: 11.8, Max length readylist: 14
+Total waiting time : 634, Total # of processes: 20, Average Waiting Time: 31.7, Finished P.: 6, total respond time: 68, Average response time: 11.333333, Max length readylist: 14
+Total waiting time : 661, Total # of processes: 20, Average Waiting Time: 33.05, Finished P.: 6, total respond time: 68, Average response time: 11.333333, Max length readylist: 14
+Total waiting time : 687, Total # of processes: 20, Average Waiting Time: 34.35, Finished P.: 6, total respond time: 68, Average response time: 11.333333, Max length readylist: 14
+Total waiting time : 715, Total # of processes: 21, Average Waiting Time: 34.04762, Finished P.: 6, total respond time: 68, Average response time: 11.333333, Max length readylist: 14
+Total waiting time : 743, Total # of processes: 21, Average Waiting Time: 35.38095, Finished P.: 6, total respond time: 68, Average response time: 11.333333, Max length readylist: 14
+Total waiting time : 771, Total # of processes: 21, Average Waiting Time: 36.714287, Finished P.: 6, total respond time: 68, Average response time: 11.333333, Max length readylist: 14
+Total waiting time : 799, Total # of processes: 21, Average Waiting Time: 38.04762, Finished P.: 6, total respond time: 68, Average response time: 11.333333, Max length readylist: 14
+Total waiting time : 827, Total # of processes: 21, Average Waiting Time: 39.38095, Finished P.: 6, total respond time: 68, Average response time: 11.333333, Max length readylist: 14
+Total waiting time : 855, Total # of processes: 21, Average Waiting Time: 40.714287, Finished P.: 6, total respond time: 68, Average response time: 11.333333, Max length readylist: 14
+Total waiting time : 885, Total # of processes: 22, Average Waiting Time: 40.227272, Finished P.: 7, total respond time: 100, Average response time: 14.285714, Max length readylist: 15
+Total waiting time : 914, Total # of processes: 22, Average Waiting Time: 41.545456, Finished P.: 7, total respond time: 100, Average response time: 14.285714, Max length readylist: 15
+Total waiting time : 942, Total # of processes: 22, Average Waiting Time: 42.81818, Finished P.: 7, total respond time: 100, Average response time: 14.285714, Max length readylist: 15
+Total waiting time : 970, Total # of processes: 22, Average Waiting Time: 44.090908, Finished P.: 7, total respond time: 100, Average response time: 14.285714, Max length readylist: 15
+Total waiting time : 998, Total # of processes: 22, Average Waiting Time: 45.363636, Finished P.: 8, total respond time: 104, Average response time: 13.0, Max length readylist: 15
+Total waiting time : 1027, Total # of processes: 23, Average Waiting Time: 44.652172, Finished P.: 8, total respond time: 104, Average response time: 13.0, Max length readylist: 15
+Total waiting time : 1057, Total # of processes: 24, Average Waiting Time: 44.041668, Finished P.: 8, total respond time: 104, Average response time: 13.0, Max length readylist: 15
+Total waiting time : 1087, Total # of processes: 24, Average Waiting Time: 45.291668, Finished P.: 8, total respond time: 104, Average response time: 13.0, Max length readylist: 15
+Total waiting time : 1119, Total # of processes: 25, Average Waiting Time: 44.76, Finished P.: 9, total respond time: 107, Average response time: 11.888889, Max length readylist: 16
+Total waiting time : 1150, Total # of processes: 25, Average Waiting Time: 46.0, Finished P.: 9, total respond time: 107, Average response time: 11.888889, Max length readylist: 16
+Total waiting time : 1180, Total # of processes: 25, Average Waiting Time: 47.2, Finished P.: 9, total respond time: 107, Average response time: 11.888889, Max length readylist: 16
+Total waiting time : 1210, Total # of processes: 25, Average Waiting Time: 48.4, Finished P.: 10, total respond time: 112, Average response time: 11.2, Max length readylist: 16
+Total waiting time : 1239, Total # of processes: 25, Average Waiting Time: 49.56, Finished P.: 10, total respond time: 112, Average response time: 11.2, Max length readylist: 16
+Total waiting time : 1267, Total # of processes: 25, Average Waiting Time: 50.68, Finished P.: 10, total respond time: 112, Average response time: 11.2, Max length readylist: 16
+Total waiting time : 1297, Total # of processes: 26, Average Waiting Time: 49.884617, Finished P.: 10, total respond time: 112, Average response time: 11.2, Max length readylist: 16
+Total waiting time : 1329, Total # of processes: 27, Average Waiting Time: 49.22222, Finished P.: 10, total respond time: 112, Average response time: 11.2, Max length readylist: 16
+Total waiting time : 1361, Total # of processes: 27, Average Waiting Time: 50.407406, Finished P.: 10, total respond time: 112, Average response time: 11.2, Max length readylist: 16
+Total waiting time : 1395, Total # of processes: 28, Average Waiting Time: 49.82143, Finished P.: 10, total respond time: 112, Average response time: 11.2, Max length readylist: 17
+Total waiting time : 1431, Total # of processes: 29, Average Waiting Time: 49.344826, Finished P.: 11, total respond time: 136, Average response time: 12.363636, Max length readylist: 18
+Total waiting time : 1466, Total # of processes: 29, Average Waiting Time: 50.551723, Finished P.: 11, total respond time: 136, Average response time: 12.363636, Max length readylist: 18
+Total waiting time : 1502, Total # of processes: 30, Average Waiting Time: 50.066666, Finished P.: 11, total respond time: 136, Average response time: 12.363636, Max length readylist: 18
+Total waiting time : 1538, Total # of processes: 30, Average Waiting Time: 51.266666, Finished P.: 11, total respond time: 136, Average response time: 12.363636, Max length readylist: 18
+Total waiting time : 1574, Total # of processes: 30, Average Waiting Time: 52.466667, Finished P.: 12, total respond time: 144, Average response time: 12.0, Max length readylist: 18
+Total waiting time : 1611, Total # of processes: 31, Average Waiting Time: 51.967743, Finished P.: 12, total respond time: 144, Average response time: 12.0, Max length readylist: 19
+Total waiting time : 1649, Total # of processes: 32, Average Waiting Time: 51.53125, Finished P.: 12, total respond time: 144, Average response time: 12.0, Max length readylist: 19
+Total waiting time : 1687, Total # of processes: 32, Average Waiting Time: 52.71875, Finished P.: 13, total respond time: 149, Average response time: 11.461538, Max length readylist: 19
+Total waiting time : 1724, Total # of processes: 32, Average Waiting Time: 53.875, Finished P.: 13, total respond time: 149, Average response time: 11.461538, Max length readylist: 19
+Total waiting time : 1760, Total # of processes: 32, Average Waiting Time: 55.0, Finished P.: 13, total respond time: 149, Average response time: 11.461538, Max length readylist: 19
+Total waiting time : 1796, Total # of processes: 32, Average Waiting Time: 56.125, Finished P.: 13, total respond time: 149, Average response time: 11.461538, Max length readylist: 19
+Total waiting time : 1832, Total # of processes: 32, Average Waiting Time: 57.25, Finished P.: 14, total respond time: 160, Average response time: 11.428572, Max length readylist: 19
+Total waiting time : 1869, Total # of processes: 33, Average Waiting Time: 56.636364, Finished P.: 14, total respond time: 160, Average response time: 11.428572, Max length readylist: 19
+Total waiting time : 1905, Total # of processes: 33, Average Waiting Time: 57.727272, Finished P.: 14, total respond time: 160, Average response time: 11.428572, Max length readylist: 19
+Total waiting time : 1943, Total # of processes: 34, Average Waiting Time: 57.14706, Finished P.: 14, total respond time: 160, Average response time: 11.428572, Max length readylist: 19
+Total waiting time : 1981, Total # of processes: 34, Average Waiting Time: 58.264706, Finished P.: 14, total respond time: 160, Average response time: 11.428572, Max length readylist: 19
+Total waiting time : 2023, Total # of processes: 36, Average Waiting Time: 56.194443, Finished P.: 14, total respond time: 160, Average response time: 11.428572, Max length readylist: 21
+Total waiting time : 2065, Total # of processes: 36, Average Waiting Time: 57.36111, Finished P.: 14, total respond time: 160, Average response time: 11.428572, Max length readylist: 21
+Total waiting time : 2107, Total # of processes: 36, Average Waiting Time: 58.52778, Finished P.: 15, total respond time: 179, Average response time: 11.933333, Max length readylist: 21
+Total waiting time : 2148, Total # of processes: 36, Average Waiting Time: 59.666668, Finished P.: 15, total respond time: 179, Average response time: 11.933333, Max length readylist: 21
+Total waiting time : 2188, Total # of processes: 36, Average Waiting Time: 60.77778, Finished P.: 15, total respond time: 179, Average response time: 11.933333, Max length readylist: 21
+Total waiting time : 2230, Total # of processes: 37, Average Waiting Time: 60.27027, Finished P.: 15, total respond time: 179, Average response time: 11.933333, Max length readylist: 21
+Total waiting time : 2272, Total # of processes: 37, Average Waiting Time: 61.405407, Finished P.: 16, total respond time: 185, Average response time: 11.5625, Max length readylist: 21
+Total waiting time : 2313, Total # of processes: 37, Average Waiting Time: 62.51351, Finished P.: 16, total respond time: 185, Average response time: 11.5625, Max length readylist: 21
+Total waiting time : 2355, Total # of processes: 38, Average Waiting Time: 61.973682, Finished P.: 16, total respond time: 185, Average response time: 11.5625, Max length readylist: 21
+Total waiting time : 2399, Total # of processes: 39, Average Waiting Time: 61.51282, Finished P.: 16, total respond time: 185, Average response time: 11.5625, Max length readylist: 22
+Total waiting time : 0, Total # of processes: 0, Average Waiting Time: 0.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 0
+Total waiting time : 1, Total # of processes: 1, Average Waiting Time: 1.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Total waiting time : 5, Total # of processes: 3, Average Waiting Time: 1.6666666, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 2
+Total waiting time : 9, Total # of processes: 3, Average Waiting Time: 3.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 2
+Total waiting time : 13, Total # of processes: 3, Average Waiting Time: 4.3333335, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 2
+Total waiting time : 17, Total # of processes: 3, Average Waiting Time: 5.6666665, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 2
+Total waiting time : 21, Total # of processes: 3, Average Waiting Time: 7.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 2
+Total waiting time : 25, Total # of processes: 3, Average Waiting Time: 8.333333, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 2
+Total waiting time : 31, Total # of processes: 4, Average Waiting Time: 7.75, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 3
+Total waiting time : 37, Total # of processes: 4, Average Waiting Time: 9.25, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 3
+Total waiting time : 45, Total # of processes: 5, Average Waiting Time: 9.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 4
+Total waiting time : 55, Total # of processes: 6, Average Waiting Time: 9.166667, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 5
+Total waiting time : 65, Total # of processes: 6, Average Waiting Time: 10.833333, Finished P.: 1, total respond time: 11, Average response time: 11.0, Max length readylist: 5
+Total waiting time : 74, Total # of processes: 6, Average Waiting Time: 12.333333, Finished P.: 1, total respond time: 11, Average response time: 11.0, Max length readylist: 5
+Total waiting time : 82, Total # of processes: 6, Average Waiting Time: 13.666667, Finished P.: 1, total respond time: 11, Average response time: 11.0, Max length readylist: 5
+Total waiting time : 90, Total # of processes: 6, Average Waiting Time: 15.0, Finished P.: 1, total respond time: 11, Average response time: 11.0, Max length readylist: 5
+Total waiting time : 98, Total # of processes: 6, Average Waiting Time: 16.333334, Finished P.: 1, total respond time: 11, Average response time: 11.0, Max length readylist: 5
+Total waiting time : 110, Total # of processes: 8, Average Waiting Time: 13.75, Finished P.: 2, total respond time: 26, Average response time: 13.0, Max length readylist: 6
+Total waiting time : 121, Total # of processes: 8, Average Waiting Time: 15.125, Finished P.: 2, total respond time: 26, Average response time: 13.0, Max length readylist: 6
+Total waiting time : 131, Total # of processes: 8, Average Waiting Time: 16.375, Finished P.: 2, total respond time: 26, Average response time: 13.0, Max length readylist: 6
+Total waiting time : 145, Total # of processes: 10, Average Waiting Time: 14.5, Finished P.: 2, total respond time: 26, Average response time: 13.0, Max length readylist: 7
+Total waiting time : 161, Total # of processes: 11, Average Waiting Time: 14.636364, Finished P.: 2, total respond time: 26, Average response time: 13.0, Max length readylist: 8
+Total waiting time : 179, Total # of processes: 12, Average Waiting Time: 14.916667, Finished P.: 2, total respond time: 26, Average response time: 13.0, Max length readylist: 9
+Total waiting time : 197, Total # of processes: 12, Average Waiting Time: 16.416666, Finished P.: 2, total respond time: 26, Average response time: 13.0, Max length readylist: 9
+Total waiting time : 215, Total # of processes: 12, Average Waiting Time: 17.916666, Finished P.: 3, total respond time: 33, Average response time: 11.0, Max length readylist: 9
+Total waiting time : 232, Total # of processes: 12, Average Waiting Time: 19.333334, Finished P.: 3, total respond time: 33, Average response time: 11.0, Max length readylist: 9
+Total waiting time : 248, Total # of processes: 12, Average Waiting Time: 20.666666, Finished P.: 3, total respond time: 33, Average response time: 11.0, Max length readylist: 9
+Total waiting time : 264, Total # of processes: 12, Average Waiting Time: 22.0, Finished P.: 3, total respond time: 33, Average response time: 11.0, Max length readylist: 9
+Total waiting time : 282, Total # of processes: 13, Average Waiting Time: 21.692308, Finished P.: 3, total respond time: 33, Average response time: 11.0, Max length readylist: 9
+Total waiting time : 300, Total # of processes: 13, Average Waiting Time: 23.076923, Finished P.: 4, total respond time: 42, Average response time: 10.5, Max length readylist: 9
+Total waiting time : 321, Total # of processes: 15, Average Waiting Time: 21.4, Finished P.: 4, total respond time: 42, Average response time: 10.5, Max length readylist: 11
+Total waiting time : 341, Total # of processes: 15, Average Waiting Time: 22.733334, Finished P.: 5, total respond time: 43, Average response time: 8.6, Max length readylist: 11
+Total waiting time : 362, Total # of processes: 16, Average Waiting Time: 22.625, Finished P.: 5, total respond time: 43, Average response time: 8.6, Max length readylist: 11
+Total waiting time : 382, Total # of processes: 16, Average Waiting Time: 23.875, Finished P.: 5, total respond time: 43, Average response time: 8.6, Max length readylist: 11
+Total waiting time : 404, Total # of processes: 17, Average Waiting Time: 23.764706, Finished P.: 5, total respond time: 43, Average response time: 8.6, Max length readylist: 11
+Total waiting time : 432, Total # of processes: 20, Average Waiting Time: 21.6, Finished P.: 5, total respond time: 43, Average response time: 8.6, Max length readylist: 14
+Total waiting time : 462, Total # of processes: 21, Average Waiting Time: 22.0, Finished P.: 5, total respond time: 43, Average response time: 8.6, Max length readylist: 15
+Total waiting time : 494, Total # of processes: 22, Average Waiting Time: 22.454546, Finished P.: 6, total respond time: 60, Average response time: 10.0, Max length readylist: 16
+Total waiting time : 527, Total # of processes: 23, Average Waiting Time: 22.913044, Finished P.: 6, total respond time: 60, Average response time: 10.0, Max length readylist: 17
+Total waiting time : 559, Total # of processes: 23, Average Waiting Time: 24.304348, Finished P.: 6, total respond time: 60, Average response time: 10.0, Max length readylist: 17
+Total waiting time : 591, Total # of processes: 23, Average Waiting Time: 25.695652, Finished P.: 6, total respond time: 60, Average response time: 10.0, Max length readylist: 17
+Total waiting time : 627, Total # of processes: 25, Average Waiting Time: 25.08, Finished P.: 6, total respond time: 60, Average response time: 10.0, Max length readylist: 18
+Total waiting time : 663, Total # of processes: 25, Average Waiting Time: 26.52, Finished P.: 6, total respond time: 60, Average response time: 10.0, Max length readylist: 18
+Total waiting time : 701, Total # of processes: 26, Average Waiting Time: 26.961538, Finished P.: 6, total respond time: 60, Average response time: 10.0, Max length readylist: 19
+Total waiting time : 741, Total # of processes: 27, Average Waiting Time: 27.444445, Finished P.: 7, total respond time: 72, Average response time: 10.285714, Max length readylist: 20
+Total waiting time : 780, Total # of processes: 27, Average Waiting Time: 28.88889, Finished P.: 7, total respond time: 72, Average response time: 10.285714, Max length readylist: 20
+Total waiting time : 820, Total # of processes: 28, Average Waiting Time: 29.285715, Finished P.: 7, total respond time: 72, Average response time: 10.285714, Max length readylist: 20
+Total waiting time : 860, Total # of processes: 28, Average Waiting Time: 30.714285, Finished P.: 8, total respond time: 76, Average response time: 9.5, Max length readylist: 20
+Total waiting time : 899, Total # of processes: 28, Average Waiting Time: 32.107143, Finished P.: 8, total respond time: 76, Average response time: 9.5, Max length readylist: 20
+Total waiting time : 941, Total # of processes: 30, Average Waiting Time: 31.366667, Finished P.: 8, total respond time: 76, Average response time: 9.5, Max length readylist: 21
+Total waiting time : 983, Total # of processes: 30, Average Waiting Time: 32.766666, Finished P.: 8, total respond time: 76, Average response time: 9.5, Max length readylist: 21
+Total waiting time : 1025, Total # of processes: 30, Average Waiting Time: 34.166668, Finished P.: 8, total respond time: 76, Average response time: 9.5, Max length readylist: 21
+Total waiting time : 1069, Total # of processes: 31, Average Waiting Time: 34.48387, Finished P.: 9, total respond time: 84, Average response time: 9.333333, Max length readylist: 22
+Total waiting time : 1112, Total # of processes: 31, Average Waiting Time: 35.870968, Finished P.: 9, total respond time: 84, Average response time: 9.333333, Max length readylist: 22
+Total waiting time : 1156, Total # of processes: 32, Average Waiting Time: 36.125, Finished P.: 9, total respond time: 84, Average response time: 9.333333, Max length readylist: 22
+Total waiting time : 1200, Total # of processes: 32, Average Waiting Time: 37.5, Finished P.: 9, total respond time: 84, Average response time: 9.333333, Max length readylist: 22
+Total waiting time : 1244, Total # of processes: 32, Average Waiting Time: 38.875, Finished P.: 9, total respond time: 84, Average response time: 9.333333, Max length readylist: 22
+Total waiting time : 1288, Total # of processes: 32, Average Waiting Time: 40.25, Finished P.: 9, total respond time: 84, Average response time: 9.333333, Max length readylist: 22
+Total waiting time : 1332, Total # of processes: 32, Average Waiting Time: 41.625, Finished P.: 9, total respond time: 84, Average response time: 9.333333, Max length readylist: 22
+Total waiting time : 1380, Total # of processes: 34, Average Waiting Time: 40.588234, Finished P.: 9, total respond time: 84, Average response time: 9.333333, Max length readylist: 24
+Total waiting time : 1428, Total # of processes: 34, Average Waiting Time: 42.0, Finished P.: 10, total respond time: 136, Average response time: 13.6, Max length readylist: 24
+Total waiting time : 1475, Total # of processes: 34, Average Waiting Time: 43.382355, Finished P.: 10, total respond time: 136, Average response time: 13.6, Max length readylist: 24
+Total waiting time : 1523, Total # of processes: 35, Average Waiting Time: 43.514286, Finished P.: 10, total respond time: 136, Average response time: 13.6, Max length readylist: 24
+Total waiting time : 1571, Total # of processes: 35, Average Waiting Time: 44.885715, Finished P.: 11, total respond time: 140, Average response time: 12.727273, Max length readylist: 24
+Total waiting time : 1620, Total # of processes: 36, Average Waiting Time: 45.0, Finished P.: 11, total respond time: 140, Average response time: 12.727273, Max length readylist: 25
+Total waiting time : 1668, Total # of processes: 36, Average Waiting Time: 46.333332, Finished P.: 11, total respond time: 140, Average response time: 12.727273, Max length readylist: 25
+Total waiting time : 1716, Total # of processes: 36, Average Waiting Time: 47.666668, Finished P.: 11, total respond time: 140, Average response time: 12.727273, Max length readylist: 25
+Total waiting time : 1764, Total # of processes: 36, Average Waiting Time: 49.0, Finished P.: 11, total respond time: 140, Average response time: 12.727273, Max length readylist: 25
+Total waiting time : 1814, Total # of processes: 37, Average Waiting Time: 49.027027, Finished P.: 11, total respond time: 140, Average response time: 12.727273, Max length readylist: 25
+Total waiting time : 1864, Total # of processes: 37, Average Waiting Time: 50.37838, Finished P.: 11, total respond time: 140, Average response time: 12.727273, Max length readylist: 25
+Total waiting time : 1914, Total # of processes: 37, Average Waiting Time: 51.72973, Finished P.: 12, total respond time: 156, Average response time: 13.0, Max length readylist: 25
+Total waiting time : 1963, Total # of processes: 37, Average Waiting Time: 53.054054, Finished P.: 12, total respond time: 156, Average response time: 13.0, Max length readylist: 25
+Total waiting time : 2011, Total # of processes: 37, Average Waiting Time: 54.351353, Finished P.: 12, total respond time: 156, Average response time: 13.0, Max length readylist: 25
+Total waiting time : 2061, Total # of processes: 38, Average Waiting Time: 54.236843, Finished P.: 12, total respond time: 156, Average response time: 13.0, Max length readylist: 25
+Total waiting time : 2113, Total # of processes: 39, Average Waiting Time: 54.179485, Finished P.: 12, total respond time: 156, Average response time: 13.0, Max length readylist: 26
+Total waiting time : 2169, Total # of processes: 41, Average Waiting Time: 52.90244, Finished P.: 12, total respond time: 156, Average response time: 13.0, Max length readylist: 28
+Total waiting time : 2225, Total # of processes: 41, Average Waiting Time: 54.26829, Finished P.: 12, total respond time: 156, Average response time: 13.0, Max length readylist: 28
+Total waiting time : 2281, Total # of processes: 41, Average Waiting Time: 55.634148, Finished P.: 12, total respond time: 156, Average response time: 13.0, Max length readylist: 28
+Total waiting time : 2339, Total # of processes: 42, Average Waiting Time: 55.690475, Finished P.: 12, total respond time: 156, Average response time: 13.0, Max length readylist: 29
+Total waiting time : 2397, Total # of processes: 42, Average Waiting Time: 57.07143, Finished P.: 13, total respond time: 207, Average response time: 15.923077, Max length readylist: 29
+Total waiting time : 2454, Total # of processes: 42, Average Waiting Time: 58.42857, Finished P.: 13, total respond time: 207, Average response time: 15.923077, Max length readylist: 29
+Total waiting time : 2510, Total # of processes: 42, Average Waiting Time: 59.761906, Finished P.: 14, total respond time: 213, Average response time: 15.214286, Max length readylist: 29
+Total waiting time : 2565, Total # of processes: 42, Average Waiting Time: 61.07143, Finished P.: 14, total respond time: 213, Average response time: 15.214286, Max length readylist: 29
+Total waiting time : 2619, Total # of processes: 42, Average Waiting Time: 62.357143, Finished P.: 14, total respond time: 213, Average response time: 15.214286, Max length readylist: 29
+Total waiting time : 2673, Total # of processes: 42, Average Waiting Time: 63.642857, Finished P.: 14, total respond time: 213, Average response time: 15.214286, Max length readylist: 29
+Total waiting time : 2727, Total # of processes: 42, Average Waiting Time: 64.92857, Finished P.: 15, total respond time: 220, Average response time: 14.666667, Max length readylist: 29
+Total waiting time : 2780, Total # of processes: 42, Average Waiting Time: 66.190475, Finished P.: 15, total respond time: 220, Average response time: 14.666667, Max length readylist: 29
+Total waiting time : 2832, Total # of processes: 42, Average Waiting Time: 67.42857, Finished P.: 15, total respond time: 220, Average response time: 14.666667, Max length readylist: 29
+Total waiting time : 2884, Total # of processes: 42, Average Waiting Time: 68.666664, Finished P.: 15, total respond time: 220, Average response time: 14.666667, Max length readylist: 29
+Total waiting time : 2936, Total # of processes: 42, Average Waiting Time: 69.90476, Finished P.: 15, total respond time: 220, Average response time: 14.666667, Max length readylist: 29
+Total waiting time : 2992, Total # of processes: 44, Average Waiting Time: 68.0, Finished P.: 15, total respond time: 220, Average response time: 14.666667, Max length readylist: 29
+Total waiting time : 3048, Total # of processes: 44, Average Waiting Time: 69.27273, Finished P.: 15, total respond time: 220, Average response time: 14.666667, Max length readylist: 29
+Total waiting time : 3104, Total # of processes: 44, Average Waiting Time: 70.545456, Finished P.: 16, total respond time: 238, Average response time: 14.875, Max length readylist: 29
+Total waiting time : 3159, Total # of processes: 44, Average Waiting Time: 71.795456, Finished P.: 16, total respond time: 238, Average response time: 14.875, Max length readylist: 29
+Total waiting time : 3213, Total # of processes: 44, Average Waiting Time: 73.02273, Finished P.: 16, total respond time: 238, Average response time: 14.875, Max length readylist: 29
+Total waiting time : 3267, Total # of processes: 44, Average Waiting Time: 74.25, Finished P.: 16, total respond time: 238, Average response time: 14.875, Max length readylist: 29
+Total waiting time : 3321, Total # of processes: 44, Average Waiting Time: 75.47727, Finished P.: 16, total respond time: 238, Average response time: 14.875, Max length readylist: 29
+Total waiting time : 3377, Total # of processes: 45, Average Waiting Time: 75.04444, Finished P.: 17, total respond time: 245, Average response time: 14.411765, Max length readylist: 29
+Total waiting time : 3432, Total # of processes: 45, Average Waiting Time: 76.26667, Finished P.: 17, total respond time: 245, Average response time: 14.411765, Max length readylist: 29
+Total waiting time : 3488, Total # of processes: 46, Average Waiting Time: 75.82609, Finished P.: 17, total respond time: 245, Average response time: 14.411765, Max length readylist: 29
+Total waiting time : 3544, Total # of processes: 46, Average Waiting Time: 77.04348, Finished P.: 17, total respond time: 245, Average response time: 14.411765, Max length readylist: 29
+Total waiting time : 3600, Total # of processes: 46, Average Waiting Time: 78.26087, Finished P.: 18, total respond time: 249, Average response time: 13.833333, Max length readylist: 29

@@ -37,7 +37,7 @@ public class Clock implements ActionListener {
 
 		System.out.println("\nTick " + ticks);
 		generator.runGenerator(ShowTime());
-		sjfScheduler.SJF();
+		sjfScheduler.SJF(ShowTime());
 		cpu.execute();
 
 		ticks++;
