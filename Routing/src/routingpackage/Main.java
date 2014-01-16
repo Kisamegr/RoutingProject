@@ -1,5 +1,7 @@
 package routingpackage;
 
+import java.io.File;
+
 public class Main {
 
 	/**
@@ -7,8 +9,10 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 
+		String filepath = System.getProperty("user.dir") + File.separatorChar + "Out.txt";
+		System.out.println(filepath);
 		CPU cpu = new CPU();
-		Statistics stats = new Statistics("C:/Users/Levas/Documents/Out.txt");
+		Statistics stats = new Statistics(filepath);
 		SJFScheduler sjfScheduler = new SJFScheduler(false, cpu,stats);
 		ProcessGenerator generator = new ProcessGenerator("output.txt", false, sjfScheduler);
 		

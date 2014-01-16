@@ -1,13 +1,19 @@
 package routingpackage;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public class ProcessGenerator {
 
 	private File inputFile; // where the data of new processes are going to be
 							// stored
+	private boolean read_from_file;
+	
 	private NewProcessTemporaryList newList;
 	private SJFScheduler sjfScheduler;
 	private int generationFreq;
@@ -26,6 +32,8 @@ public class ProcessGenerator {
 
 		generationFreq = 10;
 
+		read_from_file=readFile;
+		
 		random = new Random(System.currentTimeMillis());
 
 		currentPid = 0;
@@ -34,20 +42,36 @@ public class ProcessGenerator {
 
 	public void runGenerator(int currentClock) {
 
-		// Generate new processes every generationFreq clocks
-		if ((currentClock + 1) % generationFreq == 0) {
-			int processNumber = random.nextInt(7) + 2;
+		
+		if(read_from_file==false)
+		{
+			// Generate new processes every generationFreq clocks
+			if ((currentClock + 1) % generationFreq == 0) {
+			
+				int processNumber = random.nextInt(7) + 2;
 
-			for (int i = 0; i < processNumber; i++) {
+				for (int i = 0; i < processNumber; i++) {
 
-				Process p = new Process(currentPid++, random.nextInt(generationFreq) + currentClock + 1, random.nextInt(15) + 1);
-				newList.AddNewProcess(p);
+					Process p = new Process(currentPid++, random.nextInt(generationFreq) + currentClock + 1, random.nextInt(15) + 1);
+					newList.AddNewProcess(p);
 
+				}
+				newList.printList();
 			}
-
+		}
+		if((read_from_file==true)&&(currentClock==0))
+		{
+			List<Process> proc_from_file;
+			proc_from_file=parseProcessFile();
+			for(Process temp: proc_from_file)
+			{
+				newList.AddNewProcess(temp);
+			}
 			newList.printList();
 		}
 
+		
+		
 		// Move the first process to the ready list if its arrival time
 		// equals the current time
 		Process firstNewProcess = newList.peekFirst();
@@ -81,6 +105,43 @@ public class ProcessGenerator {
 
 	// reading inputFile
 	public List<Process> parseProcessFile() {
-		return null;
+		List<Process> fileList = new ArrayList<Process>();
+		
+		String filepath = System.getProperty("user.dir") + File.separatorChar + "input.txt";
+		System.out.println(filepath);
+		Scanner scan;
+		try {
+			Process p;
+			scan = new Scanner(new File(filepath));
+			int i=0,k=0,arrival_time = -1,burst_cpu_time = -1;
+			while(scan.hasNextInt())
+			{
+				i=scan.nextInt();
+				
+				if(k==0)
+				{
+					if((arrival_time!=-1)&&(burst_cpu_time != -1))
+					{
+						p= new Process(currentPid++,arrival_time,burst_cpu_time);
+						fileList.add(p);
+					}
+					arrival_time=i;
+					k=1;
+				}
+				else if(k==1)
+				{
+					burst_cpu_time=i;
+					k=0;
+				}
+
+			}
+			p= new Process(currentPid++,arrival_time,burst_cpu_time);
+			fileList.add(p);
+			scan.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return fileList;
 	}
 }

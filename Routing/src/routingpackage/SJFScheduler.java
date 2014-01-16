@@ -52,8 +52,8 @@ public class SJFScheduler {
 				if (cpuProcess.getCpuRemainingTime() == 0)
 				{
 					cpu.removeProcessFromCpu();
-					stats.updateFinishedNumber(1);//edit
-					stats.updateResponseTime(currentTime - cpuProcess.getArrivalTime());//edit.
+				stats.updateFinishedNumber(1);//edit
+				stats.updateResponseTime(currentTime - cpuProcess.getArrivalTime());//edit.
 				}
 					
 
@@ -64,7 +64,7 @@ public class SJFScheduler {
 				Process forCPU = readyList.getProcessToRunInCPU();
 				if (forCPU != null) {
 					cpu.addProcess(forCPU);
-					//stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);//edit
+					stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);//edit
 
 				}
 
