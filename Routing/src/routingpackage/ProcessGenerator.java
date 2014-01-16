@@ -59,11 +59,11 @@ public class ProcessGenerator {
 				newList.printList();
 			}
 		}
-		if((read_from_file==true)&&(currentClock==0))
+		if((read_from_file==true)&&(currentClock==0))// It does at the start of the program
 		{
 			List<Process> proc_from_file;
-			proc_from_file=parseProcessFile();
-			for(Process temp: proc_from_file)
+			proc_from_file=parseProcessFile(); //the arrayList is returned in here
+			for(Process temp: proc_from_file) //and then its objects are passed to our newList
 			{
 				newList.AddNewProcess(temp);
 			}
@@ -105,22 +105,22 @@ public class ProcessGenerator {
 
 	// reading inputFile
 	public List<Process> parseProcessFile() {
-		List<Process> fileList = new ArrayList<Process>();
+		List<Process> fileList = new ArrayList<Process>(); //initialize array list
 		
-		String filepath = System.getProperty("user.dir") + File.separatorChar + "input.txt";
+		String filepath = System.getProperty("user.dir") + File.separatorChar + "input.txt"; // get the directory of the inputFile.txt
 		System.out.println(filepath);
 		Scanner scan;
 		try {
 			Process p;
-			scan = new Scanner(new File(filepath));
+			scan = new Scanner(new File(filepath));//create Scanner to scan Integers
 			int i=0,k=0,arrival_time = -1,burst_cpu_time = -1;
 			while(scan.hasNextInt())
 			{
 				i=scan.nextInt();
 				
-				if(k==0)
+				if(k==0) //checks if it is in the first column
 				{
-					if((arrival_time!=-1)&&(burst_cpu_time != -1))
+					if((arrival_time!=-1)&&(burst_cpu_time != -1))//if the two variables have a value from the text file then it creates a new temp process and adds it to the list
 					{
 						p= new Process(currentPid++,arrival_time,burst_cpu_time);
 						fileList.add(p);
@@ -128,7 +128,7 @@ public class ProcessGenerator {
 					arrival_time=i;
 					k=1;
 				}
-				else if(k==1)
+				else if(k==1)//second column
 				{
 					burst_cpu_time=i;
 					k=0;
@@ -142,6 +142,6 @@ public class ProcessGenerator {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return fileList;
+		return fileList; //returs ArrayList
 	}
 }
