@@ -43,10 +43,10 @@ public class NewProcessTemporaryList {
 	// printing list with new processes
 	public void printList() {
 
-		System.out.println("NewProcessTemporaryList:");
+		ConsoleWindow.getConsole().appendNewListMessage("NewProcessTemporaryList:");
 		int k = 1;
 		for (Process p : processList) {
-			System.out.println(p.toString());
+			ConsoleWindow.getConsole().appendNewListMessage(p.toString());
 			k++;
 		}
 

@@ -35,7 +35,7 @@ public class Clock implements ActionListener {
 	// increasing ticks of clock by 1
 	public void Time_Run() {
 
-		System.out.println("\nTick " + ticks);
+		ConsoleWindow.getConsole().appendClockMessage("\nTick " + ticks);
 		generator.runGenerator(ShowTime());
 		sjfScheduler.SJF(ShowTime());
 		cpu.execute();

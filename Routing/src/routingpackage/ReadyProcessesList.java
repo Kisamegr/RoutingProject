@@ -25,12 +25,12 @@ public class ReadyProcessesList {
 
 	}
 
-	
-	public int lengthOfQueue()//edit
+	public int lengthOfQueue()// edit
 	{
-		return processList.size();//mporei na exei provlima an einai keno to queue????
+		return processList.size();// mporei na exei provlima an einai keno to
+									// queue????
 	}
-	
+
 	// adding new ready process
 	public void addProcess(Process item) {
 
@@ -47,7 +47,7 @@ public class ReadyProcessesList {
 
 		int k = 1;
 		for (Process p : processList) {
-			System.out.println(k + ") Process " + p.getPid());
+			ConsoleWindow.getConsole().appendGeneratorMessage(k + ") Process " + p.getPid());
 			k++;
 		}
 	}

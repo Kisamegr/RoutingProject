@@ -6,9 +6,10 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -41,7 +42,6 @@ public class ConsoleWindow {
 		public Console() {
 			super();
 
-			dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			this.setFont(new Font("Consolas", Font.PLAIN, 15));
 			this.setBackground(Color.getHSBColor(129, 0, .2f));
 
@@ -68,7 +68,7 @@ public class ConsoleWindow {
 					int len = console.getDocument().getLength();
 					console.setCaretPosition(len);
 					console.setCharacterAttributes(aset, false);
-					console.replaceSelection("[" + dateFormat.format(Calendar.getInstance().getTime()) + "]" + message + "\n");
+					console.replaceSelection(message + "\n");
 
 					console.setEditable(false);
 
@@ -79,24 +79,32 @@ public class ConsoleWindow {
 		}
 
 		public void appendCpuMessage(String message) {
-			this.appendToConsole(" <CPU> " + message, Color.WHITE);
+			this.appendToConsole(message, Color.WHITE);
 		}
 
 		public void appendSjfMessage(String message) {
-			this.appendToConsole(" <SJF> " + message, Color.BLUE);
+			this.appendToConsole(message, Color.CYAN);
 		}
 
 		public void appendClockMessage(String message) {
-			this.appendToConsole(" <CLOCK> " + message, Color.getHSBColor(0, 0.7f, 0.9f));
+			this.appendToConsole(message, Color.getHSBColor(0, 0.7f, 0.9f));
 		}
 
 		public void appendGeneratorMessage(String message) {
-			this.appendToConsole(" <P.Gen> " + message, Color.getHSBColor(0, 0.7f, 0.9f));
+			this.appendToConsole(message, Color.getHSBColor(1f, 0.4f, 0.9f));
+		}
+
+		public void appendExecuteMessage(String message) {
+			this.appendToConsole(message, Color.getHSBColor(0.3f, 0.2f, 0.9f));
+		}
+
+		public void appendNewListMessage(String message) {
+			this.appendToConsole(message, Color.getHSBColor(0.6f, 0.4f, 0.1f));
 		}
 
 	}
 
-	private JFrame frmSd;
+	private JFrame frame;
 	private Console console;
 	private static Console m_console;
 	private JPanel panel;
@@ -107,21 +115,21 @@ public class ConsoleWindow {
 	private JCheckBox cStatistics;
 	private JTextField tInput;
 	private JPanel panel_2;
-	private JButton btnInputFile;
+	private JButton bInput;
 	private Component verticalStrut_1;
-	private JSlider slider;
+	private JSlider sClock;
 	private Component verticalStrut_2;
 	private JPanel panel_3;
 	private Component verticalStrut_3;
 	private JLabel lblClockSpeed;
 
-	/**
-	 * Launch the application.
-	 */
+	private CPU cpu;
+	private Statistics stats;
+	private SJFScheduler sjfScheduler;
+	private ProcessGenerator generator;
+	private Clock clock;
+	private JCheckBox chckbxProccessOutput;
 
-	/**
-	 * Create the application.
-	 */
 	public ConsoleWindow(String name) {
 
 		console = new Console();
@@ -130,26 +138,44 @@ public class ConsoleWindow {
 		initialize();
 		// System.out.println(Thread.currentThread().getName());
 
-		frmSd.setTitle(name);
+		frame.setTitle(name);
+		frame.setVisible(true);
+	}
+
+	private void startEmulation() {
+
+		String filepath = System.getProperty("user.dir") + File.separatorChar + "out.txt";
+		System.out.println(filepath);
+		cpu = new CPU();
+		stats = new Statistics(filepath);
+		sjfScheduler = new SJFScheduler(false, cpu, stats);
+		generator = new ProcessGenerator("output.txt", false, sjfScheduler);
+
+		int clockSpeed = 1000 / sClock.getValue();
+
+		clock = new Clock(clockSpeed, generator, sjfScheduler, cpu);
+
+		clock.startClock();
+
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmSd = new JFrame("Gdx Server");
-		frmSd.getContentPane().setBackground(Color.BLACK);
-		frmSd.setBackground(Color.BLACK);
-		frmSd.setBounds(100, 100, 897, 500);
-		frmSd.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame = new JFrame("Gdx Server");
+		frame.getContentPane().setBackground(Color.BLACK);
+		frame.setBackground(Color.BLACK);
+		frame.setBounds(100, 100, 897, 500);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JScrollPane scrollPane = new JScrollPane();
-		frmSd.getContentPane().add(scrollPane, BorderLayout.CENTER);
+		frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
 
 		scrollPane.setViewportView(console);
 
 		panel = new JPanel();
-		frmSd.getContentPane().add(panel, BorderLayout.EAST);
+		frame.getContentPane().add(panel, BorderLayout.EAST);
 		panel.setLayout(new BorderLayout(0, 0));
 
 		panel_3 = new JPanel();
@@ -157,6 +183,12 @@ public class ConsoleWindow {
 		panel_3.setLayout(new BorderLayout(0, 0));
 
 		bStart = new JButton("START");
+		bStart.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				startEmulation();
+			}
+		});
 		bStart.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		bStart.setPreferredSize(new Dimension(57, 38));
 		panel_3.add(bStart);
@@ -168,22 +200,41 @@ public class ConsoleWindow {
 		panel.add(panel_1, BorderLayout.NORTH);
 		panel_1.setLayout(new BorderLayout(0, 0));
 
-		verticalStrut = Box.createVerticalStrut(30);
+		verticalStrut = Box.createVerticalStrut(20);
 		panel_1.add(verticalStrut, BorderLayout.NORTH);
+
+		sClock = new JSlider();
+		sClock.setPaintTicks(true);
+		panel_1.add(sClock, BorderLayout.SOUTH);
+		sClock.setOrientation(SwingConstants.VERTICAL);
+		sClock.setMinimum(1);
+		sClock.setMinimumSize(new Dimension(30, 23));
+		sClock.setPaintLabels(true);
+		sClock.setPreferredSize(new Dimension(45, 160));
+		sClock.setMaximumSize(new Dimension(25, 34));
+		sClock.setMinorTickSpacing(1);
+		sClock.setSnapToTicks(true);
 
 		panel_2 = new JPanel();
 		panel_1.add(panel_2, BorderLayout.CENTER);
 		panel_2.setLayout(new GridLayout(8, 0, 0, 0));
 
 		cPreemptive = new JCheckBox("Pre-Emptive");
+		cPreemptive.setSelected(true);
 		cPreemptive.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(cPreemptive);
 
-		cStatistics = new JCheckBox("Statisctics   ");
+		cStatistics = new JCheckBox("Statistics    ");
+		cStatistics.setSelected(true);
 		cStatistics.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(cStatistics);
 
-		verticalStrut_1 = Box.createVerticalStrut(20);
+		chckbxProccessOutput = new JCheckBox("Output       ");
+		chckbxProccessOutput.setSelected(true);
+		chckbxProccessOutput.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_2.add(chckbxProccessOutput);
+
+		verticalStrut_1 = Box.createVerticalStrut(12);
 		panel_2.add(verticalStrut_1);
 
 		tInput = new JTextField();
@@ -191,9 +242,9 @@ public class ConsoleWindow {
 		panel_2.add(tInput);
 		tInput.setColumns(10);
 
-		btnInputFile = new JButton("Input File");
-		btnInputFile.setPreferredSize(new Dimension(77, 26));
-		panel_2.add(btnInputFile);
+		bInput = new JButton("Input File");
+		bInput.setPreferredSize(new Dimension(77, 26));
+		panel_2.add(bInput);
 
 		verticalStrut_2 = Box.createVerticalStrut(20);
 		panel_2.add(verticalStrut_2);
@@ -202,17 +253,7 @@ public class ConsoleWindow {
 		lblClockSpeed.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(lblClockSpeed);
 
-		slider = new JSlider();
-		slider.setMinimum(1);
-		slider.setMinimumSize(new Dimension(30, 23));
-		slider.setPaintLabels(true);
-		slider.setPreferredSize(new Dimension(100, 23));
-		slider.setMaximumSize(new Dimension(25, 23));
-		slider.setMinorTickSpacing(1);
-		slider.setSnapToTicks(true);
-		panel_2.add(slider);
-
-		frmSd.setVisible(true);
+		frame.setVisible(true);
 
 		// console.appendInfoMessage("Done initializing the main window.");
 

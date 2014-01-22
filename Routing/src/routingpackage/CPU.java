@@ -15,8 +15,8 @@ public class CPU {
 	public void addProcess(Process process) {
 		runningProcess = process;
 
-		System.out.println("+CPU: Added process to cpu");
-		System.out.println(runningProcess);
+		ConsoleWindow.getConsole().appendCpuMessage("+CPU: Added process to cpu");
+		ConsoleWindow.getConsole().appendCpuMessage(runningProcess.toString());
 
 	}
 
@@ -25,8 +25,8 @@ public class CPU {
 		Process temp = runningProcess;
 		runningProcess = null;
 
-		System.out.println("-CPU: Removed process from cpu");
-		System.out.println(temp);
+		ConsoleWindow.getConsole().appendCpuMessage("-CPU: Removed process from cpu");
+		ConsoleWindow.getConsole().appendCpuMessage(temp.toString());
 
 		return temp;
 
@@ -38,8 +38,8 @@ public class CPU {
 		if (runningProcess != null) {
 			if (runningProcess.getCpuRemainingTime() > 0) {
 				runningProcess.changeCpuRemainingTime(runningProcess.getCpuRemainingTime() - 1);
-				System.out.println("+Exec: Executed process at cpu");
-				System.out.println(runningProcess);
+				ConsoleWindow.getConsole().appendExecuteMessage("+Exec: Executed process at cpu");
+				ConsoleWindow.getConsole().appendExecuteMessage(runningProcess.toString());
 
 			}
 		}
