@@ -94,6 +94,85 @@ public class SJFScheduler {
 			}
 
 		}
+		
+		
+////////////////////PREEMPTIVE////////////////////
+else if (isPreemptive)
+{
+
+if (cpuProcess != null) {
+	
+	if (cpuProcess.getCpuRemainingTime() == 0) {//MENEI TO IDIO ME TO NON-PREEMPTIVE
+		cpu.removeProcessFromCpu();
+
+		if (stats != null) {
+			stats.updateFinishedNumber(1);// edit
+			stats.updateResponseTime(currentTime - cpuProcess.getArrivalTime());// edit.
+		}
+	}
+	else if(cpuProcess.getCpuRemainingTime() > readyList.getProcessToRunInCPU().getCpuRemainingTime()) {
+		//prepei na:
+		//-vgei i process apo tin cpu
+		//-na mpei i alli 
+		//
+		//Themata: 
+		//Statistics
+		//opote mpainei mia diergasia pws kseroume oti einai i prwti fora pou mpainei mesa 
+		//etsi na ananewnoume to response time 
+		// LYSI: 
+		//tha vlepoume tin diafora tou: cpuTotalTime-cpuRemainingTime
+		//kathe fora pou kanooume mia diergasia add stin cpu etsi wste na min
+		//ananewnoume to response time otan cpuTotalTime == cpuRemainingTime
+		
+		cpu.removeProcessFromCpu();
+		
+		Process forCPU = readyList.getProcessToRunInCPU();
+		if (forCPU != null) {
+
+			if(forCPU.getCpuTotalTime() == forCPU.getCpuTotalTime())
+			{
+				stats.updateResponseTime(currentTime - forCPU.getArrivalTime());// edit.
+			}
+			
+			cpu.addProcess(forCPU);
+			
+			cpu.setLastProcessStartTime(currentTime); // o xronos pu
+														// bike teleutea
+														// fora process
+														// sti cpu
+			if (stats != null)
+				stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);// edit
+
+		}
+		
+	}
+	
+}
+
+if (cpuProcess == null) {
+	Process forCPU = readyList.getProcessToRunInCPU();
+	if (forCPU != null) {
+
+		
+		if(forCPU.getCpuTotalTime() == forCPU.getCpuTotalTime())
+		{
+			stats.updateResponseTime(currentTime - forCPU.getArrivalTime());// edit.
+		}
+		
+		cpu.addProcess(forCPU);
+
+		cpu.setLastProcessStartTime(currentTime); // o xronos pu
+													// bike teleutea
+													// fora process
+													// sti cpu
+		if (stats != null)
+			stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);
+	}
+}
+}
+
+		
+		
 
 		if (stats != null) {
 			stats.updateTotalWaitingTime(readyList.lengthOfQueue());// edit
@@ -101,4 +180,5 @@ public class SJFScheduler {
 		}
 
 	}
+
 }
