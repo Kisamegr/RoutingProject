@@ -43,8 +43,9 @@ public class SJFScheduler {
 		
 		Process cpuProcess = cpu.peekCpuProcess();
 		
-		stats.updateTotalWaitingTime(readyList.lengthOfQueue());//edit
+	//	stats.updateTotalWaitingTime(readyList.lengthOfQueue());  // Probably don't need that. Will explain.
 		
+		stats.getTotalWaitingTime(readyList, currentTime); // Total waiting time, RETURNS INT , don't know what to do with it, just leaving it here for now.
 		
 		if (!isPreemptive) {
 
@@ -52,8 +53,10 @@ public class SJFScheduler {
 				if (cpuProcess.getCpuRemainingTime() == 0)
 				{
 					cpu.removeProcessFromCpu();
-				stats.updateFinishedNumber(1);//edit
-				stats.updateResponseTime(currentTime - cpuProcess.getArrivalTime());//edit.
+				
+					stats.updateFinishedNumber(1);//edit
+				
+					stats.updateResponseTime(currentTime - cpuProcess.getArrivalTime());//edit.
 				}
 					
 
@@ -63,8 +66,11 @@ public class SJFScheduler {
 
 				Process forCPU = readyList.getProcessToRunInCPU();
 				if (forCPU != null) {
+					
 					cpu.addProcess(forCPU); 
+					
 					cpu.setLastProcessStartTime(currentTime); //o xronos pu bike teleutea fora process sti cpu
+					
 					stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);//edit
 
 				}

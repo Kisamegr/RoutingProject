@@ -36,7 +36,33 @@ public class Statistics {
 		numberOfFinishedProcesses += n;
 	}
 	
-	public void updateTotalWaitingTime(int n)
+	public int getTotalWaitingTime(ReadyProcessesList one, int currentTime) // to total waiting time ine o sinolikos xronos anamonis twn 
+	{                                 //diergasiwn pu vriskonte ekini tin wra sto ReadyList  
+		
+		totalWaitingTime = 0; // to total ine kenurio gia ka8e tick tou clock
+		for(Process k : one.getReadyList())  //pame se ola ta processes ke  to ipologizoume a8roistika ws ekshs:
+		{
+			totalWaitingTime = totalWaitingTime +  (currentTime - k.getArrivalTime()) -  (k.getCpuTotalTime() - k.getCpuRemainingTime());
+		}
+		return totalWaitingTime;
+		
+	}
+		
+		/* Current - Arrival : su dinei to poso perimenei apo ti stigmh pu bike sto queue sto non-preemptive. 
+		 * 
+		 * Stin periptwsh non-preemptive den iparxei 8ema ke auto arkei gia na ksereis poso ine to waiting time tis diergasias;
+		 *
+		 * Stin periptwsh pre-emptive, o sinolikos xronos pu perimene ine  o xronos Current - Arrival MEION to xrono pou i diergasia den perimene ke itan mesa sti cpu .
+		 *  
+		 *  Autos o xronos pu itan sti cpu ipologizete apo ton Total xrono Burst pu xriazete MION to remaining xrono. 
+		 *  
+		 *  Sto non-preemptive, i deuteri auti aferesi ( total - remaining )  dinei 0 giati  i ergasia den epistrefei pote sto queue 2i fora opote  to sinoliko tis waiting
+		 *  tote 8a ine  apla Current - Arrival. Elpizw na vgazei noima.
+		 */ 
+	
+	
+	
+	public void updateTotalWaitingTime(int n) /*  auto den kserw kata poso ine xrisimo telika , 8a sas eksigisw at skype. */
 	{
 		totalWaitingTime += n;
 	}

@@ -24,6 +24,11 @@ public class ReadyProcessesList {
 		processList = new PriorityQueue<Process>(100, new ProcessComparator());
 
 	}
+	
+	public PriorityQueue<Process> getReadyList()  //return the priority queue, used in statistics to get the current  total waiting time
+	{
+		return processList;
+	}
 
 	public int lengthOfQueue()// edit
 	{
