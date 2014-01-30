@@ -128,7 +128,7 @@ public class ConsoleWindow {
 	private SJFScheduler sjfScheduler;
 	private ProcessGenerator generator;
 	private Clock clock;
-	private JCheckBox chckbxProccessOutput;
+	private JCheckBox cOutput;
 
 	public ConsoleWindow(String name) {
 
@@ -144,13 +144,20 @@ public class ConsoleWindow {
 
 	private void startEmulation() {
 
-		String filepath = System.getProperty("user.dir") + File.separatorChar + "out.txt";
+		String filepath = System.getProperty("user.dir") + File.separatorChar + "stats.txt";
+		String out;
 		System.out.println(filepath);
 		cpu = new CPU();
 		if (cStatistics.isSelected())
 			stats = new Statistics(filepath);
 		sjfScheduler = new SJFScheduler(cPreemptive.isSelected(), cpu, stats);
-		generator = new ProcessGenerator("output.txt", false, sjfScheduler);
+
+		if (cOutput.isSelected())
+			out = "output.txt";
+		else
+			out = null;
+
+		generator = new ProcessGenerator(out, false, sjfScheduler);
 
 		int clockSpeed = 1000 / sClock.getValue();
 
@@ -235,10 +242,10 @@ public class ConsoleWindow {
 		cStatistics.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(cStatistics);
 
-		chckbxProccessOutput = new JCheckBox("Output       ");
-		chckbxProccessOutput.setSelected(true);
-		chckbxProccessOutput.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_2.add(chckbxProccessOutput);
+		cOutput = new JCheckBox("Output       ");
+		cOutput.setSelected(true);
+		cOutput.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_2.add(cOutput);
 
 		verticalStrut_1 = Box.createVerticalStrut(12);
 		panel_2.add(verticalStrut_1);
