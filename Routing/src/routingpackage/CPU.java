@@ -14,7 +14,6 @@ public class CPU {
 	// insert process to execute
 	public void addProcess(Process process) {
 		runningProcess = process;
-
 		ConsoleWindow.getConsole().appendCpuMessage("+CPU: Added process to cpu");
 		ConsoleWindow.getConsole().appendCpuMessage(runningProcess.toString());
 
@@ -48,5 +47,13 @@ public class CPU {
 
 	public Process peekCpuProcess() {
 		return runningProcess;
+	}
+
+	public int getLastProcessStartTime() {
+		return lastProcessStartTime;
+	}
+
+	public void setLastProcessStartTime(int lastProcessStartTime) {
+		this.lastProcessStartTime = lastProcessStartTime;
 	}
 }

@@ -28,7 +28,7 @@ public class ReadyProcessesList {
 	public int lengthOfQueue()// edit
 	{
 		return processList.size();// mporei na exei provlima an einai keno to
-									// queue????
+									// queue???? --- 8a epistrefei mhden, i think
 	}
 
 	// adding new ready process

@@ -63,7 +63,8 @@ public class SJFScheduler {
 
 				Process forCPU = readyList.getProcessToRunInCPU();
 				if (forCPU != null) {
-					cpu.addProcess(forCPU);
+					cpu.addProcess(forCPU); 
+					cpu.setLastProcessStartTime(currentTime); //o xronos pu bike teleutea fora process sti cpu
 					stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);//edit
 
 				}
