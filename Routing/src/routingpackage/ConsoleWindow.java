@@ -147,11 +147,17 @@ public class ConsoleWindow {
 		String filepath = System.getProperty("user.dir") + File.separatorChar + "out.txt";
 		System.out.println(filepath);
 		cpu = new CPU();
-		stats = new Statistics(filepath);
-		sjfScheduler = new SJFScheduler(false, cpu, stats);
+		if (cStatistics.isSelected())
+			stats = new Statistics(filepath);
+		sjfScheduler = new SJFScheduler(cPreemptive.isSelected(), cpu, stats);
 		generator = new ProcessGenerator("output.txt", false, sjfScheduler);
 
 		int clockSpeed = 1000 / sClock.getValue();
+
+		if (sClock.getValue() == sClock.getMaximum()) {
+			clockSpeed = 0;
+			System.out.println("asdasdastsqgfevevviiioiulopflf;lp");
+		}
 
 		clock = new Clock(clockSpeed, generator, sjfScheduler, cpu);
 
