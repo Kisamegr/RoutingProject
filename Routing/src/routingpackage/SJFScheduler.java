@@ -82,7 +82,7 @@ public class SJFScheduler {
 		
 		stats.updateTotalWaitingTime(readyList.lengthOfQueue());//edit
 		
-		stats.WriteStatistics2File();
+		stats.WriteStatistics2File(currentTime);
 
 	}
 }

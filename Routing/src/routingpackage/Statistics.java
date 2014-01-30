@@ -4,6 +4,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Statistics {
 
@@ -27,6 +30,37 @@ public class Statistics {
 		
 			
 		outputFile = new File(filename);
+		
+		//i mia epilogi einai ayti: an yparxei to arxeio to diagrafw kai meta ksanaftiaxnw arxeio
+		/*if (outputFile.exists()) {
+			try {
+				outputFile.delete();
+				outputFile.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}*/
+		
+		//kai ayti einai i alli epilogi
+		if(outputFile.exists())
+		{
+			FileWriter fw;
+			try {
+				fw = new FileWriter(outputFile.getName());
+				//BufferedWriter eraser = new BufferedWriter(fw);//den nomizw oti exei noima o buffered edw
+				DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+				Date date = new Date();
+				fw.write("Time: "+dateFormat.format(date));
+				fw.flush();
+				fw.close();
+				//eraser.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
 		
 		
 	}
@@ -100,11 +134,12 @@ public class Statistics {
 	}
 
 	// add a new line with the current statistics to the outputFile
-	public void WriteStatistics2File() {
+	public void WriteStatistics2File(int tickCount) {
 		
 		StringBuilder string = new StringBuilder();
 		
-		string.append("Total waiting time : " + totalWaitingTime);
+		string.append("Tick:" + tickCount);
+		string.append(", Total waiting time : " + totalWaitingTime);
 		string.append(", Total # of processes: " +totalNumberOfProcesses );
 		string.append(", Average Waiting Time: " +CalculateAverageWaitingTime() );
 		string.append(", Finished P.: " + numberOfFinishedProcesses);
@@ -125,7 +160,8 @@ public class Statistics {
 			
 			FileWriter fw = new FileWriter(outputFile.getName(),true);
 			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write("\n"+ string.toString());//twra grafei to ena panw sto allokai sto telos deixnei mono to teleytaio
+			
+			bw.write("\r\n"+ string.toString());//twra grafei to ena panw sto allokai sto telos deixnei mono to teleytaio
 			
 			bw.close();//to anoigokleinei sunexeia .... xmmm
 		
