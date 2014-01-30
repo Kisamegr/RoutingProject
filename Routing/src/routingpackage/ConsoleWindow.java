@@ -87,19 +87,19 @@ public class ConsoleWindow {
 		}
 
 		public void appendClockMessage(String message) {
-			this.appendToConsole(message, Color.getHSBColor(0, 0.7f, 0.9f));
+			this.appendToConsole(message, Color.getHSBColor(0, 0.2f, 0.9f));
 		}
 
 		public void appendGeneratorMessage(String message) {
-			this.appendToConsole(message, Color.getHSBColor(1f, 0.4f, 0.9f));
+			this.appendToConsole(message, Color.getHSBColor(1f, 0.4f, 0.1f));
 		}
 
 		public void appendExecuteMessage(String message) {
-			this.appendToConsole(message, Color.getHSBColor(0.3f, 0.2f, 0.9f));
+			this.appendToConsole(message, Color.getHSBColor(0.6f, 0.2f, 0.9f));
 		}
 
 		public void appendNewListMessage(String message) {
-			this.appendToConsole(message, Color.getHSBColor(0.6f, 0.4f, 0.1f));
+			this.appendToConsole(message, Color.RED);
 		}
 
 	}
@@ -129,12 +129,14 @@ public class ConsoleWindow {
 	private ProcessGenerator generator;
 	private Clock clock;
 	private JCheckBox cOutput;
+	private boolean running;
 
 	public ConsoleWindow(String name) {
 
 		console = new Console();
 		m_console = console;
 
+		running = false;
 		initialize();
 		// System.out.println(Thread.currentThread().getName());
 
@@ -170,6 +172,17 @@ public class ConsoleWindow {
 
 		clock.startClock();
 
+		bStart.setText("Stop");
+		running = true;
+
+	}
+
+	private void stopEmulation() {
+
+		clock.stopClock();
+		bStart.setText("Start");
+		running = false;
+
 	}
 
 	/**
@@ -199,7 +212,11 @@ public class ConsoleWindow {
 		bStart.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				startEmulation();
+				if (!running)
+					startEmulation();
+				else
+					stopEmulation();
+
 			}
 		});
 		bStart.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -269,10 +286,6 @@ public class ConsoleWindow {
 		frame.setVisible(true);
 
 		// console.appendInfoMessage("Done initializing the main window.");
-
-	}
-
-	private void excecuteCommandInput(String command) {
 
 	}
 
