@@ -70,7 +70,7 @@ public class Statistics {
 		numberOfFinishedProcesses += n;
 	}
 	
-	public int getTotalWaitingTime(ReadyProcessesList one, int currentTime) // to total waiting time ine o sinolikos xronos anamonis twn 
+	public double getAverageReadyQueueProcessWaitingTime(ReadyProcessesList one, int currentTime) // to total waiting time ine o sinolikos xronos anamonis twn 
 	{                                 //diergasiwn pu vriskonte ekini tin wra sto ReadyList  
 		
 		totalWaitingTime = 0; // to total ine kenurio gia ka8e tick tou clock
@@ -78,7 +78,8 @@ public class Statistics {
 		{
 			totalWaitingTime = totalWaitingTime +  (currentTime - k.getArrivalTime()) -  (k.getCpuTotalTime() - k.getCpuRemainingTime());
 		}
-		return totalWaitingTime;
+		 double avg =  totalWaitingTime/one.getReadyList().size();
+		 return avg;
 		
 	}
 		

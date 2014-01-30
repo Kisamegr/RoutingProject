@@ -45,7 +45,7 @@ public class SJFScheduler {
 		
 	//	stats.updateTotalWaitingTime(readyList.lengthOfQueue());  // Probably don't need that. Will explain.
 		
-		stats.getTotalWaitingTime(readyList, currentTime); // Total waiting time, RETURNS INT , don't know what to do with it, just leaving it here for now.
+		stats.getAverageReadyQueueProcessWaitingTime(readyList, currentTime); // Average waiting time for the processes currently in the list, RETURNS INT. 
 		
 		if (!isPreemptive) {
 
