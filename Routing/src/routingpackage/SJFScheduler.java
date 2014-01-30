@@ -45,29 +45,23 @@ public class SJFScheduler {
 	public void SJF(int currentTime) {
 
 		Process cpuProcess = cpu.peekCpuProcess();
-<<<<<<< HEAD
-		
-	//	stats.updateTotalWaitingTime(readyList.lengthOfQueue());  // Probably don't need that. Will explain.
-		
-		stats.getAverageReadyQueueProcessWaitingTime(readyList, currentTime); // Average waiting time for the processes currently in the list, RETURNS INT. 
-		
-=======
 
 		// stats.updateTotalWaitingTime(readyList.lengthOfQueue()); // Probably
 		// don't need that. Will explain.
-		if (stats != null)
-			stats.getTotalWaitingTime(readyList, currentTime); // Total waiting
-																// time, RETURNS
-																// INT
-																// , don't know
-																// what
-																// to do with
-																// it,
-																// just leaving
-																// it
-																// here for now.
 
->>>>>>> E ksekinisa ligo kai me leei na kanw sync
+		stats.getAverageReadyQueueProcessWaitingTime(readyList, currentTime); // Average
+																				// waiting
+																				// time
+																				// for
+																				// the
+																				// processes
+																				// currently
+																				// in
+																				// the
+																				// list,
+																				// RETURNS
+																				// INT.
+
 		if (!isPreemptive) {
 
 			if (cpuProcess != null) {
