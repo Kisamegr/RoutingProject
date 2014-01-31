@@ -42,8 +42,9 @@ public class Clock implements ActionListener {
 
 		ticks++;
 
-		if (ticks > 100)
-			stopClock();
+		if (ticks > generator.getGenerationFreq() * generator.getGenerationMax()) // If it passed the tick that the generator stoped generating
+			if (sjfScheduler.getReadyList().lengthOfQueue() == 0 && cpu.peekCpuProcess() == null) // And if the ready list is empty, and the cpu does not have any process
+				stopClock(); // Stop the clock
 
 	}
 
@@ -60,11 +61,15 @@ public class Clock implements ActionListener {
 	public void startClock() {
 		clockRunning = true;
 		timer.start();
+		ConsoleWindow.getConsole().appendClockMessage("---------- Emulation Started ----------");
+
 	}
 
 	public void stopClock() {
 		clockRunning = false;
 		timer.stop();
+		ConsoleWindow.getConsole().appendClockMessage("---------- Emulation Finished ----------");
+		ConsoleWindow.getWindow().stopEmulation();
 	}
 
 	public boolean isRunning() {

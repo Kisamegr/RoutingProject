@@ -90,7 +90,7 @@ public class ConsoleWindow {
 			this.appendToConsole(message, Color.getHSBColor(0, 0.2f, 0.9f));
 		}
 
-		public void appendGeneratorMessage(String message) {
+		public void appendReadyQueueMessage(String message) {
 			this.appendToConsole(message, Color.getHSBColor(1f, 0.4f, 0.1f));
 		}
 
@@ -104,9 +104,11 @@ public class ConsoleWindow {
 
 	}
 
+	// Window variables
 	private JFrame frame;
 	private Console console;
 	private static Console m_console;
+	private static ConsoleWindow window;
 	private JPanel panel;
 	private JButton bStart;
 	private JPanel panel_1;
@@ -123,6 +125,7 @@ public class ConsoleWindow {
 	private Component verticalStrut_3;
 	private JLabel lblClockSpeed;
 
+	// Emulator variables
 	private CPU cpu;
 	private Statistics stats;
 	private SJFScheduler sjfScheduler;
@@ -130,11 +133,13 @@ public class ConsoleWindow {
 	private Clock clock;
 	private JCheckBox cOutput;
 	private boolean running;
+	private JButton btnNewButton;
 
 	public ConsoleWindow(String name) {
 
 		console = new Console();
 		m_console = console;
+		window = this;
 
 		running = false;
 		initialize();
@@ -177,19 +182,24 @@ public class ConsoleWindow {
 
 	}
 
-	private void stopEmulation() {
+	public void stopEmulation() {
 
-		clock.stopClock();
+		if (clock.isRunning())
+			clock.stopClock();
 		bStart.setText("Start");
 		running = false;
 
+	}
+
+	private void clearConsole() {
+		console.setText("");
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame("Gdx Server");
+		frame = new JFrame("SJF Emulator");
 		frame.getContentPane().setBackground(Color.BLACK);
 		frame.setBackground(Color.BLACK);
 		frame.setBounds(100, 100, 897, 500);
@@ -223,8 +233,18 @@ public class ConsoleWindow {
 		bStart.setPreferredSize(new Dimension(57, 38));
 		panel_3.add(bStart);
 
-		verticalStrut_3 = Box.createVerticalStrut(10);
+		verticalStrut_3 = Box.createVerticalStrut(5);
 		panel_3.add(verticalStrut_3, BorderLayout.SOUTH);
+
+		btnNewButton = new JButton("Clear");
+		btnNewButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				clearConsole();
+			}
+		});
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		panel_3.add(btnNewButton, BorderLayout.NORTH);
 
 		panel_1 = new JPanel();
 		panel.add(panel_1, BorderLayout.NORTH);
@@ -294,6 +314,10 @@ public class ConsoleWindow {
 			return m_console;
 
 		}
+	}
+
+	public static ConsoleWindow getWindow() {
+		return window;
 	}
 
 }

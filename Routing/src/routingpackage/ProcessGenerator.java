@@ -16,6 +16,8 @@ public class ProcessGenerator {
 	private NewProcessTemporaryList newList;
 	private SJFScheduler sjfScheduler;
 	private int generationFreq;
+	private int generationMax;
+	private int generationTime;
 
 	private Random random;
 
@@ -30,6 +32,8 @@ public class ProcessGenerator {
 		this.sjfScheduler = sjfScheduler;
 
 		generationFreq = 10;
+		generationMax = 10;
+		generationTime = 0;
 
 		read_from_file = readFile;
 
@@ -43,17 +47,18 @@ public class ProcessGenerator {
 
 		if (read_from_file == false) {
 			// Generate new processes every generationFreq clocks
-			if ((currentClock + 1) % generationFreq == 0) {
+			if ((currentClock + 1) % getGenerationFreq() == 0 && generationTime < getGenerationMax()) {
 
 				int processNumber = random.nextInt(7) + 2;
 
 				for (int i = 0; i < processNumber; i++) {
 
-					Process p = new Process(currentPid++, random.nextInt(generationFreq) + currentClock + 1, random.nextInt(15) + 1);
+					Process p = new Process(currentPid++, random.nextInt(getGenerationFreq()) + currentClock + 1, random.nextInt(15) + 1);
 					newList.AddNewProcess(p);
 
 				}
 				newList.printList();
+				generationTime++;
 			}
 		}
 		if ((read_from_file == true) && (currentClock == 0))// It does at the
@@ -78,8 +83,8 @@ public class ProcessGenerator {
 			newList.getFirst();
 			sjfScheduler.addProcessToReadyList(firstNewProcess);
 
-			ConsoleWindow.getConsole().appendGeneratorMessage("+RDY: Added process to ready list:");
-			ConsoleWindow.getConsole().appendGeneratorMessage(firstNewProcess.toString());
+			ConsoleWindow.getConsole().appendReadyQueueMessage("+RDY: Added process to ready list:");
+			ConsoleWindow.getConsole().appendReadyQueueMessage(firstNewProcess.toString());
 
 			sjfScheduler.addTotalNumberOfProcesses(1);// edit
 
@@ -170,5 +175,21 @@ public class ProcessGenerator {
 			e.printStackTrace();
 		}
 		return fileList; // returs ArrayList
+	}
+
+	public int getGenerationFreq() {
+		return generationFreq;
+	}
+
+	public void setGenerationFreq(int generationFreq) {
+		this.generationFreq = generationFreq;
+	}
+
+	public int getGenerationMax() {
+		return generationMax;
+	}
+
+	public void setGenerationMax(int generationMax) {
+		this.generationMax = generationMax;
 	}
 }

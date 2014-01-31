@@ -24,8 +24,8 @@ public class ReadyProcessesList {
 		processList = new PriorityQueue<Process>(100, new ProcessComparator());
 
 	}
-	
-	public PriorityQueue<Process> getReadyList()  //return the priority queue, used in statistics to get the current  total waiting time
+
+	public PriorityQueue<Process> getReadyList() // return the priority queue, used in statistics to get the current total waiting time
 	{
 		return processList;
 	}
@@ -52,7 +52,7 @@ public class ReadyProcessesList {
 
 		int k = 1;
 		for (Process p : processList) {
-			ConsoleWindow.getConsole().appendGeneratorMessage(k + ") Process " + p.getPid());
+			ConsoleWindow.getConsole().appendReadyQueueMessage(k + ") Process " + p.getPid());
 			k++;
 		}
 	}
