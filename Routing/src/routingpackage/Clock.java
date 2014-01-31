@@ -8,6 +8,7 @@ import javax.swing.Timer;
 public class Clock implements ActionListener {
 
 	private boolean clockRunning;
+	private boolean clockPaused;
 	private Timer timer;
 	private int clockSpeedMilliseconds;
 
@@ -72,8 +73,27 @@ public class Clock implements ActionListener {
 		ConsoleWindow.getWindow().stopEmulation();
 	}
 
+	public void pauseClock(boolean pause) {
+		if (pause)
+			timer.stop();
+		else
+			timer.start();
+
+		clockPaused = pause;
+
+	}
+
 	public boolean isRunning() {
 		return clockRunning;
+	}
+
+	public boolean isPaused() {
+		return clockPaused;
+	}
+
+	public void changeMilliseconds(int m) {
+		timer.setDelay(m);
+
 	}
 
 }

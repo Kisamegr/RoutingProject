@@ -50,7 +50,8 @@ public class SJFScheduler {
 		// stats.updateTotalWaitingTime(readyList.lengthOfQueue()); // Probably
 		// don't need that. Will explain.
 
-		stats.getAverageReadyQueueProcessWaitingTime(getReadyList(), currentTime); // Average waiting time for the processes currently in the list,RETURNS INT.
+		if (stats != null)
+			stats.getAverageReadyQueueProcessWaitingTime(getReadyList(), currentTime); // Average waiting time for the processes currently in the list,RETURNS INT.
 
 		if (!isPreemptive) {
 
@@ -70,7 +71,7 @@ public class SJFScheduler {
 					}
 				}
 			}
-			
+
 			cpuProcess = cpu.peekCpuProcess();
 
 			if (cpuProcess == null) {
@@ -84,8 +85,8 @@ public class SJFScheduler {
 																// bike teleutea
 																// fora process
 																// sti cpu
-					//if (stats != null)
-						//stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);// edit
+					// if (stats != null)
+					// stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);// edit
 
 				}
 
@@ -128,7 +129,7 @@ public class SJFScheduler {
 					// ananewnoume to response time otan cpuTotalTime == cpuRemainingTime
 
 					// ***//
-					
+
 					readyList.addProcess(cpu.removeProcessFromCpu());
 
 					Process forCPU = getReadyList().getProcessToRunInCPU();
@@ -136,7 +137,8 @@ public class SJFScheduler {
 					{
 
 						if (forCPU.getCpuTotalTime() == forCPU.getCpuTotalTime()) {
-							stats.updateResponseTime(currentTime - forCPU.getArrivalTime());// edit.
+							if (stats != null)
+								stats.updateResponseTime(currentTime - forCPU.getArrivalTime());// edit.
 						}
 
 						cpu.addProcess(forCPU);
@@ -145,15 +147,15 @@ public class SJFScheduler {
 																	// bike teleutea
 																	// fora process
 																	// sti cpu
-						//if (stats != null)
-							//stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);// edit
+						// if (stats != null)
+						// stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);// edit
 
 					}
 
 				}
 
 			}
-			
+
 			cpuProcess = cpu.peekCpuProcess();
 
 			if (cpuProcess == null) {
@@ -161,7 +163,8 @@ public class SJFScheduler {
 				if (forCPU != null) {
 
 					if (forCPU.getCpuTotalTime() == forCPU.getCpuTotalTime()) {
-						stats.updateResponseTime(currentTime - forCPU.getArrivalTime());// edit.
+						if (stats != null)
+							stats.updateResponseTime(currentTime - forCPU.getArrivalTime());// edit.
 					}
 
 					cpu.addProcess(forCPU);
@@ -170,8 +173,8 @@ public class SJFScheduler {
 																// bike teleutea
 																// fora process
 																// sti cpu
-					//if (stats != null)
-						//stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);
+					// if (stats != null)
+					// stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);
 				}
 			}
 		}

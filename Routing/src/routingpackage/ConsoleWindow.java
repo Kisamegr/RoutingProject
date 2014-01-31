@@ -23,7 +23,13 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
@@ -38,6 +44,7 @@ public class ConsoleWindow {
 		private static final long serialVersionUID = 1L;
 
 		private DateFormat dateFormat;
+		private int maxLines;
 
 		public Console() {
 			super();
@@ -45,15 +52,63 @@ public class ConsoleWindow {
 			this.setFont(new Font("Consolas", Font.PLAIN, 15));
 			this.setBackground(Color.getHSBColor(129, 0, .2f));
 
+			maxLines = 500;
+
+			this.getDocument().addDocumentListener(new DocumentListener() {
+
+				@Override
+				public void removeUpdate(DocumentEvent arg0) {
+					// TODO Auto-generated method stub
+
+				}
+
+				@Override
+				public void insertUpdate(DocumentEvent arg0) {
+
+					final DocumentEvent event = arg0;
+					SwingUtilities.invokeLater(new Runnable() {
+
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							Document document = event.getDocument();
+							javax.swing.text.Element root = document.getDefaultRootElement();
+
+							while (root.getElementCount() > maxLines) {
+
+								int end = root.getElement(0).getEndOffset();
+
+								try {
+									document.remove(0, end);
+								} catch (BadLocationException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+
+							}
+
+						}
+					});
+
+				}
+
+				@Override
+				public void changedUpdate(DocumentEvent arg0) {
+					// TODO Auto-generated method stub
+
+				}
+			});
+
 		}
 
 		public void appendToConsole(final String message, final Color color) {
 
-//			SwingUtilities.invokeLater(new Runnable() {
-//
-//				@Override
-//				public void run() {
+			SwingUtilities.invokeLater(new Runnable() {
 
+				@Override
+				public void run() {
+
+					long start = System.currentTimeMillis();
 					// console.setText(console.getText() + "[" +
 					// dateFormat.format(Calendar.getInstance().getTime()) +
 					// "]  ");
@@ -72,9 +127,14 @@ public class ConsoleWindow {
 
 					console.setEditable(false);
 
-//				}
-//
-//			});            
+					System.out.println(System.currentTimeMillis() - start);
+
+					// if (console.getDocument().getLength() > 6000)
+					// console.setText("");
+
+				}
+
+			});
 
 		}
 
@@ -134,6 +194,9 @@ public class ConsoleWindow {
 	private JCheckBox cOutput;
 	private boolean running;
 	private JButton btnNewButton;
+	private int clockMultiplier;
+	private JPanel panel_4;
+	private Component verticalStrut_4;
 
 	public ConsoleWindow(String name) {
 
@@ -147,6 +210,8 @@ public class ConsoleWindow {
 
 		frame.setTitle(name);
 		frame.setVisible(true);
+
+		clockMultiplier = 1000;
 	}
 
 	private void startEmulation() {
@@ -166,19 +231,16 @@ public class ConsoleWindow {
 
 		generator = new ProcessGenerator(out, false, sjfScheduler);
 
-		int clockSpeed = 1000 / sClock.getValue();
-
-		if (sClock.getValue() == sClock.getMaximum()) {
-			clockSpeed = 0;
-			System.out.println("asdasdastsqgfevevviiioiulopflf;lp");
-		}
-
-		clock = new Clock(clockSpeed, generator, sjfScheduler, cpu);
+		int clockMillis = getClockMillis();
+		clock = new Clock(clockMillis, generator, sjfScheduler, cpu);
 
 		clock.startClock();
 
 		bStart.setText("Stop");
 		running = true;
+
+		if (clockMillis == 1000)
+			clock.pauseClock(true);
 
 	}
 
@@ -247,23 +309,11 @@ public class ConsoleWindow {
 		panel_3.add(btnNewButton, BorderLayout.NORTH);
 
 		panel_1 = new JPanel();
-		panel.add(panel_1, BorderLayout.NORTH);
+		panel.add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(new BorderLayout(0, 0));
 
 		verticalStrut = Box.createVerticalStrut(20);
 		panel_1.add(verticalStrut, BorderLayout.NORTH);
-
-		sClock = new JSlider();
-		sClock.setPaintTicks(true);
-		panel_1.add(sClock, BorderLayout.SOUTH);
-		sClock.setOrientation(SwingConstants.VERTICAL);
-		sClock.setMinimum(1);
-		sClock.setMinimumSize(new Dimension(30, 23));
-		sClock.setPaintLabels(true);
-		sClock.setPreferredSize(new Dimension(45, 160));
-		sClock.setMaximumSize(new Dimension(25, 34));
-		sClock.setMinorTickSpacing(1);
-		sClock.setSnapToTicks(true);
 
 		panel_2 = new JPanel();
 		panel_1.add(panel_2, BorderLayout.CENTER);
@@ -303,10 +353,58 @@ public class ConsoleWindow {
 		lblClockSpeed.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(lblClockSpeed);
 
+		panel_4 = new JPanel();
+		panel_1.add(panel_4, BorderLayout.SOUTH);
+		panel_4.setLayout(new BorderLayout(0, 0));
+
+		sClock = new JSlider();
+		panel_4.add(sClock);
+		sClock.setPaintTicks(true);
+		sClock.setValue(500);
+		sClock.addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent arg0) {
+
+				if (running) {
+					clock.changeMilliseconds(getClockMillis());
+				}
+
+			}
+		});
+		sClock.setOrientation(SwingConstants.VERTICAL);
+		sClock.setMinimum(0);
+		sClock.setMaximum(1000);
+		sClock.setMinimumSize(new Dimension(30, 23));
+		sClock.setPaintLabels(true);
+		sClock.setPreferredSize(new Dimension(45, 160));
+		sClock.setMaximumSize(new Dimension(25, 34));
+		sClock.setMinorTickSpacing(10);
+		sClock.setMajorTickSpacing(200);
+		sClock.setSnapToTicks(true);
+
+		verticalStrut_4 = Box.createVerticalStrut(15);
+		panel_4.add(verticalStrut_4, BorderLayout.SOUTH);
+
 		frame.setVisible(true);
 
 		// console.appendInfoMessage("Done initializing the main window.");
 
+	}
+
+	private int getClockMillis() {
+
+		int clockMillis = 0;
+
+		if (running && sClock.getValue() == 0) {
+			clock.pauseClock(true);
+		} else {
+			if (running && clock.isPaused())
+				clock.pauseClock(false);
+
+			clockMillis = 500 - sClock.getValue() / 2;
+		}
+		return clockMillis;
 	}
 
 	public static Console getConsole() {

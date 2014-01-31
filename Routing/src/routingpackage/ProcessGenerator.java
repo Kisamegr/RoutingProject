@@ -32,7 +32,7 @@ public class ProcessGenerator {
 		this.sjfScheduler = sjfScheduler;
 
 		generationFreq = 10;
-		generationMax = 10;
+		generationMax = 20;
 		generationTime = 0;
 
 		read_from_file = readFile;
