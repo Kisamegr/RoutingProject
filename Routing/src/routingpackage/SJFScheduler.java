@@ -70,6 +70,8 @@ public class SJFScheduler {
 					}
 				}
 			}
+			
+			cpuProcess = cpu.peekCpuProcess();
 
 			if (cpuProcess == null) {
 
@@ -126,8 +128,8 @@ public class SJFScheduler {
 					// ananewnoume to response time otan cpuTotalTime == cpuRemainingTime
 
 					// ***//
-
-					cpu.removeProcessFromCpu();
+					
+					readyList.addProcess(cpu.removeProcessFromCpu());
 
 					Process forCPU = getReadyList().getProcessToRunInCPU();
 					// if (forCPU != null) / forCPU = HeadofQueue (prepei na elegx8ei pio panw etsi kialliws opote dn xriazete)
@@ -151,6 +153,8 @@ public class SJFScheduler {
 				}
 
 			}
+			
+			cpuProcess = cpu.peekCpuProcess();
 
 			if (cpuProcess == null) {
 				Process forCPU = getReadyList().getProcessToRunInCPU();
