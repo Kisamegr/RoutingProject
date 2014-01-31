@@ -72,7 +72,7 @@ public class Statistics {
 		myfinished+=1;
 	}
 	 
-	public void updatetotalwait(Process one, int currentTime)
+	public void updatetotalwait(Process one, int currentTime) //wanna add some comments to the git
 	{
 		mytotalwait = mytotalwait + ((double)((double)currentTime -(double) one.getArrivalTime()) - (double)one.getCpuTotalTime());  
 		System.out.println("MY TOTAL WAIT :" + mytotalwait);
