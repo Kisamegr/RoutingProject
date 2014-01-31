@@ -45,6 +45,7 @@ public class SJFScheduler {
 	public void SJF(int currentTime) {
 
 		Process cpuProcess = cpu.peekCpuProcess();
+		Process HeadofQueue =  readyList.getReadyList().peek(); // i prwti diergasia tou readyQueue(auti me to mikrotero burst)
 
 		// stats.updateTotalWaitingTime(readyList.lengthOfQueue()); // Probably
 		// don't need that. Will explain.
@@ -66,6 +67,11 @@ public class SJFScheduler {
 
 			if (cpuProcess != null) {
 				if (cpuProcess.getCpuRemainingTime() == 0) {
+					//ka8e fora pu aferite edw mia diadikasia simenei pws exi oloklirw8ei 
+					stats.updatetotalwait(cpuProcess,currentTime); //total waiting time
+					stats.updatemyfinished();; // 8a deite
+					
+					
 					cpu.removeProcessFromCpu();
 
 					if (stats != null) {
@@ -103,6 +109,13 @@ else if (isPreemptive)
 if (cpuProcess != null) {
 	
 	if (cpuProcess.getCpuRemainingTime() == 0) {//MENEI TO IDIO ME TO NON-PREEMPTIVE
+		
+		//ka8e fora pu aferite edw mia diadikasia simenei pws exi oloklirw8ei 
+		stats.updatetotalwait(cpuProcess,currentTime); //total waiting time
+		stats.updatemyfinished();; // 8a deite
+		
+		
+		
 		cpu.removeProcessFromCpu();
 
 		if (stats != null) {
@@ -110,7 +123,7 @@ if (cpuProcess != null) {
 			stats.updateResponseTime(currentTime - cpuProcess.getArrivalTime());// edit.
 		}
 	}
-	else if(cpuProcess.getCpuRemainingTime() > readyList.getProcessToRunInCPU().getCpuRemainingTime()) {
+	else if ((HeadofQueue !=null)&&(cpuProcess.getCpuRemainingTime() > HeadofQueue.getCpuRemainingTime())) {
 		//prepei na:
 		//-vgei i process apo tin cpu
 		//-na mpei i alli 
@@ -124,10 +137,15 @@ if (cpuProcess != null) {
 		//kathe fora pou kanooume mia diergasia add stin cpu etsi wste na min
 		//ananewnoume to response time otan cpuTotalTime == cpuRemainingTime
 		
+		
+		//***//
+		
 		cpu.removeProcessFromCpu();
 		
+		
 		Process forCPU = readyList.getProcessToRunInCPU();
-		if (forCPU != null) {
+		//if (forCPU != null)            / forCPU = HeadofQueue (prepei na elegx8ei pio panw etsi kialliws opote dn xriazete)
+		{
 
 			if(forCPU.getCpuTotalTime() == forCPU.getCpuTotalTime())
 			{

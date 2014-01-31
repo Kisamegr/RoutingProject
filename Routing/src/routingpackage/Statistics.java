@@ -10,14 +10,16 @@ import java.util.Date;
 
 public class Statistics {
 
-	private int numberOfFinishedProcesses;
+	private int numberOfFinishedProcesses; 
 	private float averageWaitingTime; // of processes waiting to be executed
 	private int totalWaitingTime; // total time of waiting
 	private int responseTime; // name says it all
 	private int maximumLengthOfReadyProcessesList; // name says it all
-	public int totalNumberOfProcesses; // current number of processes
+	public int totalNumberOfProcesses; // current number of processes (i'll be using that)
 	private File outputFile; // where the statistics are going to be stored
-
+    private double mytotalwait=0; //new one,experiment
+    private double myavgwait; //new one, experiment
+    private int myfinished; //woooofuckinghoooo 
 	// constructor
 	public Statistics(String filename) {
 
@@ -27,7 +29,8 @@ public class Statistics {
 		maximumLengthOfReadyProcessesList = 0;
 		totalNumberOfProcesses = 0;
 		numberOfFinishedProcesses = 0;
-
+        myavgwait = 0;
+        myfinished = 0;
 		outputFile = new File(filename);
 
 		// i mia epilogi einai ayti: an yparxei to arxeio to diagrafw kai meta
@@ -63,7 +66,33 @@ public class Statistics {
 	public void updateFinishedNumber(int n) {
 		numberOfFinishedProcesses += n;
 	}
-
+	
+	public void updatemyfinished()
+	{
+		myfinished+=1;
+	}
+	 
+	public void updatetotalwait(Process one, int currentTime)
+	{
+		mytotalwait = mytotalwait + ((double)((double)currentTime -(double) one.getArrivalTime()) - (double)one.getCpuTotalTime());  
+		System.out.println("MY TOTAL WAIT :" + mytotalwait);
+		System.out.println("(CURRENT TIME  - ARRIVAL TIME) - BURST TIME :   " + currentTime  + " - " + one.getArrivalTime() + " - " + one.getCpuTotalTime()); 
+	}
+	
+    public double getAvgWait()
+    {  
+    	if(totalNumberOfProcesses>0)
+    	{
+    		
+    		System.out.println("NUMBER OF PROCESSES " + myfinished);
+    	     myavgwait = (double) ((double)mytotalwait/(double)myfinished);
+    	     return myavgwait;
+    	}
+    	else
+    		return 0;
+    }
+	
+	
 	public double getAverageReadyQueueProcessWaitingTime(ReadyProcessesList one, int currentTime) // to
 																									// total
 																									// waiting
@@ -156,7 +185,8 @@ public class Statistics {
 		string.append("Tick:" + tickCount);
 		string.append(", Total waiting time : " + totalWaitingTime);
 		string.append(", Total # of processes: " + totalNumberOfProcesses);
-		string.append(", Average Waiting Time: " + CalculateAverageWaitingTime());
+		string.append(", ALAverage Waiting Time: " +  CalculateAverageWaitingTime() /*getAvgWait() */  );
+		string.append(", ASPAverage Waiting Time: " + /*CalculateAverageWaitingTime()*/ getAvgWait()  );
 		string.append(", Finished P.: " + numberOfFinishedProcesses);
 		string.append(", total respond time: " + responseTime);
 		string.append(", Average response time: " + calculateAverageResponseTime());
