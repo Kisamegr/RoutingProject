@@ -49,10 +49,10 @@ public class ConsoleWindow {
 
 		public void appendToConsole(final String message, final Color color) {
 
-			SwingUtilities.invokeLater(new Runnable() {
-
-				@Override
-				public void run() {
+//			SwingUtilities.invokeLater(new Runnable() {
+//
+//				@Override
+//				public void run() {
 
 					// console.setText(console.getText() + "[" +
 					// dateFormat.format(Calendar.getInstance().getTime()) +
@@ -72,9 +72,9 @@ public class ConsoleWindow {
 
 					console.setEditable(false);
 
-				}
-
-			});
+//				}
+//
+//			});            
 
 		}
 
