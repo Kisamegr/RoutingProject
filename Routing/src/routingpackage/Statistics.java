@@ -45,8 +45,6 @@ public class Statistics {
 			FileWriter fw;
 			try {
 				fw = new FileWriter(outputFile.getName());
-				// BufferedWriter eraser = new BufferedWriter(fw);//den nomizw
-				// oti exei noima o buffered edw
 				DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 				Date date = new Date();
 				fw.write("Time: " + dateFormat.format(date));

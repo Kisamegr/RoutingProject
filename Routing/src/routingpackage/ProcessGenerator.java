@@ -1,8 +1,14 @@
 package routingpackage;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -18,7 +24,7 @@ public class ProcessGenerator {
 	private int generationFreq;
 	private int generationMax;
 	private int generationTime;
-
+	private String firstLine="ProcessId - Arrival Time - Burst Time";
 	private Random random;
 
 	private int currentPid;
@@ -36,7 +42,34 @@ public class ProcessGenerator {
 		generationTime = 0;
 
 		read_from_file = readFile;
-
+		//START
+		try {
+		inputFile = new File(filename);
+		
+		
+		if (!inputFile.exists())
+		{
+				inputFile.createNewFile();
+		}
+		
+		
+		if (!read_from_file)
+		{
+			
+			FileWriter fw;
+			
+				fw = new FileWriter(filename);//
+				fw.write(firstLine+"\r\n");
+				fw.flush();
+				fw.close();
+			
+		}else generationMax =1;//IMPORTANT. Den moiazei i kaliteri dunati epilogi. Xreiazetai gia na 
+								//stamataei meta to telos olwn twn diergasiwn.
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//END
 		random = new Random(System.currentTimeMillis());
 
 		currentPid = 0;
@@ -46,22 +79,45 @@ public class ProcessGenerator {
 	public void runGenerator(int currentClock) {
 
 		if (read_from_file == false) {
-			// Generate new processes every generationFreq clocks
-			if ((currentClock + 1) % getGenerationFreq() == 0 && generationTime < getGenerationMax()) {
+			
+			try {
+				FileWriter fw = new FileWriter(inputFile.getName(), true);
+				BufferedWriter bw = new BufferedWriter(fw);
+				
+				// Generate new processes every generationFreq clocks
+				if ((currentClock + 1) % getGenerationFreq() == 0 && generationTime < getGenerationMax()) {
 
-				int processNumber = random.nextInt(7) + 2;
-
-				for (int i = 0; i < processNumber; i++) {
-
-					Process p = new Process(currentPid++, random.nextInt(getGenerationFreq()) + currentClock + 1, random.nextInt(15) + 1);
-					newList.AddNewProcess(p);
-
+					int processNumber= random.nextInt(7) + 2;
+					int arrTime ;
+					int burstTime ;
+					
+					for(int i =0 ; i < processNumber; i++){
+						arrTime = random.nextInt(getGenerationFreq()) + currentClock + 1;
+						burstTime = random.nextInt(15) + 1;
+						
+						Process p = new Process(currentPid, arrTime, burstTime);
+						
+						bw.append(String.valueOf(currentPid)+"-");
+						bw.append(String.valueOf(arrTime)+"-");
+						bw.append(String.valueOf(burstTime)+"\r\n");
+						
+						currentPid++;
+						newList.AddNewProcess(p);
+						 
+					}//while(i < processNumber);
+					newList.printList();
+					generationTime++;
 				}
-				newList.printList();
-				generationTime++;
+				
+				
+				
+				bw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
-		if ((read_from_file == true) && (currentClock == 0))// It does at the
+		if ((read_from_file == true) && (currentClock == -1))// It does this, at the
 															// start of the
 															// program
 		{
@@ -115,20 +171,37 @@ public class ProcessGenerator {
 		List<Process> fileList = new ArrayList<Process>(); // initialize array
 															// list
 
-		String filepath = System.getProperty("user.dir") + File.separatorChar + "input.txt"; // get
+		//String filepath = System.getProperty("user.dir") + File.separatorChar + inputFile.getAbsolutePath(); // get
 																								// the
 																								// directory
 																								// of
 																								// the
 																								// inputFile.txt
-		System.out.println(filepath);
+		System.out.println(inputFile);
 		Scanner scan;
 		try {
 			Process p;
-			scan = new Scanner(new File(filepath));// create Scanner to scan
+			scan = new Scanner(inputFile);// create Scanner to scan
 													// Integers
 			int i = 0, k = 0, arrival_time = -1, burst_cpu_time = -1;
-			while (scan.hasNextInt()) {
+			String line="", ar[] = {"1","1","1"};
+			
+			while (scan.hasNextLine()){
+				line = scan.nextLine();
+				if (!line.equals(firstLine))
+				{
+					
+					ar =  line.split("-", 3);
+					System.out.println(ar[0]+"*"+ar[1]+"*"+ar[2]);
+					p = new Process(Integer.valueOf(ar[0]),Integer.valueOf(ar[1]),Integer.valueOf(ar[2]));
+					fileList.add(p);
+					
+				}
+				
+			}
+			
+			
+			/*while (scan.hasNextInt()) {
 				i = scan.nextInt();
 
 				if (k == 0) // checks if it is in the first column
@@ -168,7 +241,7 @@ public class ProcessGenerator {
 
 			}
 			p = new Process(currentPid++, arrival_time, burst_cpu_time);
-			fileList.add(p);
+			fileList.add(p);*/
 			scan.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

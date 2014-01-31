@@ -224,12 +224,18 @@ public class ConsoleWindow {
 			stats = new Statistics(filepath);
 		sjfScheduler = new SJFScheduler(cPreemptive.isSelected(), cpu, stats);
 
-		if (cOutput.isSelected())
+		/*if (cOutput.isSelected())
 			out = "output.txt";
 		else
-			out = null;
+			out = null;*/
+		
+		if(cOutput.isSelected())
+			generator = new ProcessGenerator("output.txt", false, sjfScheduler);
+		else
+			generator = new ProcessGenerator("output.txt", true, sjfScheduler);
 
-		generator = new ProcessGenerator(out, false, sjfScheduler);
+		
+		//generator = new ProcessGenerator(out, false, sjfScheduler);
 
 		int clockMillis = getClockMillis();
 		clock = new Clock(clockMillis, generator, sjfScheduler, cpu);
