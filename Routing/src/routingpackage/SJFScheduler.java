@@ -84,8 +84,8 @@ public class SJFScheduler {
 																// bike teleutea
 																// fora process
 																// sti cpu
-					if (stats != null)
-						stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);// edit
+					//if (stats != null)
+						//stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);// edit
 
 				}
 
@@ -145,8 +145,8 @@ public class SJFScheduler {
 																	// bike teleutea
 																	// fora process
 																	// sti cpu
-						if (stats != null)
-							stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);// edit
+						//if (stats != null)
+							//stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);// edit
 
 					}
 
@@ -170,8 +170,8 @@ public class SJFScheduler {
 																// bike teleutea
 																// fora process
 																// sti cpu
-					if (stats != null)
-						stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);
+					//if (stats != null)
+						//stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);
 				}
 			}
 		}
