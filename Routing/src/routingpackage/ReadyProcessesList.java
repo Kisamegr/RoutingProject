@@ -25,15 +25,14 @@ public class ReadyProcessesList {
 
 	}
 
-	public PriorityQueue<Process> getReadyList() // return the priority queue, used in statistics to get the current total waiting time
-	{
+	// return the priority queue, used in statistics to get the current total waiting time
+	public PriorityQueue<Process> getReadyList() {
 		return processList;
 	}
 
-	public int lengthOfQueue()// edit
-	{
-		return processList.size();// mporei na exei provlima an einai keno to
-									// queue???? --- 8a epistrefei mhden, i think
+	public int lengthOfQueue() {
+		return processList.size();
+
 	}
 
 	// adding new ready process

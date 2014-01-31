@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Time: 31/01/2014 15:07:59
 Tick:-1, Total waiting time : 0, Total # of processes: 0, ALAverage Waiting Time: 0.0, ASPAverage Waiting Time: 0.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 0
 Tick:0, Total waiting time : 0, Total # of processes: 0, ALAverage Waiting Time: 0.0, ASPAverage Waiting Time: 0.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 0
@@ -463,3 +464,18 @@ Tick:459, Total waiting time : 0, Total # of processes: 57, ALAverage Waiting Ti
 Tick:460, Total waiting time : 0, Total # of processes: 57, ALAverage Waiting Time: 0.0, ASPAverage Waiting Time: 105.48214285714286, Finished P.: 56, total respond time: 12695, Average response time: 226.69643, Max length readylist: 32
 Tick:461, Total waiting time : 0, Total # of processes: 57, ALAverage Waiting Time: 0.0, ASPAverage Waiting Time: 105.48214285714286, Finished P.: 56, total respond time: 12695, Average response time: 226.69643, Max length readylist: 32
 Tick:462, Total waiting time : 0, Total # of processes: 57, ALAverage Waiting Time: 0.0, ASPAverage Waiting Time: 110.71929824561404, Finished P.: 57, total respond time: 13114, Average response time: 230.07018, Max length readylist: 32
+=======
+Time: 31/01/2014 13:58:11
+Tick:-1, Total waiting time : 0, Total # of processes: 0, ALAverage Waiting Time: 0.0, ASPAverage Waiting Time: 0.0, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 0
+Tick:0, Total waiting time : 0, Total # of processes: 1, ALAverage Waiting Time: 0.0, ASPAverage Waiting Time: NaN, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Tick:1, Total waiting time : 0, Total # of processes: 1, ALAverage Waiting Time: 0.0, ASPAverage Waiting Time: NaN, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Tick:2, Total waiting time : 0, Total # of processes: 1, ALAverage Waiting Time: 0.0, ASPAverage Waiting Time: NaN, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Tick:3, Total waiting time : 1, Total # of processes: 2, ALAverage Waiting Time: 0.5, ASPAverage Waiting Time: NaN, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Tick:4, Total waiting time : 2, Total # of processes: 2, ALAverage Waiting Time: 1.0, ASPAverage Waiting Time: NaN, Finished P.: 0, total respond time: 0, Average response time: 0.0, Max length readylist: 1
+Tick:5, Total waiting time : 4, Total # of processes: 3, ALAverage Waiting Time: 1.3333334, ASPAverage Waiting Time: 0.0, Finished P.: 1, total respond time: 5, Average response time: 5.0, Max length readylist: 2
+Tick:6, Total waiting time : 10, Total # of processes: 3, ALAverage Waiting Time: 3.3333333, ASPAverage Waiting Time: 0.0, Finished P.: 1, total respond time: 6, Average response time: 6.0, Max length readylist: 2
+Tick:7, Total waiting time : 6, Total # of processes: 4, ALAverage Waiting Time: 1.5, ASPAverage Waiting Time: 0.0, Finished P.: 1, total respond time: 6, Average response time: 6.0, Max length readylist: 2
+Tick:8, Total waiting time : 8, Total # of processes: 4, ALAverage Waiting Time: 2.0, ASPAverage Waiting Time: 0.0, Finished P.: 1, total respond time: 6, Average response time: 6.0, Max length readylist: 2
+Tick:9, Total waiting time : 11, Total # of processes: 5, ALAverage Waiting Time: 2.2, ASPAverage Waiting Time: 0.0, Finished P.: 1, total respond time: 6, Average response time: 6.0, Max length readylist: 3
+Tick:10, Total waiting time : 14, Total # of processes: 5, ALAverage Waiting Time: 2.8, ASPAverage Waiting Time: 0.5, Finished P.: 2, total respond time: 11, Average response time: 5.5, Max length readylist: 3
+>>>>>>> Ase me na kanw sync
