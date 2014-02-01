@@ -38,6 +38,8 @@ public class ReadyProcessesList {
 	// adding new ready process
 	public void addProcess(Process item) {
 
+		ConsoleWindow.getConsole().appendReadyQueueMessage("+CPU: Added process to ready list:");
+		ConsoleWindow.getConsole().appendReadyQueueMessage(item.toString());
 		processList.add(item);
 	}
 

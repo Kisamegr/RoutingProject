@@ -139,8 +139,8 @@ public class ProcessGenerator {
 			newList.getFirst();
 			sjfScheduler.addProcessToReadyList(firstNewProcess);
 
-			ConsoleWindow.getConsole().appendReadyQueueMessage("+RDY: Added process to ready list:");
-			ConsoleWindow.getConsole().appendReadyQueueMessage(firstNewProcess.toString());
+			//ConsoleWindow.getConsole().appendReadyQueueMessage("+RDY: Added process to ready list:");
+			//ConsoleWindow.getConsole().appendReadyQueueMessage(firstNewProcess.toString());
 
 			sjfScheduler.addTotalNumberOfProcesses(1);// edit
 
