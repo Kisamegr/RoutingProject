@@ -17,6 +17,7 @@ public class SJFScheduler {
 		readyList = new ReadyProcessesList();
 
 		this.cpu = cpu;
+
 	}
 
 	// adding a process to the right position of the "ready processes list"

@@ -12,11 +12,14 @@ import java.io.File;
 import java.text.DateFormat;
 
 import javax.swing.Box;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
@@ -177,13 +180,12 @@ public class ConsoleWindow {
 	private JCheckBox cStatistics;
 	private JTextField tInput;
 	private JPanel panel_2;
-	private JButton bInput;
-	private Component verticalStrut_1;
 	private JSlider sClock;
 	private Component verticalStrut_2;
 	private JPanel panel_3;
 	private Component verticalStrut_3;
 	private JLabel lblClockSpeed;
+	private String inputPath;
 
 	// Emulator variables
 	private CPU cpu;
@@ -191,12 +193,13 @@ public class ConsoleWindow {
 	private SJFScheduler sjfScheduler;
 	private ProcessGenerator generator;
 	private Clock clock;
-	private JCheckBox cOutput;
 	private boolean running;
 	private JButton btnNewButton;
 	private int clockMultiplier;
 	private JPanel panel_4;
 	private Component verticalStrut_4;
+	private JRadioButton rOutput;
+	private JRadioButton rInput;
 
 	public ConsoleWindow(String name) {
 
@@ -206,6 +209,8 @@ public class ConsoleWindow {
 
 		running = false;
 		initialize();
+		tInput.setText("");
+		inputPath = "";
 		// System.out.println(Thread.currentThread().getName());
 
 		frame.setTitle(name);
@@ -224,18 +229,16 @@ public class ConsoleWindow {
 			stats = new Statistics(filepath);
 		sjfScheduler = new SJFScheduler(cPreemptive.isSelected(), cpu, stats);
 
-		/*if (cOutput.isSelected())
-			out = "output.txt";
-		else
-			out = null;*/
-		
-		if(cOutput.isSelected())
-			generator = new ProcessGenerator("output.txt", false, sjfScheduler);
-		else
-			generator = new ProcessGenerator("output.txt", true, sjfScheduler);
+		/*
+		 * if (cOutput.isSelected()) out = "output.txt"; else out = null;
+		 */
 
-		
-		//generator = new ProcessGenerator(out, false, sjfScheduler);
+		if (rInput.isSelected())
+			generator = new ProcessGenerator(inputPath, sjfScheduler);
+		else
+			generator = new ProcessGenerator(null, sjfScheduler);
+
+		// generator = new ProcessGenerator(out, false, sjfScheduler);
 
 		int clockMillis = getClockMillis();
 		clock = new Clock(clockMillis, generator, sjfScheduler, cpu);
@@ -323,7 +326,7 @@ public class ConsoleWindow {
 
 		panel_2 = new JPanel();
 		panel_1.add(panel_2, BorderLayout.CENTER);
-		panel_2.setLayout(new GridLayout(8, 0, 0, 0));
+		panel_2.setLayout(new GridLayout(7, 0, 0, 0));
 
 		cPreemptive = new JCheckBox("Pre-Emptive");
 		cPreemptive.setSelected(true);
@@ -335,25 +338,46 @@ public class ConsoleWindow {
 		cStatistics.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(cStatistics);
 
-		cOutput = new JCheckBox("Output       ");
-		cOutput.setSelected(true);
-		cOutput.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_2.add(cOutput);
+		verticalStrut_2 = Box.createVerticalStrut(20);
+		panel_2.add(verticalStrut_2);
 
-		verticalStrut_1 = Box.createVerticalStrut(12);
-		panel_2.add(verticalStrut_1);
+		rOutput = new JRadioButton("Output Processes");
+		rOutput.setSelected(true);
+		panel_2.add(rOutput);
+		rOutput.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				tInput.setText("");
+				inputPath = "";
+			}
+		});
+
+		rInput = new JRadioButton("Input Processes");
+		panel_2.add(rInput);
+		rInput.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+
+				JFileChooser fileChooser = new JFileChooser();
+				fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
+
+				if (fileChooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) {
+					tInput.setText(fileChooser.getSelectedFile().getName());
+					inputPath = fileChooser.getSelectedFile().getPath();
+				} else {
+					rOutput.setSelected(true);
+				}
+
+			}
+		});
 
 		tInput = new JTextField();
+		tInput.setHorizontalAlignment(SwingConstants.CENTER);
 		tInput.setEditable(false);
 		panel_2.add(tInput);
 		tInput.setColumns(10);
-
-		bInput = new JButton("Input File");
-		bInput.setPreferredSize(new Dimension(77, 26));
-		panel_2.add(bInput);
-
-		verticalStrut_2 = Box.createVerticalStrut(20);
-		panel_2.add(verticalStrut_2);
 
 		lblClockSpeed = new JLabel("Clock Speed");
 		lblClockSpeed.setHorizontalAlignment(SwingConstants.CENTER);
@@ -383,7 +407,7 @@ public class ConsoleWindow {
 		sClock.setMaximum(1000);
 		sClock.setMinimumSize(new Dimension(30, 23));
 		sClock.setPaintLabels(true);
-		sClock.setPreferredSize(new Dimension(45, 160));
+		sClock.setPreferredSize(new Dimension(45, 170));
 		sClock.setMaximumSize(new Dimension(25, 34));
 		sClock.setMinorTickSpacing(10);
 		sClock.setMajorTickSpacing(200);
@@ -396,6 +420,9 @@ public class ConsoleWindow {
 
 		// console.appendInfoMessage("Done initializing the main window.");
 
+		ButtonGroup group = new ButtonGroup();
+		group.add(rInput);
+		group.add(rOutput);
 	}
 
 	private int getClockMillis() {

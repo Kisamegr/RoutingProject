@@ -52,4 +52,8 @@ public class NewProcessTemporaryList {
 
 	}
 
+	public Process[] getProcesses() {
+		return processList.toArray(new Process[0]);
+	}
+
 }
