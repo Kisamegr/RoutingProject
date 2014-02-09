@@ -76,8 +76,7 @@ public class Statistics {
 	}
 
 	public double getAvgWait() {
-		if (totalNumberOfProcesses > 0) {
-
+		if ((totalNumberOfProcesses > 0) && (myfinished!=0)) {
 			System.out.println("NUMBER OF PROCESSES " + myfinished);
 			myavgwait = mytotalwait / myfinished;
 			return myavgwait;
