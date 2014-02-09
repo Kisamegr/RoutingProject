@@ -1,6 +1,6 @@
 package emulator;
 
-import gui.ConsoleWindow;
+import gui.Window;
 
 public class CPU {
 
@@ -16,8 +16,8 @@ public class CPU {
 	// insert process to execute
 	public void addProcess(Process process) {
 		runningProcess = process;
-		ConsoleWindow.getConsole().appendCpuMessage("+CPU: Added process to cpu");
-		ConsoleWindow.getConsole().appendCpuMessage(runningProcess.toString());
+		Window.getConsole().appendCpuMessage("+CPU: Added process to cpu");
+		Window.getConsole().appendCpuMessage(runningProcess.toString());
 
 	}
 
@@ -26,8 +26,8 @@ public class CPU {
 		Process temp = runningProcess;
 		runningProcess = null;
 
-		ConsoleWindow.getConsole().appendCpuMessage("-CPU: Removed process from cpu");
-		ConsoleWindow.getConsole().appendCpuMessage(temp.toString());
+		Window.getConsole().appendCpuMessage("-CPU: Removed process from cpu");
+		Window.getConsole().appendCpuMessage(temp.toString());
 
 		return temp;
 
@@ -39,8 +39,8 @@ public class CPU {
 		if (runningProcess != null) {
 			if (runningProcess.getCpuRemainingTime() > 0) {
 				runningProcess.changeCpuRemainingTime(runningProcess.getCpuRemainingTime() - 1);
-				ConsoleWindow.getConsole().appendExecuteMessage("+Exec: Executed process at cpu");
-				ConsoleWindow.getConsole().appendExecuteMessage(runningProcess.toString());
+				Window.getConsole().appendExecuteMessage("+Exec: Executed process at cpu");
+				Window.getConsole().appendExecuteMessage(runningProcess.toString());
 
 			}
 		}

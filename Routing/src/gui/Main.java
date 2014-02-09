@@ -26,7 +26,7 @@ public class Main {
 					e.printStackTrace();
 				}
 
-				ConsoleWindow cw = new ConsoleWindow("SJF Emulator");
+				Window cw = new Window("SJF Emulator");
 
 			}
 		});

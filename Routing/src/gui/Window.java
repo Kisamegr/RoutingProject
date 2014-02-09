@@ -10,7 +10,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.text.DateFormat;
 
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
@@ -24,20 +23,10 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 import javax.swing.border.MatteBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyleContext;
 
 import emulator.CPU;
 import emulator.Clock;
@@ -45,143 +34,13 @@ import emulator.ProcessGenerator;
 import emulator.SJFScheduler;
 import emulator.Statistics;
 
-public class ConsoleWindow {
-
-	public class Console extends JTextPane {
-
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-
-		private DateFormat dateFormat;
-		private int maxLines;
-
-		public Console() {
-			super();
-
-			this.setFont(new Font("Consolas", Font.PLAIN, 15));
-			this.setBackground(Color.getHSBColor(129, 0, .2f));
-
-			this.setEditable(false);
-
-			maxLines = 500;
-
-			this.getDocument().addDocumentListener(new DocumentListener() {
-
-				@Override
-				public void removeUpdate(DocumentEvent arg0) {
-					// TODO Auto-generated method stub
-
-				}
-
-				@Override
-				public void insertUpdate(DocumentEvent arg0) {
-
-					final DocumentEvent event = arg0;
-					SwingUtilities.invokeLater(new Runnable() {
-
-						@Override
-						public void run() {
-							// TODO Auto-generated method stub
-							Document document = event.getDocument();
-							javax.swing.text.Element root = document.getDefaultRootElement();
-
-							while (root.getElementCount() > maxLines) {
-
-								int end = root.getElement(0).getEndOffset();
-
-								try {
-									document.remove(0, end);
-								} catch (BadLocationException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
-
-							}
-
-						}
-					});
-
-				}
-
-				@Override
-				public void changedUpdate(DocumentEvent arg0) {
-					// TODO Auto-generated method stub
-
-				}
-			});
-
-		}
-
-		public void appendToConsole(final String message, final Color color) {
-
-			SwingUtilities.invokeLater(new Runnable() {
-
-				@Override
-				public void run() {
-
-					long start = System.currentTimeMillis();
-					// console.setText(console.getText() + "[" +
-					// dateFormat.format(Calendar.getInstance().getTime()) +
-					// "]  ");
-
-					console.setEditable(true);
-					StyleContext sc = StyleContext.getDefaultStyleContext();
-					AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, color);
-
-					aset = sc.addAttribute(aset, StyleConstants.FontFamily, "Lucida Console");
-					aset = sc.addAttribute(aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
-
-					int len = console.getDocument().getLength();
-					console.setCaretPosition(len);
-					console.setCharacterAttributes(aset, false);
-					console.replaceSelection(message + "\n");
-
-					console.setEditable(false);
-
-					System.out.println(System.currentTimeMillis() - start);
-
-					// if (console.getDocument().getLength() > 6000)
-					// console.setText("");
-
-				}
-
-			});
-
-		}
-
-		public void appendCpuMessage(String message) {
-			this.appendToConsole(message, Color.getHSBColor(0.6f, 0.2f, 0.8f));
-		}
-
-		public void appendSjfMessage(String message) {
-			this.appendToConsole(message, Color.CYAN);
-		}
-
-		public void appendClockMessage(String message) {
-			this.appendToConsole(message, Color.getHSBColor(0, 0.2f, 0.9f));
-		}
-
-		public void appendReadyQueueMessage(String message) {
-			this.appendToConsole(message, Color.getHSBColor(13, 7.6f, 0.2f));
-		}
-
-		public void appendExecuteMessage(String message) {
-			this.appendToConsole(message, Color.WHITE);
-		}
-
-		public void appendNewListMessage(String message) {
-			this.appendToConsole(message, Color.LIGHT_GRAY);
-		}
-
-	}
+public class Window {
 
 	// Window variables
 	private JFrame frame;
 	private Console console;
 	private static Console m_console;
-	private static ConsoleWindow window;
+	private static Window window;
 	private JPanel panel;
 	private JButton bStart;
 	private JPanel options;
@@ -219,7 +78,7 @@ public class ConsoleWindow {
 	private Component horizontalStrut_4;
 	private Component horizontalStrut_5;
 
-	public ConsoleWindow(String name) {
+	public Window(String name) {
 
 		console = new Console();
 		m_console = console;
@@ -270,6 +129,7 @@ public class ConsoleWindow {
 
 	private void startEmulation() {
 
+		console.resetLogger();
 		String filepath = System.getProperty("user.dir") + File.separatorChar + "stats.txt";
 		String out;
 		System.out.println(filepath);
@@ -563,7 +423,7 @@ public class ConsoleWindow {
 		}
 	}
 
-	public static ConsoleWindow getWindow() {
+	public static Window getWindow() {
 		return window;
 	}
 

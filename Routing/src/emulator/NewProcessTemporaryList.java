@@ -1,6 +1,6 @@
 package emulator;
 
-import gui.ConsoleWindow;
+import gui.Window;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
@@ -45,10 +45,10 @@ public class NewProcessTemporaryList {
 	// printing list with new processes
 	public void printList() {
 
-		ConsoleWindow.getConsole().appendNewListMessage("NewProcessTemporaryList:");
+		Window.getConsole().appendNewListMessage("NewProcessTemporaryList:");
 		int k = 1;
 		for (Process p : processList) {
-			ConsoleWindow.getConsole().appendNewListMessage(p.toString());
+			Window.getConsole().appendNewListMessage(p.toString());
 			k++;
 		}
 

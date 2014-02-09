@@ -1,6 +1,6 @@
 package emulator;
 
-import gui.ConsoleWindow;
+import gui.Window;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
@@ -40,8 +40,8 @@ public class ReadyProcessesList {
 	// adding new ready process
 	public void addProcess(Process item) {
 
-		ConsoleWindow.getConsole().appendReadyQueueMessage("+RDY: Added process to ready list:");
-		ConsoleWindow.getConsole().appendReadyQueueMessage(item.toString());
+		Window.getConsole().appendReadyQueueMessage("+RDY: Added process to ready list:");
+		Window.getConsole().appendReadyQueueMessage(item.toString());
 		processList.add(item);
 	}
 
@@ -55,7 +55,7 @@ public class ReadyProcessesList {
 
 		int k = 1;
 		for (Process p : processList) {
-			ConsoleWindow.getConsole().appendReadyQueueMessage(k + ") Process " + p.getPid());
+			Window.getConsole().appendReadyQueueMessage(k + ") Process " + p.getPid());
 			k++;
 		}
 	}

@@ -1,6 +1,6 @@
 package emulator;
 
-import gui.ConsoleWindow;
+import gui.Window;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,7 +38,7 @@ public class Clock implements ActionListener {
 	// increasing ticks of clock by 1
 	public void Time_Run() {
 
-		ConsoleWindow.getConsole().appendClockMessage("\nTick " + ticks);
+		Window.getConsole().appendClockMessage("\nTick " + ticks);
 		generator.runGenerator(ShowTime());
 		cpu.execute();
 		sjfScheduler.SJF(ShowTime());
@@ -64,15 +64,15 @@ public class Clock implements ActionListener {
 	public void startClock() {
 		clockRunning = true;
 		timer.start();
-		ConsoleWindow.getConsole().appendClockMessage("---------- Emulation Started ----------");
+		Window.getConsole().appendClockMessage("---------- Emulation Started ----------");
 
 	}
 
 	public void stopClock() {
 		clockRunning = false;
 		timer.stop();
-		ConsoleWindow.getConsole().appendClockMessage("---------- Emulation Finished ----------");
-		ConsoleWindow.getWindow().stopEmulation();
+		Window.getConsole().appendClockMessage("---------- Emulation Finished ----------");
+		Window.getWindow().stopEmulation();
 	}
 
 	public void pauseClock(boolean pause) {
