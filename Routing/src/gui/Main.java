@@ -1,5 +1,6 @@
-package routingpackage;
+package gui;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.UIManager;
@@ -19,6 +20,7 @@ public class Main {
 
 				try {
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+					UIManager.put("OptionPane.background", Color.DARK_GRAY);
 				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

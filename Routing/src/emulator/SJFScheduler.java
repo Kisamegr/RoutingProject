@@ -1,4 +1,4 @@
-package routingpackage;
+package emulator;
 
 public class SJFScheduler {
 
@@ -9,7 +9,7 @@ public class SJFScheduler {
 	private boolean isPreemptive; // if true then the router is preemptive
 
 	// constructor
-	SJFScheduler(boolean isPreemptive, CPU cpu, Statistics stats) {
+	public SJFScheduler(boolean isPreemptive, CPU cpu, Statistics stats) {
 
 		this.isPreemptive = isPreemptive;
 		this.stats = stats;

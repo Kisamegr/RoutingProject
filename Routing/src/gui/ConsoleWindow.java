@@ -1,8 +1,9 @@
-package routingpackage;
+package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -26,6 +27,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.border.MatteBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
@@ -36,6 +38,12 @@ import javax.swing.text.Document;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
+
+import emulator.CPU;
+import emulator.Clock;
+import emulator.ProcessGenerator;
+import emulator.SJFScheduler;
+import emulator.Statistics;
 
 public class ConsoleWindow {
 
@@ -54,6 +62,8 @@ public class ConsoleWindow {
 
 			this.setFont(new Font("Consolas", Font.PLAIN, 15));
 			this.setBackground(Color.getHSBColor(129, 0, .2f));
+
+			this.setEditable(false);
 
 			maxLines = 500;
 
@@ -142,7 +152,7 @@ public class ConsoleWindow {
 		}
 
 		public void appendCpuMessage(String message) {
-			this.appendToConsole(message, Color.WHITE);
+			this.appendToConsole(message, Color.getHSBColor(0.6f, 0.2f, 0.8f));
 		}
 
 		public void appendSjfMessage(String message) {
@@ -154,15 +164,15 @@ public class ConsoleWindow {
 		}
 
 		public void appendReadyQueueMessage(String message) {
-			this.appendToConsole(message, Color.getHSBColor(1f, 0.4f, 0.1f));
+			this.appendToConsole(message, Color.getHSBColor(13, 7.6f, 0.2f));
 		}
 
 		public void appendExecuteMessage(String message) {
-			this.appendToConsole(message, Color.getHSBColor(0.6f, 0.2f, 0.9f));
+			this.appendToConsole(message, Color.WHITE);
 		}
 
 		public void appendNewListMessage(String message) {
-			this.appendToConsole(message, Color.RED);
+			this.appendToConsole(message, Color.LIGHT_GRAY);
 		}
 
 	}
@@ -174,18 +184,17 @@ public class ConsoleWindow {
 	private static ConsoleWindow window;
 	private JPanel panel;
 	private JButton bStart;
-	private JPanel panel_1;
+	private JPanel options;
 	private JCheckBox cPreemptive;
-	private Component verticalStrut;
 	private JCheckBox cStatistics;
 	private JTextField tInput;
-	private JPanel panel_2;
+	private JPanel main_options;
 	private JSlider sClock;
-	private Component verticalStrut_2;
-	private JPanel panel_3;
+	private JPanel buttons;
 	private Component verticalStrut_3;
 	private JLabel lblClockSpeed;
 	private String inputPath;
+	private GenOptions genOptionsPanel;
 
 	// Emulator variables
 	private CPU cpu;
@@ -196,10 +205,19 @@ public class ConsoleWindow {
 	private boolean running;
 	private JButton btnNewButton;
 	private int clockMultiplier;
-	private JPanel panel_4;
-	private Component verticalStrut_4;
 	private JRadioButton rOutput;
 	private JRadioButton rInput;
+	private JButton bGenOptions;
+	private JLabel lblNewLabel;
+	private JPanel panel_5;
+	private Component verticalStrut;
+	private Component horizontalStrut;
+	private Component horizontalStrut_1;
+	private Component horizontalStrut_2;
+	private Component horizontalStrut_3;
+	private JPanel gen_options;
+	private Component horizontalStrut_4;
+	private Component horizontalStrut_5;
 
 	public ConsoleWindow(String name) {
 
@@ -210,6 +228,36 @@ public class ConsoleWindow {
 		running = false;
 		initialize();
 		tInput.setText("");
+
+		sClock = new JSlider();
+		options.add(sClock, BorderLayout.SOUTH);
+		sClock.setPaintTicks(true);
+		sClock.setPaintLabels(true);
+		sClock.setFont(new Font("Tahoma", Font.BOLD, 12));
+		sClock.setForeground(Color.WHITE);
+		sClock.setBackground(Color.DARK_GRAY);
+		sClock.setBorder(new MatteBorder(5, 0, 0, 0, new Color(128, 128, 128)));
+		sClock.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		sClock.setValue(500);
+		sClock.addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent arg0) {
+
+				if (running) {
+					clock.changeMilliseconds(getClockMillis());
+				}
+
+			}
+		});
+		sClock.setOrientation(SwingConstants.VERTICAL);
+		sClock.setMinimum(0);
+		sClock.setMaximum(1000);
+		sClock.setMinimumSize(new Dimension(30, 23));
+		sClock.setPreferredSize(new Dimension(45, 170));
+		sClock.setMaximumSize(new Dimension(25, 34));
+		sClock.setMinorTickSpacing(25);
+		sClock.setMajorTickSpacing(250);
 		inputPath = "";
 		// System.out.println(Thread.currentThread().getName());
 
@@ -217,6 +265,7 @@ public class ConsoleWindow {
 		frame.setVisible(true);
 
 		clockMultiplier = 1000;
+		genOptionsPanel = new GenOptions();
 	}
 
 	private void startEmulation() {
@@ -236,7 +285,7 @@ public class ConsoleWindow {
 		if (rInput.isSelected())
 			generator = new ProcessGenerator(inputPath, sjfScheduler);
 		else
-			generator = new ProcessGenerator(null, sjfScheduler);
+			generator = new ProcessGenerator(genOptionsPanel.getGenerationFreq(), genOptionsPanel.getGenerationMax(), genOptionsPanel.getMaxBurst(), genOptionsPanel.getMinBurst(), sjfScheduler);
 
 		// generator = new ProcessGenerator(out, false, sjfScheduler);
 
@@ -271,25 +320,37 @@ public class ConsoleWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame("SJF Emulator");
+		frame.setResizable(false);
+		frame.setMinimumSize(new Dimension(900, 500));
 		frame.getContentPane().setBackground(Color.BLACK);
 		frame.setBackground(Color.BLACK);
-		frame.setBounds(100, 100, 897, 500);
+		frame.setBounds(100, 100, 900, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
 
 		scrollPane.setViewportView(console);
 
 		panel = new JPanel();
+		panel.setForeground(Color.WHITE);
+		panel.setBackground(Color.DARK_GRAY);
+		panel.setBorder(null);
 		frame.getContentPane().add(panel, BorderLayout.EAST);
 		panel.setLayout(new BorderLayout(0, 0));
 
-		panel_3 = new JPanel();
-		panel.add(panel_3, BorderLayout.SOUTH);
-		panel_3.setLayout(new BorderLayout(0, 0));
+		buttons = new JPanel();
+		buttons.setForeground(Color.WHITE);
+		buttons.setBackground(Color.DARK_GRAY);
+		buttons.setBorder(new MatteBorder(0, 5, 5, 5, Color.GRAY));
+		panel.add(buttons, BorderLayout.SOUTH);
+		buttons.setLayout(new BorderLayout(0, 0));
 
 		bStart = new JButton("START");
+		bStart.setBorder(null);
+		bStart.setForeground(Color.DARK_GRAY);
+		bStart.setBackground(Color.DARK_GRAY);
 		bStart.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -300,50 +361,129 @@ public class ConsoleWindow {
 
 			}
 		});
-		bStart.setFont(new Font("Tahoma", Font.PLAIN, 18));
+
+		horizontalStrut_1 = Box.createHorizontalStrut(5);
+		horizontalStrut_1.setForeground(Color.WHITE);
+		horizontalStrut_1.setBackground(Color.DARK_GRAY);
+		buttons.add(horizontalStrut_1, BorderLayout.EAST);
+
+		horizontalStrut = Box.createHorizontalStrut(5);
+		horizontalStrut.setForeground(Color.WHITE);
+		horizontalStrut.setBackground(Color.DARK_GRAY);
+		buttons.add(horizontalStrut, BorderLayout.WEST);
+		bStart.setFont(new Font("Tahoma", Font.BOLD, 20));
 		bStart.setPreferredSize(new Dimension(57, 38));
-		panel_3.add(bStart);
+		buttons.add(bStart);
 
 		verticalStrut_3 = Box.createVerticalStrut(5);
-		panel_3.add(verticalStrut_3, BorderLayout.SOUTH);
+		verticalStrut_3.setForeground(Color.WHITE);
+		verticalStrut_3.setBackground(Color.DARK_GRAY);
+		buttons.add(verticalStrut_3, BorderLayout.SOUTH);
+
+		panel_5 = new JPanel();
+		panel_5.setForeground(Color.WHITE);
+		panel_5.setBackground(Color.DARK_GRAY);
+		buttons.add(panel_5, BorderLayout.NORTH);
+		panel_5.setLayout(new BorderLayout(0, 0));
 
 		btnNewButton = new JButton("Clear");
+		btnNewButton.setForeground(Color.DARK_GRAY);
+		btnNewButton.setBackground(Color.DARK_GRAY);
+		panel_5.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				clearConsole();
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		panel_3.add(btnNewButton, BorderLayout.NORTH);
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
-		panel_1 = new JPanel();
-		panel.add(panel_1, BorderLayout.CENTER);
-		panel_1.setLayout(new BorderLayout(0, 0));
+		horizontalStrut_2 = Box.createHorizontalStrut(5);
+		horizontalStrut_2.setForeground(Color.WHITE);
+		horizontalStrut_2.setBackground(Color.DARK_GRAY);
+		panel_5.add(horizontalStrut_2, BorderLayout.WEST);
 
-		verticalStrut = Box.createVerticalStrut(20);
-		panel_1.add(verticalStrut, BorderLayout.NORTH);
+		horizontalStrut_3 = Box.createHorizontalStrut(5);
+		horizontalStrut_3.setForeground(Color.WHITE);
+		horizontalStrut_3.setBackground(Color.DARK_GRAY);
+		panel_5.add(horizontalStrut_3, BorderLayout.EAST);
 
-		panel_2 = new JPanel();
-		panel_1.add(panel_2, BorderLayout.CENTER);
-		panel_2.setLayout(new GridLayout(7, 0, 0, 0));
+		verticalStrut = Box.createVerticalStrut(5);
+		verticalStrut.setForeground(Color.WHITE);
+		verticalStrut.setBackground(Color.DARK_GRAY);
+		panel_5.add(verticalStrut, BorderLayout.NORTH);
+
+		options = new JPanel();
+		options.setForeground(Color.WHITE);
+		options.setBackground(Color.DARK_GRAY);
+		options.setBorder(new MatteBorder(6, 5, 5, 5, Color.GRAY));
+		panel.add(options, BorderLayout.CENTER);
+		options.setLayout(new BorderLayout(0, 0));
+
+		lblNewLabel = new JLabel(" OPTIONS ");
+		lblNewLabel.setBorder(new MatteBorder(0, 0, 2, 0, Color.GRAY));
+		lblNewLabel.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel.setBackground(Color.DARK_GRAY);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		options.add(lblNewLabel, BorderLayout.NORTH);
+
+		main_options = new JPanel();
+		main_options.setForeground(Color.WHITE);
+		main_options.setBackground(Color.DARK_GRAY);
+		main_options.setBorder(null);
+		options.add(main_options, BorderLayout.CENTER);
+		main_options.setLayout(new GridLayout(7, 0, 0, 0));
 
 		cPreemptive = new JCheckBox("Pre-Emptive");
+		cPreemptive.setFont(new Font("Tahoma", Font.BOLD, 11));
+		cPreemptive.setForeground(Color.WHITE);
+		cPreemptive.setBackground(Color.DARK_GRAY);
 		cPreemptive.setSelected(true);
 		cPreemptive.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_2.add(cPreemptive);
+		main_options.add(cPreemptive);
 
 		cStatistics = new JCheckBox("Statistics    ");
+		cStatistics.setBorder(new MatteBorder(0, 0, 3, 0, new Color(128, 128, 128)));
+		cStatistics.setFont(new Font("Tahoma", Font.BOLD, 11));
+		cStatistics.setForeground(Color.WHITE);
+		cStatistics.setBackground(Color.DARK_GRAY);
 		cStatistics.setSelected(true);
 		cStatistics.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_2.add(cStatistics);
+		main_options.add(cStatistics);
 
-		verticalStrut_2 = Box.createVerticalStrut(20);
-		panel_2.add(verticalStrut_2);
+		gen_options = new JPanel();
+		gen_options.setBackground(Color.DARK_GRAY);
+		main_options.add(gen_options);
+		gen_options.setLayout(new BorderLayout(0, 0));
+
+		bGenOptions = new JButton("Gen. Options");
+		bGenOptions.setBorder(null);
+		bGenOptions.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// JOptionPane.showConfirmDialog(null, genOptionsPanel, "Generator Options", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+				genOptionsPanel.setLocationRelativeTo(frame);
+				genOptionsPanel.setVisible(true);
+			}
+		});
+		gen_options.add(bGenOptions);
+		bGenOptions.setFont(new Font("Tahoma", Font.BOLD, 11));
+		bGenOptions.setForeground(Color.DARK_GRAY);
+		bGenOptions.setBackground(Color.GRAY);
+
+		horizontalStrut_4 = Box.createHorizontalStrut(5);
+		gen_options.add(horizontalStrut_4, BorderLayout.WEST);
+
+		horizontalStrut_5 = Box.createHorizontalStrut(5);
+		gen_options.add(horizontalStrut_5, BorderLayout.EAST);
 
 		rOutput = new JRadioButton("Output Processes");
+		rOutput.setForeground(Color.WHITE);
+		rOutput.setBackground(Color.DARK_GRAY);
 		rOutput.setSelected(true);
-		panel_2.add(rOutput);
+		main_options.add(rOutput);
 		rOutput.addActionListener(new ActionListener() {
 
 			@Override
@@ -353,8 +493,10 @@ public class ConsoleWindow {
 			}
 		});
 
-		rInput = new JRadioButton("Input Processes");
-		panel_2.add(rInput);
+		rInput = new JRadioButton(" Input Processes");
+		rInput.setForeground(Color.WHITE);
+		rInput.setBackground(Color.DARK_GRAY);
+		main_options.add(rInput);
 		rInput.addActionListener(new ActionListener() {
 
 			@Override
@@ -374,47 +516,21 @@ public class ConsoleWindow {
 		});
 
 		tInput = new JTextField();
+		tInput.setBorder(new MatteBorder(2, 0, 2, 0, new Color(128, 128, 128)));
+		tInput.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		tInput.setForeground(Color.LIGHT_GRAY);
+		tInput.setBackground(Color.DARK_GRAY);
 		tInput.setHorizontalAlignment(SwingConstants.CENTER);
 		tInput.setEditable(false);
-		panel_2.add(tInput);
+		main_options.add(tInput);
 		tInput.setColumns(10);
 
 		lblClockSpeed = new JLabel("Clock Speed");
+		lblClockSpeed.setForeground(Color.WHITE);
+		lblClockSpeed.setBackground(Color.DARK_GRAY);
+		lblClockSpeed.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblClockSpeed.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_2.add(lblClockSpeed);
-
-		panel_4 = new JPanel();
-		panel_1.add(panel_4, BorderLayout.SOUTH);
-		panel_4.setLayout(new BorderLayout(0, 0));
-
-		sClock = new JSlider();
-		panel_4.add(sClock);
-		sClock.setPaintTicks(true);
-		sClock.setValue(500);
-		sClock.addChangeListener(new ChangeListener() {
-
-			@Override
-			public void stateChanged(ChangeEvent arg0) {
-
-				if (running) {
-					clock.changeMilliseconds(getClockMillis());
-				}
-
-			}
-		});
-		sClock.setOrientation(SwingConstants.VERTICAL);
-		sClock.setMinimum(0);
-		sClock.setMaximum(1000);
-		sClock.setMinimumSize(new Dimension(30, 23));
-		sClock.setPaintLabels(true);
-		sClock.setPreferredSize(new Dimension(45, 170));
-		sClock.setMaximumSize(new Dimension(25, 34));
-		sClock.setMinorTickSpacing(10);
-		sClock.setMajorTickSpacing(200);
-		sClock.setSnapToTicks(true);
-
-		verticalStrut_4 = Box.createVerticalStrut(15);
-		panel_4.add(verticalStrut_4, BorderLayout.SOUTH);
+		main_options.add(lblClockSpeed);
 
 		frame.setVisible(true);
 

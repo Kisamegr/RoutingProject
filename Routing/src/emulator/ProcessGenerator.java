@@ -1,4 +1,4 @@
-package routingpackage;
+package emulator;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -21,53 +21,62 @@ public class ProcessGenerator {
 	private int generationMax;
 	private int generationTime;
 	private int maximumBurstTime;
+	private int minimumBurstTime;
 	private Random random;
-
 	private int currentPid;
 
-	// constructor
+	// Constructor for reading the input
 	public ProcessGenerator(String inputPath, SJFScheduler sjfScheduler) {
 
-		newList = new NewProcessTemporaryList();
 		this.sjfScheduler = sjfScheduler;
+		initialize();
 
-		generationFreq = 10;
-		generationMax = 5;
-		generationTime = 0;
+		inputFile = new File(inputPath);
 
-		maximumBurstTime = 15;
+		// Parse the input file and get the processes
+		List<Process> proc_from_file;
+		proc_from_file = parseProcessFile();
 
-		if (inputPath != null) {
-			inputFile = new File(inputPath);
-
-			List<Process> proc_from_file;
-			proc_from_file = parseProcessFile(); // the arrayList is returned in here
-
-			// and then its objects are passed to our newList
-			for (Process temp : proc_from_file)
-				newList.AddNewProcess(temp);
-
-			newList.printList();
-		}
-
-		random = new Random(System.currentTimeMillis());
-
-		currentPid = 0;
+		// Then pass the processes to the newList
+		for (Process temp : proc_from_file)
+			newList.AddNewProcess(temp);
 
 	}
 
-	public void runGenerator(int currentTick) {
+	// Constructor for generating new processes and writing to the output file
+	public ProcessGenerator(int generationFreq, int generationMax, int maximumBurstTime, int minimumBurstTime, SJFScheduler sjfScheduler) {
 
-		// try {
+		this.sjfScheduler = sjfScheduler;
+		initialize();
+
+		this.generationFreq = generationFreq;
+		this.generationMax = generationMax;
+		this.maximumBurstTime = maximumBurstTime;
+		this.minimumBurstTime = minimumBurstTime;
+
+	}
+
+	// Basic initialization
+	private void initialize() {
+		newList = new NewProcessTemporaryList();
+		random = new Random(System.currentTimeMillis());
+		currentPid = 0;
+	}
+
+	// The main function, called in every tick of the clock
+	// Does 2 things:
+	// 1: IF GENERATION IS ENABLED, it generates new processes, puts them in the new list, and writes them to the output file
+	// 2: Checks if the any process in the top of the new list needs to be send to the ready process list, in order to simulate the arrival time.
+	public void runGenerator(int currentTick) {
 
 		// Generate new processes every generationFreq clocks
 		if (inputFile == null && (currentTick + 1) % getGenerationFreq() == 0 && generationTime < getGenerationMax()) {
 
-			// How many processes to generate
+			// How many processes to generate, calculated randomly
 			int processNumber = random.nextInt(generationFreq / 2) + 2;
 			Process[] newProcesses = new Process[processNumber];
 
-			// Create each process and add it to the new process list
+			// Create a random process and add it to the new process list
 			for (int i = 0; i < processNumber; i++) {
 				Process p = createProcess(currentTick);
 				newList.AddNewProcess(p);
@@ -105,11 +114,12 @@ public class ProcessGenerator {
 
 	}
 
-	// creating new process with pseudo-random characteristics
+	// Creates a new process with pseudo-random characteristics
 	public Process createProcess(int currentTick) {
 
+		// Calculate the arrival and burst time randomly
 		int arrTime = random.nextInt(generationFreq) + currentTick + 1;
-		int burstTime = random.nextInt(maximumBurstTime) + 1;
+		int burstTime = random.nextInt(maximumBurstTime) + minimumBurstTime;
 
 		Process p = new Process(currentPid, arrTime, burstTime);
 
@@ -118,11 +128,14 @@ public class ProcessGenerator {
 		return p;
 	}
 
-	// Saving new processes' data to inputFile
+	// Saving the new processes to the output file
+	// The data is stored with 3 integers, separated with '-'
+	// The 3 integers, in their respective order, are: PID - ARRIVAL TIME - BURST TIME
 	public void StoreProcessToFile(Process[] processes, boolean newFile) {
 
 		File outputFile = new File("output.txt");
 
+		// If an old output file exists, delete it
 		if (outputFile.exists() && newFile)
 			outputFile.delete();
 
@@ -134,6 +147,7 @@ public class ProcessGenerator {
 			FileWriter fw = new FileWriter(outputFile.getName(), true);
 			BufferedWriter bw = new BufferedWriter(fw);
 
+			// Write each process
 			for (int i = 0; i < processes.length; i++) {
 
 				bw.append(String.valueOf(processes[i].getPid()) + "-");
@@ -152,18 +166,19 @@ public class ProcessGenerator {
 		}
 	}
 
-	// reading inputFile
+	// Reading the input file
+	// The data is stored with 3 integers, separated with '-'
+	// The 3 integers, in their respective order, are: PID - ARRIVAL TIME - BURST TIME
 	public List<Process> parseProcessFile() {
-		List<Process> fileList = new ArrayList<Process>(); // initialize array
-															// list
+		List<Process> fileList = new ArrayList<Process>();
 
-		System.out.println(inputFile);
 		Scanner scan;
 		try {
 			Process p;
-			scan = new Scanner(inputFile);// create Scanner to scan
-											// Integers
-			int i = 0, k = 0, arrival_time = -1, burst_cpu_time = -1;
+
+			// Create Scanner to scan Integers
+			scan = new Scanner(inputFile);
+
 			String line = "", ar[] = { "1", "1", "1" };
 
 			while (scan.hasNextLine()) {
@@ -176,19 +191,12 @@ public class ProcessGenerator {
 
 			}
 
-			/*
-			 * while (scan.hasNextInt()) { i = scan.nextInt();
-			 * 
-			 * if (k == 0) // checks if it is in the first column { if ((arrival_time != -1) && (burst_cpu_time != -1))// if the // two // variables // have // a // value // from // the // text // file // then // it // creates // a new // temp // process // and // adds // it to // the // list { p = new Process(currentPid++, arrival_time, burst_cpu_time); fileList.add(p); } arrival_time = i; k = 1; } else if (k == 1)// second column { burst_cpu_time = i; k = 0; }
-			 * 
-			 * } p = new Process(currentPid++, arrival_time, burst_cpu_time); fileList.add(p);
-			 */
 			scan.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return fileList; // returs ArrayList
+		return fileList; // returns ArrayList
 	}
 
 	public int getGenerationFreq() {
@@ -205,5 +213,9 @@ public class ProcessGenerator {
 
 	public void setGenerationMax(int generationMax) {
 		this.generationMax = generationMax;
+	}
+
+	public int getRandomArrivalTime() {
+		return 2;
 	}
 }
