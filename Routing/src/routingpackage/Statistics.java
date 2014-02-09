@@ -153,15 +153,22 @@ public class Statistics {
 
 		StringBuilder string = new StringBuilder();
 
-		string.append("Tick:" + tickCount);
-		string.append(", Total waiting time : " + totalWaitingTime);
-		string.append(", Total # of processes: " + totalNumberOfProcesses);
-		string.append(", ALAverage Waiting Time: " + CalculateAverageWaitingTime() /* getAvgWait() */);
-		string.append(", ASPAverage Waiting Time: " + /* CalculateAverageWaitingTime() */getAvgWait());
-		string.append(", Finished P.: " + numberOfFinishedProcesses);
-		string.append(", total respond time: " + responseTime);
-		string.append(", Average response time: " + calculateAverageResponseTime());
-		string.append(", Max length readylist: " + maximumLengthOfReadyProcessesList);
+		string.append("Tick:" + tickCount + ",");	
+		string.append(alignment(string,10));
+		string.append("Total waiting time : " + totalWaitingTime + ",");
+		string.append(alignment(string,38));
+		string.append("Total # of processes: " + totalNumberOfProcesses + ",");
+		string.append(alignment(string,65));
+		//string.append("ALAverage Waiting Time: " + CalculateAverageWaitingTime() + ",\t" /* getAvgWait() */);
+		string.append("ASPAverage Waiting Time: " + getAvgWait() + ",");
+		string.append(alignment(string,111));
+		string.append("Finished P.: " + numberOfFinishedProcesses + ",");
+		string.append(alignment(string,130));
+		string.append("total respond time: " + responseTime + ",");
+		string.append(alignment(string,156));
+		string.append("Average response time: " + calculateAverageResponseTime() + ",");
+		string.append(alignment(string,192));
+		string.append("Max length readylist: " + maximumLengthOfReadyProcessesList);
 
 		System.out.println(string.toString());
 
@@ -185,5 +192,16 @@ public class Statistics {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public StringBuilder alignment(StringBuilder str, int spaces)
+	{
+		StringBuilder returnString = new StringBuilder();
+		int temp=str.length();
+		for(int k=0; k<spaces-temp;k++)
+		{
+			returnString.append(" ");
+		}
+		return returnString;
 	}
 }
