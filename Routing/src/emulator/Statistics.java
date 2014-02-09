@@ -17,9 +17,9 @@ public class Statistics {
 	private int maximumLengthOfReadyProcessesList; // name says it all
 	public int totalNumberOfProcesses; // current number of processes (i'll be using that)
 	private File outputFile; // where the statistics are going to be stored
-	private double mytotalwait = 0; // new one,experiment
-	private double myavgwait; // new one, experiment
-	private int myfinished; // woooofuckinghoooo
+	private double mytotalwait = 0; // total waiting time for finished processes
+	private double myavgwait; // average waiting time
+	private int myfinished; // finished processes
 
 	// constructor
 	public Statistics(String filename) {
@@ -68,14 +68,14 @@ public class Statistics {
 		myfinished += 1;
 	}
 
-	public void updatetotalwait(Process one, int currentTime) { // wanna add some comments to the git
+	public void updatetotalwait(Process one, int currentTime) {                          
+                                                                                                                    // called whenever a process has 0 remaining time/is finished.
+		                                                                                                            // Waiting time for any finished process is : (Current Time - Arrival Time) - Time spent in CPU
+		mytotalwait = mytotalwait + ((double) currentTime - (double) one.getArrivalTime() - one.getCpuTotalTime()); // updates total waiting time by
+		                                                                                                            // adding the waiting time of the finished process to the total
+	}                                                                                                               // 
 
-		mytotalwait = mytotalwait + ((double) currentTime - (double) one.getArrivalTime() - one.getCpuTotalTime());
-		System.out.println("MY TOTAL WAIT :" + mytotalwait);
-		System.out.println("(CURRENT TIME  - ARRIVAL TIME) - BURST TIME :   " + currentTime + " - " + one.getArrivalTime() + " - " + one.getCpuTotalTime());
-	}
-
-	public double getAvgWait() {
+	public double getAvgWait() {  // calculates the average waiting time , ( number finished processes /  sum of all their waiting times )
 		if ((totalNumberOfProcesses > 0) && (myfinished!=0)) {
 			System.out.println("NUMBER OF PROCESSES " + myfinished);
 			myavgwait = mytotalwait / myfinished;
@@ -84,12 +84,11 @@ public class Statistics {
 			return 0;
 	}
 
-	public double getAverageReadyQueueProcessWaitingTime(ReadyProcessesList one, int currentTime) { // to total waiting time ine o sinolikos xronos anamonis twn
-		// diergasiwn pu vriskonte ekini tin wra sto ReadyList
+	/*public double getAverageReadyQueueProcessWaitingTime(ReadyProcessesList one, int currentTime) {  
 
-		totalWaitingTime = 0; // to total ine kenurio gia ka8e tick tou clock pame se ola ta processes ke to ipologizoume a8roistika ws ekshs:
+		totalWaitingTime = 0; 
 
-		for (Process k : one.getReadyList()) {
+		for (Process k : one.getReadyList()) {   
 			totalWaitingTime = totalWaitingTime + (currentTime - k.getArrivalTime()) - (k.getCpuTotalTime() - k.getCpuRemainingTime());
 		}
 
@@ -100,23 +99,13 @@ public class Statistics {
 			avg = totalWaitingTime / one.getReadyList().size();
 		return avg;
 
-	}
+	}*/
 
-	/*
-	 * Current - Arrival : su dinei to poso perimenei apo ti stigmh pu bike sto queue sto non-preemptive.
-	 * 
-	 * Stin periptwsh non-preemptive den iparxei 8ema ke auto arkei gia na ksereis poso ine to waiting time tis diergasias;
-	 * 
-	 * Stin periptwsh pre-emptive, o sinolikos xronos pu perimene ine o xronos Current - Arrival MEION to xrono pou i diergasia den perimene ke itan mesa sti cpu .
-	 * 
-	 * Autos o xronos pu itan sti cpu ipologizete apo ton Total xrono Burst pu xriazete MION to remaining xrono.
-	 * 
-	 * Sto non-preemptive, i deuteri auti aferesi ( total - remaining ) dinei 0 giati i ergasia den epistrefei pote sto queue 2i fora opote to sinoliko tis waiting tote 8a ine apla Current - Arrival. Elpizw na vgazei noima.
-	 */
+	
 
-	public void updateTotalWaitingTime(int n) { /*
-												 * auto den kserw kata poso ine xrisimo telika , 8a sas eksigisw at skype.
-												 */
+	public void updateTotalWaitingTime(int n) { 
+												 
+												
 		totalWaitingTime += n;
 	}
 
@@ -159,12 +148,11 @@ public class Statistics {
 		string.append(alignment(string,38));
 		string.append("Total # of processes: " + totalNumberOfProcesses + ",");
 		string.append(alignment(string,65));
-		//string.append("ALAverage Waiting Time: " + CalculateAverageWaitingTime() + ",\t" /* getAvgWait() */);
-		string.append("ASPAverage Waiting Time: " + getAvgWait() + ",");
+		string.append("Average Waiting Time: " + getAvgWait() + ",");
 		string.append(alignment(string,111));
 		string.append("Finished P.: " + numberOfFinishedProcesses + ",");
 		string.append(alignment(string,130));
-		string.append("total respond time: " + responseTime + ",");
+		string.append("total response time: " + responseTime + ",");
 		string.append(alignment(string,156));
 		string.append("Average response time: " + calculateAverageResponseTime() + ",");
 		string.append(alignment(string,192));

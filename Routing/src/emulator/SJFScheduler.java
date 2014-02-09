@@ -26,19 +26,19 @@ public class SJFScheduler {
 		readyList.addProcess(process);
 	}
 
-	public void totalNumberOfProcessesUpdate()// edit. Xrisimopoieitai ston
-												// generator
+	public void totalNumberOfProcessesUpdate()// 
+												// 
 	{
 		if (stats != null)
 			stats.UpdateMaximumListLength(getReadyList().lengthOfQueue());
 	}
 
-	public void addTotalNumberOfProcesses(int n)// edit. Ston generator.
+	public void addTotalNumberOfProcesses(int n)// 
 	{
 		if (stats != null)
-			stats.totalNumberOfProcesses += n;// ayto to pedio einai public apo
-												// tin
-												// ekfwnisi
+			stats.totalNumberOfProcesses += n;// 
+												// 
+												// 
 	}
 
 	// executes process' swap in the CPU based on the "ready processes list" and
@@ -46,23 +46,18 @@ public class SJFScheduler {
 	public void SJF(int currentTime) {
 
 		Process cpuProcess = cpu.peekCpuProcess();
-		Process HeadofQueue = getReadyList().getReadyList().peek(); // i prwti diergasia tou readyQueue(auti me to mikrotero burst)
-
-		// stats.updateTotalWaitingTime(readyList.lengthOfQueue()); // Probably
-		// don't need that. Will explain.
-
-		if (stats != null)
-			stats.getAverageReadyQueueProcessWaitingTime(getReadyList(), currentTime); // Average waiting time for the processes currently in the list,RETURNS INT.
+		Process HeadofQueue = getReadyList().getReadyList().peek(); // first process of the ready queue/the one with the lowest burst
 
 		if (!isPreemptive) {
 
 			if (cpuProcess != null) {
 				if (cpuProcess.getCpuRemainingTime() == 0) {
-					// ka8e fora pu aferite edw mia diadikasia simenei pws exi oloklirw8ei
+					// zero remaining time  means that the process is finished, therefore update number of finished processes and total waiting time
+
 					if (stats != null) {
-						stats.updatetotalwait(cpuProcess, currentTime); // total waiting time
-						stats.updatemyfinished();
-						// 8a deite
+						stats.updatetotalwait(cpuProcess, currentTime); // total waiting time update
+						stats.updatemyfinished();    // update number of finished processes
+						
 					}
 					cpu.removeProcessFromCpu();
 
@@ -82,12 +77,7 @@ public class SJFScheduler {
 
 					cpu.addProcess(forCPU);
 
-					cpu.setLastProcessStartTime(currentTime); // o xronos pu
-																// bike teleutea
-																// fora process
-																// sti cpu
-					// if (stats != null)
-					// stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);// edit
+					cpu.setLastProcessStartTime(currentTime); 
 
 				}
 
@@ -100,13 +90,13 @@ public class SJFScheduler {
 
 			if (cpuProcess != null) {
 
-				if (cpuProcess.getCpuRemainingTime() == 0) {// MENEI TO IDIO ME TO NON-PREEMPTIVE
+				if (cpuProcess.getCpuRemainingTime() == 0) {// same as non-preemptive
 
-					// ka8e fora pu aferite edw mia diadikasia simenei pws exi oloklirw8ei
+					// zero remaining time  means that the process is finished, therefore update number of finished processes and total waiting time
 					if (stats != null) {
-						stats.updatetotalwait(cpuProcess, currentTime); // total waiting time
-						stats.updatemyfinished();
-						// 8a deite
+						stats.updatetotalwait(cpuProcess, currentTime); // total waiting time update
+						stats.updatemyfinished();   // update number of finished processes
+						
 					}
 
 					cpu.removeProcessFromCpu();
@@ -115,26 +105,11 @@ public class SJFScheduler {
 						stats.updateFinishedNumber(1);// edit
 						stats.updateResponseTime(currentTime - cpuProcess.getArrivalTime());// edit.
 					}
-				} else if ((HeadofQueue != null) && (cpuProcess.getCpuRemainingTime() > HeadofQueue.getCpuRemainingTime())) {
-					// prepei na:
-					// -vgei i process apo tin cpu
-					// -na mpei i alli
-					//
-					// Themata:
-					// Statistics
-					// opote mpainei mia diergasia pws kseroume oti einai i prwti fora pou mpainei mesa
-					// etsi na ananewnoume to response time
-					// LYSI:
-					// tha vlepoume tin diafora tou: cpuTotalTime-cpuRemainingTime
-					// kathe fora pou kanooume mia diergasia add stin cpu etsi wste na min
-					// ananewnoume to response time otan cpuTotalTime == cpuRemainingTime
+				} else if ((HeadofQueue != null) && (cpuProcess.getCpuRemainingTime() > HeadofQueue.getCpuRemainingTime())) {//null check + compare the remaining CPU times between the current CPU process and the one on the top of the Queue
 
-					// ***//
+					readyList.addProcess(cpu.removeProcessFromCpu()); //remove current
 
-					readyList.addProcess(cpu.removeProcessFromCpu());
-
-					Process forCPU = getReadyList().getProcessToRunInCPU();
-					// if (forCPU != null) / forCPU = HeadofQueue (prepei na elegx8ei pio panw etsi kialliws opote dn xriazete)
+					Process forCPU = getReadyList().getProcessToRunInCPU();//add the one from the top of the queue
 					{
 
 						if (forCPU.getCpuTotalTime() == forCPU.getCpuTotalTime()) {
@@ -144,12 +119,7 @@ public class SJFScheduler {
 
 						cpu.addProcess(forCPU);
 
-						cpu.setLastProcessStartTime(currentTime); // o xronos pu
-																	// bike teleutea
-																	// fora process
-																	// sti cpu
-						// if (stats != null)
-						// stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);// edit
+						cpu.setLastProcessStartTime(currentTime); 
 
 					}
 
@@ -159,8 +129,8 @@ public class SJFScheduler {
 
 			cpuProcess = cpu.peekCpuProcess();
 
-			if (cpuProcess == null) {
-				Process forCPU = getReadyList().getProcessToRunInCPU();
+			if (cpuProcess == null) {  //if CPU isn't occupied
+				Process forCPU = getReadyList().getProcessToRunInCPU();  //get process from the top of the Queue 
 				if (forCPU != null) {
 
 					if (forCPU.getCpuTotalTime() == forCPU.getCpuTotalTime()) {
@@ -168,14 +138,9 @@ public class SJFScheduler {
 							stats.updateResponseTime(currentTime - forCPU.getArrivalTime());// edit.
 					}
 
-					cpu.addProcess(forCPU);
+					cpu.addProcess(forCPU); //add to CPU
 
-					cpu.setLastProcessStartTime(currentTime); // o xronos pu
-																// bike teleutea
-																// fora process
-																// sti cpu
-					// if (stats != null)
-					// stats.updateTotalWaitingTime(forCPU.getArrivalTime()/*-currentTime*/);
+					cpu.setLastProcessStartTime(currentTime); 
 				}
 			}
 		}
