@@ -82,26 +82,7 @@ public class Statistics {
 			return myavgwait;
 		} else
 			return 0;
-	}
-
-	/*public double getAverageReadyQueueProcessWaitingTime(ReadyProcessesList one, int currentTime) {  
-
-		totalWaitingTime = 0; 
-
-		for (Process k : one.getReadyList()) {   
-			totalWaitingTime = totalWaitingTime + (currentTime - k.getArrivalTime()) - (k.getCpuTotalTime() - k.getCpuRemainingTime());
-		}
-
-		double avg;
-		if (one.getReadyList().size() == 0)
-			avg = 0;
-		else
-			avg = totalWaitingTime / one.getReadyList().size();
-		return avg;
-
-	}*/
-
-	
+	}	
 
 	public void updateTotalWaitingTime(int n) { 
 												 
