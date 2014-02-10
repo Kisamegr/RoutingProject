@@ -162,7 +162,7 @@ public class GenOptions extends JDialog {
 
 		sGenFreq = new JSlider();
 		sGenFreq.setBorder(new MatteBorder(1, 1, 2, 1, new Color(128, 128, 128)));
-		sGenFreq.setFont(new Font("Tahoma", Font.BOLD, 9));
+		sGenFreq.setFont(new Font("Tahoma", Font.BOLD, 10));
 		sGenFreq.setBackground(Color.DARK_GRAY);
 		sGenFreq.setForeground(Color.WHITE);
 		sGenFreq.setSnapToTicks(true);
@@ -177,7 +177,7 @@ public class GenOptions extends JDialog {
 
 		sGenMax = new JSlider();
 		sGenMax.setBorder(new MatteBorder(0, 1, 2, 1, Color.GRAY));
-		sGenMax.setFont(new Font("Tahoma", Font.BOLD, 9));
+		sGenMax.setFont(new Font("Tahoma", Font.BOLD, 10));
 		sGenMax.setBackground(Color.DARK_GRAY);
 		sGenMax.setForeground(Color.WHITE);
 		sGenMax.setSnapToTicks(true);
@@ -192,7 +192,7 @@ public class GenOptions extends JDialog {
 
 		sMaxBurst = new JSlider();
 		sMaxBurst.setBorder(new MatteBorder(0, 1, 2, 1, Color.GRAY));
-		sMaxBurst.setFont(new Font("Tahoma", Font.BOLD, 9));
+		sMaxBurst.setFont(new Font("Tahoma", Font.BOLD, 10));
 		sMaxBurst.setBackground(Color.DARK_GRAY);
 		sMaxBurst.setForeground(Color.WHITE);
 		sMaxBurst.setSnapToTicks(true);
@@ -207,7 +207,7 @@ public class GenOptions extends JDialog {
 
 		sMinBurst = new JSlider();
 		sMinBurst.setBorder(new MatteBorder(0, 1, 2, 1, Color.GRAY));
-		sMinBurst.setFont(new Font("Tahoma", Font.BOLD, 9));
+		sMinBurst.setFont(new Font("Tahoma", Font.BOLD, 10));
 		sMinBurst.setBackground(Color.DARK_GRAY);
 		sMinBurst.setForeground(Color.WHITE);
 		sMinBurst.setSnapToTicks(true);

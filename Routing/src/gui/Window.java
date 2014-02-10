@@ -97,16 +97,13 @@ public class Window {
 		sClock.setBackground(Color.DARK_GRAY);
 		sClock.setBorder(new MatteBorder(5, 0, 0, 0, new Color(128, 128, 128)));
 		sClock.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		sClock.setValue(500);
 		sClock.addChangeListener(new ChangeListener() {
 
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
 
-				if (running) {
-					clock.changeMilliseconds(getClockMillis());
-				}
-
+				if (running)
+					clock.changeMilliseconds(getClockMillisFromSlider());
 			}
 		});
 		sClock.setOrientation(SwingConstants.VERTICAL);
@@ -117,8 +114,8 @@ public class Window {
 		sClock.setMaximumSize(new Dimension(25, 34));
 		sClock.setMinorTickSpacing(25);
 		sClock.setMajorTickSpacing(250);
+		sClock.setValue(850);
 		inputPath = "";
-		// System.out.println(Thread.currentThread().getName());
 
 		frame.setTitle(name);
 		frame.setVisible(true);
@@ -130,31 +127,24 @@ public class Window {
 	private void startEmulation() {
 
 		console.resetLogger();
-		
-		String out;
+
 		cpu = new CPU();
-		if (cStatistics.isSelected() && cPreemptive.isSelected()){
-			String filepath = System.getProperty("user.dir") + File.separatorChar + "stats Preemptive.txt";
+		if (cStatistics.isSelected() && cPreemptive.isSelected()) {
+			String filepath = System.getProperty("user.dir") + File.separatorChar + "stats-preemptive.txt";
 			stats = new Statistics(filepath);
-		}else if (cStatistics.isSelected() && !cPreemptive.isSelected()){
-			String filepath = System.getProperty("user.dir") + File.separatorChar + "stats Non-Preemptive.txt";
+		} else if (cStatistics.isSelected() && !cPreemptive.isSelected()) {
+			String filepath = System.getProperty("user.dir") + File.separatorChar + "stats-non-preemptive.txt";
 			stats = new Statistics(filepath);
 		}
-			
-		sjfScheduler = new SJFScheduler(cPreemptive.isSelected(), cpu, stats);
 
-		/*
-		 * if (cOutput.isSelected()) out = "output.txt"; else out = null;
-		 */
+		sjfScheduler = new SJFScheduler(cPreemptive.isSelected(), cpu, stats);
 
 		if (rInput.isSelected())
 			generator = new ProcessGenerator(inputPath, sjfScheduler);
 		else
 			generator = new ProcessGenerator(genOptionsPanel.getGenerationFreq(), genOptionsPanel.getGenerationMax(), genOptionsPanel.getMaxBurst(), genOptionsPanel.getMinBurst(), sjfScheduler);
 
-		// generator = new ProcessGenerator(out, false, sjfScheduler);
-
-		int clockMillis = getClockMillis();
+		int clockMillis = getClockMillisFromSlider();
 		clock = new Clock(clockMillis, generator, sjfScheduler, cpu);
 
 		clock.startClock();
@@ -308,7 +298,7 @@ public class Window {
 		cPreemptive.setHorizontalAlignment(SwingConstants.CENTER);
 		main_options.add(cPreemptive);
 
-		cStatistics = new JCheckBox("Statistics    ");
+		cStatistics = new JCheckBox("Statistics     ");
 		cStatistics.setBorder(new MatteBorder(0, 0, 3, 0, new Color(128, 128, 128)));
 		cStatistics.setFont(new Font("Tahoma", Font.BOLD, 11));
 		cStatistics.setForeground(Color.WHITE);
@@ -391,9 +381,9 @@ public class Window {
 		tInput.setColumns(10);
 
 		lblClockSpeed = new JLabel("Clock Speed");
-		lblClockSpeed.setForeground(Color.WHITE);
+		lblClockSpeed.setForeground(new Color(245, 245, 245));
 		lblClockSpeed.setBackground(Color.DARK_GRAY);
-		lblClockSpeed.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblClockSpeed.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblClockSpeed.setHorizontalAlignment(SwingConstants.CENTER);
 		main_options.add(lblClockSpeed);
 
@@ -406,7 +396,7 @@ public class Window {
 		group.add(rOutput);
 	}
 
-	private int getClockMillis() {
+	private int getClockMillisFromSlider() {
 
 		int clockMillis = 0;
 

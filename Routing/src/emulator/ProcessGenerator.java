@@ -12,9 +12,7 @@ import java.util.Scanner;
 
 public class ProcessGenerator {
 
-	private File inputFile; // where the data of new processes are going to be
-							// stored
-
+	private File inputFile;
 	private NewProcessTemporaryList newList;
 	private SJFScheduler sjfScheduler;
 	private int generationFreq;
@@ -93,13 +91,12 @@ public class ProcessGenerator {
 			generationTime++;
 		}
 
-		
-		if (currentTick == -1 && inputFile != null){
+		if (currentTick == -1 && inputFile != null) {
 			newList.printList();
 		}
-		
+
 		// Move the first process to the ready list if its arrival time
-	    // equals the current time
+		// equals the current time
 		Process firstNewProcess = newList.peekFirst();
 		while (firstNewProcess != null && firstNewProcess.getArrivalTime() == currentTick) {
 			newList.getFirst();
@@ -223,10 +220,9 @@ public class ProcessGenerator {
 	public int getRandomArrivalTime() {
 		return 2;
 	}
-	
+
 	public int getNewlistLength() {
 		return newList.lengthOfQueue();
 	}
 
-	
 }
