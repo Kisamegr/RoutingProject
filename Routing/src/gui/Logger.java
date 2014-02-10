@@ -21,6 +21,8 @@ public class Logger {
 
 					BufferedWriter bw = new BufferedWriter(new FileWriter(log, true));
 					bw.append(line);
+					bw.newLine();
+					bw.newLine();
 					bw.flush();
 					bw.close();
 
