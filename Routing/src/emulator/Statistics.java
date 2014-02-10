@@ -125,7 +125,7 @@ public class Statistics {
 		string.append("Finished P.: " + numberOfFinishedProcesses + ",");
 		string.append(alignment(string,130));
 		string.append("total response time: " + responseTime + ",");
-		string.append(alignment(string,156));
+		string.append(alignment(string,158));
 		string.append("Average response time: " + calculateAverageResponseTime() + ",");
 		string.append(alignment(string,192));
 		string.append("Max length readylist: " + maximumLengthOfReadyProcessesList);
