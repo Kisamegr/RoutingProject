@@ -59,4 +59,8 @@ public class ReadyProcessesList {
 			k++;
 		}
 	}
+
+	public Process[] getProcesses() {
+		return processList.toArray(new Process[0]);
+	}
 }

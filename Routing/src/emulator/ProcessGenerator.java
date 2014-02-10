@@ -225,4 +225,8 @@ public class ProcessGenerator {
 		return newList.lengthOfQueue();
 	}
 
+	public NewProcessTemporaryList getNewList() {
+		return newList;
+	}
+
 }

@@ -22,11 +22,15 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.border.MatteBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import emulator.CPU;
 import emulator.Clock;
@@ -41,7 +45,7 @@ public class Window {
 	private Console console;
 	private static Console m_console;
 	private static Window window;
-	private JPanel panel;
+	private JPanel options_panel;
 	private JButton bStart;
 	private JPanel options;
 	private JCheckBox cPreemptive;
@@ -54,6 +58,10 @@ public class Window {
 	private JLabel lblClockSpeed;
 	private String inputPath;
 	private GenOptions genOptionsPanel;
+	private DefaultTableCellRenderer centerRenderer;
+	private ProcessModel cpuModel;
+	private ProcessModel rdyModel;
+	private ProcessModel newModel;
 
 	// Emulator variables
 	private CPU cpu;
@@ -77,6 +85,30 @@ public class Window {
 	private JPanel gen_options;
 	private Component horizontalStrut_4;
 	private Component horizontalStrut_5;
+	private JPanel table_panel;
+	private JPanel panel;
+	private JScrollPane cpuScroll;
+	private JTable cpuTable;
+	private JScrollPane rdyScroll;
+	private JTable rdyTable;
+	private JScrollPane newScroll;
+	private JTable newTable;
+	private JLabel lblGrids;
+	private JPanel panel_1;
+	private JPanel panel_2;
+	private JPanel panel_3;
+	private JPanel panel_4;
+	private JLabel lblCpu;
+	private JLabel lblReadyList;
+	private JLabel lblNewList;
+	private JPanel panel_6;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JLabel lblNewLabel_3;
+	private JLabel lblNewLabel_4;
+	private JPanel panel_8;
+	private JLabel lblNewLabel_5;
+	private JPanel panel_7;
 
 	public Window(String name) {
 
@@ -85,36 +117,10 @@ public class Window {
 		window = this;
 
 		running = false;
+
 		initialize();
 		tInput.setText("");
 
-		sClock = new JSlider();
-		options.add(sClock, BorderLayout.SOUTH);
-		sClock.setPaintTicks(true);
-		sClock.setPaintLabels(true);
-		sClock.setFont(new Font("Tahoma", Font.BOLD, 12));
-		sClock.setForeground(Color.WHITE);
-		sClock.setBackground(Color.DARK_GRAY);
-		sClock.setBorder(new MatteBorder(5, 0, 0, 0, new Color(128, 128, 128)));
-		sClock.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		sClock.addChangeListener(new ChangeListener() {
-
-			@Override
-			public void stateChanged(ChangeEvent arg0) {
-
-				if (running)
-					clock.changeMilliseconds(getClockMillisFromSlider());
-			}
-		});
-		sClock.setOrientation(SwingConstants.VERTICAL);
-		sClock.setMinimum(0);
-		sClock.setMaximum(1000);
-		sClock.setMinimumSize(new Dimension(30, 23));
-		sClock.setPreferredSize(new Dimension(45, 170));
-		sClock.setMaximumSize(new Dimension(25, 34));
-		sClock.setMinorTickSpacing(25);
-		sClock.setMajorTickSpacing(250);
-		sClock.setValue(850);
 		inputPath = "";
 
 		frame.setTitle(name);
@@ -164,6 +170,8 @@ public class Window {
 		bStart.setText("Start");
 		running = false;
 
+		clearProcessPanels();
+
 	}
 
 	private void clearConsole() {
@@ -179,8 +187,197 @@ public class Window {
 		frame.setMinimumSize(new Dimension(900, 500));
 		frame.getContentPane().setBackground(Color.BLACK);
 		frame.setBackground(Color.BLACK);
-		frame.setBounds(100, 100, 900, 500);
+		frame.setBounds(100, 100, 950, 504);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		centerRenderer = new DefaultTableCellRenderer();
+		centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+		table_panel = new JPanel();
+		table_panel.setBorder(new MatteBorder(5, 4, 5, 0, new Color(128, 128, 128)));
+		table_panel.setBackground(Color.DARK_GRAY);
+		table_panel.setPreferredSize(new Dimension(165, 10));
+		frame.getContentPane().add(table_panel, BorderLayout.WEST);
+		table_panel.setLayout(new BorderLayout(0, 0));
+
+		panel_1 = new JPanel();
+		panel_1.setBackground(Color.DARK_GRAY);
+		table_panel.add(panel_1, BorderLayout.NORTH);
+		panel_1.setLayout(new BorderLayout(0, 0));
+
+		lblGrids = new JLabel("PROCESSES");
+		lblGrids.setBorder(new MatteBorder(1, 1, 1, 19, Color.GRAY));
+		lblGrids.setForeground(Color.LIGHT_GRAY);
+		lblGrids.setBackground(Color.DARK_GRAY);
+		panel_1.add(lblGrids);
+		lblGrids.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblGrids.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGrids.setHorizontalTextPosition(SwingConstants.CENTER);
+
+		panel_7 = new JPanel();
+		panel_7.setBorder(new MatteBorder(0, 1, 0, 0, Color.GRAY));
+		panel_1.add(panel_7, BorderLayout.SOUTH);
+		panel_7.setLayout(new BorderLayout(0, 0));
+		// BorderLayout l = (BorderLayout) panel_7.getLayout();
+		// panel_7.remove(l.getLayoutComponent(BorderLayout.WEST));
+
+		panel_6 = new JPanel();
+		panel_7.add(panel_6);
+		panel_6.setBackground(Color.DARK_GRAY);
+		panel_6.setLayout(new GridLayout(1, 5, 0, 0));
+
+		lblNewLabel_1 = new JLabel("PID");
+		panel_6.add(lblNewLabel_1);
+		lblNewLabel_1.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblNewLabel_1.setBorder(new MatteBorder(0, 0, 0, 1, new Color(128, 128, 128)));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_1.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_1.setBackground(Color.DARK_GRAY);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+
+		lblNewLabel_2 = new JLabel("ARR");
+		panel_6.add(lblNewLabel_2);
+		lblNewLabel_2.setBorder(new MatteBorder(0, 0, 0, 1, Color.GRAY));
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_2.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_2.setBackground(Color.DARK_GRAY);
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+
+		lblNewLabel_3 = new JLabel("BUR");
+		panel_6.add(lblNewLabel_3);
+		lblNewLabel_3.setBorder(new MatteBorder(0, 0, 0, 1, Color.GRAY));
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_3.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_3.setBackground(Color.DARK_GRAY);
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+
+		lblNewLabel_4 = new JLabel("REM");
+		panel_6.add(lblNewLabel_4);
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_4.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_4.setBackground(Color.DARK_GRAY);
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+
+		lblNewLabel_5 = new JLabel("");
+		panel_7.add(lblNewLabel_5, BorderLayout.EAST);
+		lblNewLabel_5.setMaximumSize(new Dimension(19, 0));
+		lblNewLabel_5.setOpaque(true);
+		lblNewLabel_5.setBackground(Color.GRAY);
+		lblNewLabel_5.setPreferredSize(new Dimension(19, 0));
+
+		panel = new JPanel();
+		panel.setBackground(Color.DARK_GRAY);
+		table_panel.add(panel, BorderLayout.CENTER);
+		panel.setLayout(new BorderLayout(0, 0));
+
+		panel_2 = new JPanel();
+		panel_2.setBackground(Color.DARK_GRAY);
+		panel_2.setPreferredSize(new Dimension(10, 35));
+		panel.add(panel_2, BorderLayout.NORTH);
+		panel_2.setLayout(new BorderLayout(0, 0));
+
+		cpuScroll = new JScrollPane();
+		cpuScroll.setBorder(new MatteBorder(1, 1, 1, 19, Color.GRAY));
+		cpuScroll.setBackground(Color.DARK_GRAY);
+		cpuScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+		panel_2.add(cpuScroll);
+		cpuScroll.setForeground(Color.GREEN);
+
+		cpuModel = new ProcessModel();
+		rdyModel = new ProcessModel();
+		newModel = new ProcessModel();
+
+		cpuTable = new JTable();
+		cpuTable.setFillsViewportHeight(true);
+		cpuTable.setShowVerticalLines(false);
+		cpuTable.setBackground(Color.DARK_GRAY);
+		cpuTable.setRequestFocusEnabled(false);
+		cpuTable.setForeground(Color.BLACK);
+		cpuScroll.add(cpuTable);
+		cpuScroll.setViewportView(cpuTable);
+		cpuTable.setModel(cpuModel);
+		// cpuTable.setEnabled(false);
+		cpuTable.setTableHeader(null);
+		cpuTable.setForeground(Color.getHSBColor(0.6f, 0.2f, 0.8f));
+
+		lblCpu = new JLabel("CPU");
+		lblCpu.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblCpu.setForeground(new Color(245, 245, 245));
+		lblCpu.setBackground(Color.DARK_GRAY);
+		lblCpu.setBorder(new MatteBorder(1, 1, 1, 19, Color.GRAY));
+		lblCpu.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_2.add(lblCpu, BorderLayout.NORTH);
+
+		panel_8 = new JPanel();
+		panel_8.setBackground(Color.DARK_GRAY);
+		panel.add(panel_8, BorderLayout.CENTER);
+		panel_8.setLayout(new GridLayout(2, 1, 0, 0));
+
+		panel_3 = new JPanel();
+		panel_3.setBackground(Color.DARK_GRAY);
+		panel_8.add(panel_3);
+		panel_3.setLayout(new BorderLayout(0, 0));
+
+		rdyScroll = new JScrollPane();
+		rdyScroll.setBackground(Color.DARK_GRAY);
+		rdyScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		panel_3.add(rdyScroll);
+
+		rdyTable = new JTable();
+		rdyTable.setShowVerticalLines(false);
+		rdyTable.setBackground(Color.DARK_GRAY);
+		rdyTable.setFillsViewportHeight(true);
+		rdyScroll.add(rdyTable);
+		rdyScroll.setViewportView(rdyTable);
+		rdyTable.setModel(rdyModel);
+		// rdyTable.setEnabled(false);
+		rdyTable.setTableHeader(null);
+		rdyTable.setForeground(Color.getHSBColor(13, 7.6f, 0.2f));
+
+		lblReadyList = new JLabel("READY LIST");
+		lblReadyList.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblReadyList.setForeground(new Color(245, 245, 245));
+		lblReadyList.setBorder(new MatteBorder(1, 1, 1, 19, Color.GRAY));
+		lblReadyList.setBackground(Color.DARK_GRAY);
+		lblReadyList.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_3.add(lblReadyList, BorderLayout.NORTH);
+
+		panel_4 = new JPanel();
+		panel_4.setBackground(Color.DARK_GRAY);
+		panel_8.add(panel_4);
+		panel_4.setLayout(new BorderLayout(0, 0));
+
+		newScroll = new JScrollPane();
+		newScroll.setBackground(Color.DARK_GRAY);
+		newScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		panel_4.add(newScroll);
+
+		newTable = new JTable();
+		newTable.setShowVerticalLines(false);
+		newTable.setFillsViewportHeight(true);
+		newTable.setBackground(Color.DARK_GRAY);
+		newScroll.add(newTable);
+		newScroll.setViewportView(newTable);
+		newTable.setModel(newModel);
+		// newTable.setEnabled(false);
+		newTable.setTableHeader(null);
+		newTable.setForeground(Color.LIGHT_GRAY);
+
+		lblNewList = new JLabel("NEW LIST");
+		lblNewList.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewList.setForeground(new Color(245, 245, 245));
+		lblNewList.setBorder(new MatteBorder(1, 1, 1, 19, new Color(128, 128, 128)));
+		lblNewList.setBackground(Color.DARK_GRAY);
+		lblNewList.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_4.add(lblNewList, BorderLayout.NORTH);
+
+		for (int k = 0; k < cpuTable.getColumnModel().getColumnCount(); k++)
+			cpuTable.getColumnModel().getColumn(k).setCellRenderer(centerRenderer);
+
+		for (int k = 0; k < rdyTable.getColumnModel().getColumnCount(); k++)
+			rdyTable.getColumnModel().getColumn(k).setCellRenderer(centerRenderer);
+
+		for (int k = 0; k < newTable.getColumnModel().getColumnCount(); k++)
+			newTable.getColumnModel().getColumn(k).setCellRenderer(centerRenderer);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBackground(Color.DARK_GRAY);
@@ -188,18 +385,18 @@ public class Window {
 
 		scrollPane.setViewportView(console);
 
-		panel = new JPanel();
-		panel.setForeground(Color.WHITE);
-		panel.setBackground(Color.DARK_GRAY);
-		panel.setBorder(null);
-		frame.getContentPane().add(panel, BorderLayout.EAST);
-		panel.setLayout(new BorderLayout(0, 0));
+		options_panel = new JPanel();
+		options_panel.setForeground(Color.WHITE);
+		options_panel.setBackground(Color.DARK_GRAY);
+		options_panel.setBorder(null);
+		frame.getContentPane().add(options_panel, BorderLayout.EAST);
+		options_panel.setLayout(new BorderLayout(0, 0));
 
 		buttons = new JPanel();
 		buttons.setForeground(Color.WHITE);
 		buttons.setBackground(Color.DARK_GRAY);
 		buttons.setBorder(new MatteBorder(0, 5, 5, 5, Color.GRAY));
-		panel.add(buttons, BorderLayout.SOUTH);
+		options_panel.add(buttons, BorderLayout.SOUTH);
 		buttons.setLayout(new BorderLayout(0, 0));
 
 		bStart = new JButton("START");
@@ -272,7 +469,7 @@ public class Window {
 		options.setForeground(Color.WHITE);
 		options.setBackground(Color.DARK_GRAY);
 		options.setBorder(new MatteBorder(6, 5, 5, 5, Color.GRAY));
-		panel.add(options, BorderLayout.CENTER);
+		options_panel.add(options, BorderLayout.CENTER);
 		options.setLayout(new BorderLayout(0, 0));
 
 		lblNewLabel = new JLabel(" OPTIONS ");
@@ -387,13 +584,82 @@ public class Window {
 		lblClockSpeed.setHorizontalAlignment(SwingConstants.CENTER);
 		main_options.add(lblClockSpeed);
 
-		frame.setVisible(true);
+		sClock = new JSlider();
+		options.add(sClock, BorderLayout.SOUTH);
+		sClock.setPaintTicks(true);
+		sClock.setPaintLabels(true);
+		sClock.setFont(new Font("Tahoma", Font.BOLD, 12));
+		sClock.setForeground(Color.WHITE);
+		sClock.setBackground(Color.DARK_GRAY);
+		sClock.setBorder(new MatteBorder(5, 0, 0, 0, new Color(128, 128, 128)));
+		sClock.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		sClock.addChangeListener(new ChangeListener() {
 
-		// console.appendInfoMessage("Done initializing the main window.");
+			@Override
+			public void stateChanged(ChangeEvent arg0) {
+
+				if (running)
+					clock.changeMilliseconds(getClockMillisFromSlider());
+			}
+		});
+		sClock.setOrientation(SwingConstants.VERTICAL);
+		sClock.setMinimum(0);
+		sClock.setMaximum(1000);
+		sClock.setMinimumSize(new Dimension(30, 23));
+		sClock.setPreferredSize(new Dimension(45, 170));
+		sClock.setMaximumSize(new Dimension(25, 34));
+		sClock.setMinorTickSpacing(25);
+		sClock.setMajorTickSpacing(250);
+		sClock.setValue(850);
 
 		ButtonGroup group = new ButtonGroup();
 		group.add(rInput);
 		group.add(rOutput);
+
+		frame.setVisible(true);
+	}
+
+	public void updateProcessPanels() {
+
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+
+				if (cpu.peekCpuProcess() == null) {
+					if (cpuModel.getRowCount() != 0)
+						cpuModel.clearProcesses();
+				} else {
+					if (cpuModel.getRowCount() != 0) {
+						cpuModel.clearProcesses();
+						cpuModel.addProcess(cpu.peekCpuProcess());
+					} else
+						cpuModel.addProcess(cpu.peekCpuProcess());
+
+				}
+
+				if (sjfScheduler.getReadyList().getProcesses().length == 0) {
+					if (rdyModel.getRowCount() != 0)
+						rdyModel.clearProcesses();
+				} else {
+					rdyModel.addProcesses(sjfScheduler.getReadyList().getProcesses());
+				}
+
+				if (generator.getNewList().getProcesses().length == 0) {
+					if (newModel.getRowCount() != 0)
+						newModel.clearProcesses();
+				} else {
+					newModel.addProcesses(generator.getNewList().getProcesses());
+				}
+			}
+		});
+
+	}
+
+	public void clearProcessPanels() {
+		cpuModel.clearProcesses();
+		rdyModel.clearProcesses();
+		newModel.clearProcesses();
 	}
 
 	private int getClockMillisFromSlider() {

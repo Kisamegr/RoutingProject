@@ -49,6 +49,8 @@ public class Clock implements ActionListener {
 			if (generator.getNewlistLength() == 0 && cpu.peekCpuProcess() == null) // And if the ready list is empty, and the cpu does not have any process
 				stopClock(); // Stop the clock
 
+		Window.getWindow().updateProcessPanels();
+
 	}
 
 	// return ticks
