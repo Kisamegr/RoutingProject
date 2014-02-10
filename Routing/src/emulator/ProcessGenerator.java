@@ -93,8 +93,13 @@ public class ProcessGenerator {
 			generationTime++;
 		}
 
+		
+		if (currentTick == -1 && inputFile != null){
+			newList.printList();
+		}
+		
 		// Move the first process to the ready list if its arrival time
-		// equals the current time
+	    // equals the current time
 		Process firstNewProcess = newList.peekFirst();
 		while (firstNewProcess != null && firstNewProcess.getArrivalTime() == currentTick) {
 			newList.getFirst();
@@ -109,7 +114,7 @@ public class ProcessGenerator {
 
 		}
 
-		// checks the ready queue and updates, if necessary, the maximumLengthOfReadyProcessesList. edit
+		// checks the ready queue and updates, if necessary, the maximumLengthOfReadyProcessesList.
 		sjfScheduler.totalNumberOfProcessesUpdate();
 
 	}
@@ -218,4 +223,10 @@ public class ProcessGenerator {
 	public int getRandomArrivalTime() {
 		return 2;
 	}
+	
+	public int getNewlistLength() {
+		return newList.lengthOfQueue();
+	}
+
+	
 }

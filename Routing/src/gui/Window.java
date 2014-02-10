@@ -130,12 +130,17 @@ public class Window {
 	private void startEmulation() {
 
 		console.resetLogger();
-		String filepath = System.getProperty("user.dir") + File.separatorChar + "stats.txt";
+		
 		String out;
-		System.out.println(filepath);
 		cpu = new CPU();
-		if (cStatistics.isSelected())
+		if (cStatistics.isSelected() && cPreemptive.isSelected()){
+			String filepath = System.getProperty("user.dir") + File.separatorChar + "stats Preemptive.txt";
 			stats = new Statistics(filepath);
+		}else if (cStatistics.isSelected() && !cPreemptive.isSelected()){
+			String filepath = System.getProperty("user.dir") + File.separatorChar + "stats Non-Preemptive.txt";
+			stats = new Statistics(filepath);
+		}
+			
 		sjfScheduler = new SJFScheduler(cPreemptive.isSelected(), cpu, stats);
 
 		/*

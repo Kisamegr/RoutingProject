@@ -26,8 +26,7 @@ public class SJFScheduler {
 		readyList.addProcess(process);
 	}
 
-	public void totalNumberOfProcessesUpdate()// 
-												// 
+	public void totalNumberOfProcessesUpdate()
 	{
 		if (stats != null)
 			stats.UpdateMaximumListLength(getReadyList().lengthOfQueue());
@@ -36,9 +35,7 @@ public class SJFScheduler {
 	public void addTotalNumberOfProcesses(int n)// 
 	{
 		if (stats != null)
-			stats.totalNumberOfProcesses += n;// 
-												// 
-												// 
+			stats.totalNumberOfProcesses += n;
 	}
 
 	// executes process' swap in the CPU based on the "ready processes list" and
@@ -102,19 +99,19 @@ public class SJFScheduler {
 					cpu.removeProcessFromCpu();
 
 					if (stats != null) {
-						stats.updateFinishedNumber(1);// edit
-						stats.updateResponseTime(currentTime - cpuProcess.getArrivalTime());// edit.
+						stats.updateFinishedNumber(1);
+						stats.updateResponseTime(currentTime - cpuProcess.getArrivalTime());
 					}
 				} else if ((HeadofQueue != null) && (cpuProcess.getCpuRemainingTime() > HeadofQueue.getCpuRemainingTime())) {//null check + compare the remaining CPU times between the current CPU process and the one on the top of the Queue
 
-					readyList.addProcess(cpu.removeProcessFromCpu()); //remove current
+					readyList.addProcess(cpu.removeProcessFromCpu()); //remove current Process and put it again at ready list
 
 					Process forCPU = getReadyList().getProcessToRunInCPU();//add the one from the top of the queue
 					{
 
 						if (forCPU.getCpuTotalTime() == forCPU.getCpuTotalTime()) {
 							if (stats != null)
-								stats.updateResponseTime(currentTime - forCPU.getArrivalTime());// edit.
+								stats.updateResponseTime(currentTime - forCPU.getArrivalTime());
 						}
 
 						cpu.addProcess(forCPU);
@@ -135,7 +132,7 @@ public class SJFScheduler {
 
 					if (forCPU.getCpuTotalTime() == forCPU.getCpuTotalTime()) {
 						if (stats != null)
-							stats.updateResponseTime(currentTime - forCPU.getArrivalTime());// edit.
+							stats.updateResponseTime(currentTime - forCPU.getArrivalTime());
 					}
 
 					cpu.addProcess(forCPU); //add to CPU
@@ -146,7 +143,7 @@ public class SJFScheduler {
 		}
 
 		if (stats != null) {
-			stats.updateTotalWaitingTime(getReadyList().lengthOfQueue());// edit
+			stats.updateTotalWaitingTime(getReadyList().lengthOfQueue());
 			stats.WriteStatistics2File(currentTime);
 		}
 

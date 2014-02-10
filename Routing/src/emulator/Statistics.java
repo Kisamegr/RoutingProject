@@ -34,13 +34,7 @@ public class Statistics {
 		myfinished = 0;
 		outputFile = new File(filename);
 
-		// i mia epilogi einai ayti: an yparxei to arxeio to diagrafw kai meta
-		// ksanaftiaxnw arxeio
-		/*
-		 * if (outputFile.exists()) { try { outputFile.delete(); outputFile.createNewFile(); } catch (IOException e) { e.printStackTrace(); } }
-		 */
-
-		// kai ayti einai i alli epilogi
+		
 		if (outputFile.exists()) {
 			FileWriter fw;
 			try {
@@ -50,7 +44,6 @@ public class Statistics {
 				fw.write("Time: " + dateFormat.format(date));
 				fw.flush();
 				fw.close();
-				// eraser.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -84,9 +77,7 @@ public class Statistics {
 			return 0;
 	}	
 
-	public void updateTotalWaitingTime(int n) { 
-												 
-												
+	public void updateTotalWaitingTime(int n) { 					
 		totalWaitingTime += n;
 	}
 
@@ -150,11 +141,9 @@ public class Statistics {
 			FileWriter fw = new FileWriter(outputFile.getName(), true);
 			BufferedWriter bw = new BufferedWriter(fw);
 
-			bw.write("\r\n" + string.toString());// twra grafei to ena panw sto
-													// allokai sto telos deixnei
-													// mono to teleytaio
+			bw.write("\r\n" + string.toString());
 
-			bw.close();// to anoigokleinei sunexeia .... xmmm
+			bw.close();
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
