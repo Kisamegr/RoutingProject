@@ -18,8 +18,10 @@ public class ProcessGenerator {
 	private int generationFreq;
 	private int generationMax;
 	private int generationTime;
-	private int maximumBurstTime;
-	private int minimumBurstTime;
+	private int maxBurstTime;
+	private int minBurstTime;
+	private int maxGenProc;
+	private int minGenProc;
 	private Random random;
 	private int currentPid;
 
@@ -42,15 +44,17 @@ public class ProcessGenerator {
 	}
 
 	// Constructor for generating new processes and writing to the output file
-	public ProcessGenerator(int generationFreq, int generationMax, int maximumBurstTime, int minimumBurstTime, SJFScheduler sjfScheduler) {
+	public ProcessGenerator(int generationFreq, int generationMax, int maxBurstTime, int minBurstTime, int maxGenProc, int minGenProc, SJFScheduler sjfScheduler) {
 
 		this.sjfScheduler = sjfScheduler;
 		initialize();
 
 		this.generationFreq = generationFreq;
 		this.generationMax = generationMax;
-		this.maximumBurstTime = maximumBurstTime;
-		this.minimumBurstTime = minimumBurstTime;
+		this.maxBurstTime = maxBurstTime;
+		this.minBurstTime = minBurstTime;
+		this.maxGenProc = maxGenProc;
+		this.minGenProc = minGenProc;
 
 	}
 
@@ -71,7 +75,7 @@ public class ProcessGenerator {
 		if (inputFile == null && (currentTick + 1) % getGenerationFreq() == 0 && generationTime < getGenerationMax()) {
 
 			// How many processes to generate, calculated randomly
-			int processNumber = random.nextInt(generationFreq / 2) + 2;
+			int processNumber = random.nextInt(maxGenProc - minGenProc) + minGenProc;
 			Process[] newProcesses = new Process[processNumber];
 
 			// Create a random process and add it to the new process list
@@ -121,7 +125,7 @@ public class ProcessGenerator {
 
 		// Calculate the arrival and burst time randomly
 		int arrTime = random.nextInt(generationFreq) + currentTick + 1;
-		int burstTime = random.nextInt(maximumBurstTime) + minimumBurstTime;
+		int burstTime = random.nextInt(maxBurstTime) + minBurstTime;
 
 		Process p = new Process(currentPid, arrTime, burstTime);
 

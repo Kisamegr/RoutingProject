@@ -89,6 +89,9 @@ public class GenOptions extends JDialog {
 	private JSlider sGenMax;
 	private JSlider sMaxBurst;
 	private JSlider sMinBurst;
+	private JSlider sMaxGenProc;
+	private JSlider sMinGenProc;
+
 	private JPanel sliders;
 
 	private int sliderRange;
@@ -99,7 +102,7 @@ public class GenOptions extends JDialog {
 
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBorder(new MatteBorder(5, 5, 5, 5, Color.GRAY));
-		mainPanel.setPreferredSize(new Dimension(460, 198));
+		mainPanel.setPreferredSize(new Dimension(525, 280));
 		mainPanel.setLayout(new BorderLayout(0, 0));
 		getContentPane().add(mainPanel);
 
@@ -154,11 +157,29 @@ public class GenOptions extends JDialog {
 		lblMunimumBurstTime.setHorizontalAlignment(SwingConstants.RIGHT);
 		names.add(lblMunimumBurstTime);
 
+		JLabel lblNewLabel = new JLabel(" Max Generated Processes: ");
+		lblNewLabel.setBorder(new MatteBorder(0, 0, 2, 1, Color.GRAY));
+		lblNewLabel.setBackground(Color.DARK_GRAY);
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel.setToolTipText("The maximum possible number of processes, to be generated every generator frequency ticks");
+		names.add(lblNewLabel);
+
+		JLabel lblNewLabel_1 = new JLabel(" Min Generated Processes: ");
+		lblNewLabel_1.setToolTipText("The minimum possible number of processes, to be generated every generator frequency ticks");
+		lblNewLabel_1.setBorder(new MatteBorder(0, 0, 2, 1, Color.GRAY));
+		lblNewLabel_1.setBackground(Color.DARK_GRAY);
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		names.add(lblNewLabel_1);
+
 		sliders = new JPanel();
 		sliders.setBackground(Color.DARK_GRAY);
 		sliders.setForeground(Color.WHITE);
 		panel.add(sliders, BorderLayout.CENTER);
-		sliders.setLayout(new GridLayout(0, 1, 0, 0));
+		sliders.setLayout(new GridLayout(0, 1, 2, 0));
 
 		sGenFreq = new JSlider();
 		sGenFreq.setBorder(new MatteBorder(1, 1, 2, 1, new Color(128, 128, 128)));
@@ -219,6 +240,34 @@ public class GenOptions extends JDialog {
 		sMinBurst.addMouseListener(changeHandler);
 		sMinBurst.addKeyListener(changeHandler);
 		sliders.add(sMinBurst);
+
+		sMaxGenProc = new JSlider();
+		sMaxGenProc.setFont(new Font("Tahoma", Font.BOLD, 11));
+		sMaxGenProc.setForeground(Color.WHITE);
+		sMaxGenProc.setBorder(new MatteBorder(0, 1, 2, 1, Color.GRAY));
+		sMaxGenProc.setPaintTicks(true);
+		sMaxGenProc.setPaintLabels(true);
+		sMaxGenProc.setBackground(Color.DARK_GRAY);
+		sMaxGenProc.setMinorTickSpacing(1);
+		sMaxGenProc.setMinimum(1);
+		sMaxGenProc.setMajorTickSpacing(sliderRange / 2);
+		sMaxGenProc.addMouseListener(changeHandler);
+		sMaxGenProc.addKeyListener(changeHandler);
+		sliders.add(sMaxGenProc);
+
+		sMinGenProc = new JSlider();
+		sMinGenProc.setFont(new Font("Tahoma", Font.BOLD, 11));
+		sMinGenProc.setForeground(Color.WHITE);
+		sMinGenProc.setBorder(new MatteBorder(0, 1, 2, 1, Color.GRAY));
+		sMinGenProc.setPaintTicks(true);
+		sMinGenProc.setPaintLabels(true);
+		sMinGenProc.setBackground(Color.DARK_GRAY);
+		sMinGenProc.setMinorTickSpacing(1);
+		sMinGenProc.setMinimum(1);
+		sMinGenProc.setMajorTickSpacing(sliderRange / 2);
+		sMinGenProc.addMouseListener(changeHandler);
+		sMinGenProc.addKeyListener(changeHandler);
+		sliders.add(sMinGenProc);
 
 		JPanel buttons = new JPanel();
 		buttons.setBackground(Color.DARK_GRAY);
@@ -286,7 +335,10 @@ public class GenOptions extends JDialog {
 			JSlider slider = (JSlider) sliders.getComponent(i);
 
 			if (slider.getValue() < 1)
-				slider.setValue(1);
+				if (slider != sMinGenProc)
+					slider.setValue(1);
+				else
+					slider.setValue(0);
 
 			if (slider == sGenFreq && slider.getValue() < 2)
 				slider.setValue(2);
@@ -296,6 +348,12 @@ public class GenOptions extends JDialog {
 
 			if (slider == sMinBurst && slider.getValue() > sMaxBurst.getValue() - 1)
 				slider.setValue(sMaxBurst.getValue() - 1);
+
+			if (slider == sMaxGenProc && slider.getValue() < sMinGenProc.getValue() + 1)
+				slider.setValue(sMinGenProc.getValue() + 1);
+
+			if (slider == sMinGenProc && slider.getValue() > sMaxGenProc.getValue() - 1)
+				slider.setValue(sMaxGenProc.getValue() - 1);
 
 			slider.setMinimum(slider.getValue() - sliderRange / 2);
 			slider.setMaximum(slider.getValue() + sliderRange / 2);
@@ -349,6 +407,8 @@ public class GenOptions extends JDialog {
 		sGenMax.setValue(5);
 		sMaxBurst.setValue(15);
 		sMinBurst.setValue(1);
+		sMaxGenProc.setValue(20);
+		sMinGenProc.setValue(0);
 
 		saveOptions();
 		updateSliders();
@@ -368,6 +428,14 @@ public class GenOptions extends JDialog {
 
 	public int getMinBurst() {
 		return sMinBurst.getValue();
+	}
+
+	public int getMaxGenProc() {
+		return sMaxGenProc.getValue();
+	}
+
+	public int getMinGenProc() {
+		return sMinGenProc.getValue();
 	}
 
 }

@@ -195,7 +195,7 @@ public class Window {
 		if (rInput.isSelected())
 			generator = new ProcessGenerator(inputPath, sjfScheduler);
 		else
-			generator = new ProcessGenerator(genOptionsPanel.getGenerationFreq(), genOptionsPanel.getGenerationMax(), genOptionsPanel.getMaxBurst(), genOptionsPanel.getMinBurst(), sjfScheduler);
+			generator = new ProcessGenerator(genOptionsPanel.getGenerationFreq(), genOptionsPanel.getGenerationMax(), genOptionsPanel.getMaxBurst(), genOptionsPanel.getMinBurst(), genOptionsPanel.getMaxGenProc(), genOptionsPanel.getMinGenProc(), sjfScheduler);
 
 		int clockMillis = getClockMillisFromSlider();
 		clock = new Clock(clockMillis, generator, sjfScheduler, cpu);
