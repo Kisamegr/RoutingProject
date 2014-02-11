@@ -11,30 +11,27 @@ import java.util.Date;
 public class Statistics {
 
 	private int numberOfFinishedProcesses;
-	private float averageWaitingTime; // of processes waiting to be executed //
 	private int totalWaitingTime; // total time of waiting
 	private int responseTime; // name says it all
 	private int maximumLengthOfReadyProcessesList; // name says it all
 	public int totalNumberOfProcesses; // current number of processes (i'll be using that)
 	private File outputFile; // where the statistics are going to be stored
 	private double mytotalwait = 0; // total waiting time for finished processes
-	private double myavgwait; // average waiting time
+	private double averageWaitingTime; // average waiting time
 	private int myfinished; // finished processes
 
 	// constructor
 	public Statistics(String filename) {
 
-		averageWaitingTime = 0;
 		totalWaitingTime = 0;
 		responseTime = 0;
 		maximumLengthOfReadyProcessesList = 0;
 		totalNumberOfProcesses = 0;
 		numberOfFinishedProcesses = 0;
-		myavgwait = 0;
+		averageWaitingTime = 0;
 		myfinished = 0;
 		outputFile = new File(filename);
 
-		
 		if (outputFile.exists()) {
 			FileWriter fw;
 			try {
@@ -61,23 +58,23 @@ public class Statistics {
 		myfinished += 1;
 	}
 
-	public void updatetotalwait(Process one, int currentTime) {                          
-                                                                                                                    // called whenever a process has 0 remaining time/is finished.
-		                                                                                                            // Waiting time for any finished process is : (Current Time - Arrival Time) - Time spent in CPU
+	public void updatetotalwait(Process one, int currentTime) {
+		// called whenever a process has 0 remaining time/is finished.
+		// Waiting time for any finished process is : (Current Time - Arrival Time) - Time spent in CPU
 		mytotalwait = mytotalwait + ((double) currentTime - (double) one.getArrivalTime() - one.getCpuTotalTime()); // updates total waiting time by
-		                                                                                                            // adding the waiting time of the finished process to the total
-	}                                                                                                               // 
+																													// adding the waiting time of the finished process to the total
+	} //
 
-	public double getAvgWait() {  // calculates the average waiting time , ( number finished processes /  sum of all their waiting times )
-		if ((totalNumberOfProcesses > 0) && (myfinished!=0)) {
+	public double CalculateAverageWaitingTime() { // calculates the average waiting time , ( number finished processes / sum of all their waiting times )
+		if ((totalNumberOfProcesses > 0) && (myfinished != 0)) {
 			System.out.println("NUMBER OF PROCESSES " + myfinished);
-			myavgwait = mytotalwait / myfinished;
-			return myavgwait;
+			averageWaitingTime = mytotalwait / myfinished;
+			return averageWaitingTime;
 		} else
 			return 0;
-	}	
+	}
 
-	public void updateTotalWaitingTime(int n) { 					
+	public void updateTotalWaitingTime(int n) {
 		totalWaitingTime += n;
 	}
 
@@ -85,7 +82,7 @@ public class Statistics {
 		responseTime += n;
 	}
 
-	public float calculateAverageResponseTime() {
+	public float CalculateAverageResponseTime() {
 		if (numberOfFinishedProcesses != 0)
 			return (float) responseTime / (float) numberOfFinishedProcesses;
 		return 0;
@@ -101,33 +98,25 @@ public class Statistics {
 		}
 	}
 
-	// calculates average time of waiting
-	public float CalculateAverageWaitingTime() {
-		if (totalNumberOfProcesses != 0) {
-			averageWaitingTime = (float) totalWaitingTime / (float) totalNumberOfProcesses;
-		}
-		return averageWaitingTime;
-	}
-
 	// add a new line with the current statistics to the outputFile
 	public void WriteStatistics2File(int tickCount) {
 
 		StringBuilder string = new StringBuilder();
 
-		string.append("Tick:" + tickCount + ",");	
-		string.append(alignment(string,10));
+		string.append("Tick:" + tickCount + ",");
+		string.append(alignment(string, 10));
 		string.append("Total waiting time : " + totalWaitingTime + ",");
-		string.append(alignment(string,38));
+		string.append(alignment(string, 38));
 		string.append("Total # of processes: " + totalNumberOfProcesses + ",");
-		string.append(alignment(string,65));
-		string.append("Average Waiting Time: " + getAvgWait() + ",");
-		string.append(alignment(string,111));
+		string.append(alignment(string, 65));
+		string.append("Average Waiting Time: " + CalculateAverageWaitingTime() + ",");
+		string.append(alignment(string, 111));
 		string.append("Finished P.: " + numberOfFinishedProcesses + ",");
-		string.append(alignment(string,130));
+		string.append(alignment(string, 130));
 		string.append("total response time: " + responseTime + ",");
-		string.append(alignment(string,158));
-		string.append("Average response time: " + calculateAverageResponseTime() + ",");
-		string.append(alignment(string,192));
+		string.append(alignment(string, 158));
+		string.append("Average response time: " + CalculateAverageResponseTime() + ",");
+		string.append(alignment(string, 192));
 		string.append("Max length readylist: " + maximumLengthOfReadyProcessesList);
 
 		System.out.println(string.toString());
@@ -151,13 +140,11 @@ public class Statistics {
 		}
 
 	}
-	
-	public StringBuilder alignment(StringBuilder str, int spaces)
-	{
+
+	public StringBuilder alignment(StringBuilder str, int spaces) {
 		StringBuilder returnString = new StringBuilder();
-		int temp=str.length();
-		for(int k=0; k<spaces-temp;k++)
-		{
+		int temp = str.length();
+		for (int k = 0; k < spaces - temp; k++) {
 			returnString.append(" ");
 		}
 		return returnString;
