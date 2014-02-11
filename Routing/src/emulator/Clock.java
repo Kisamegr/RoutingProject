@@ -4,15 +4,23 @@ import gui.Window;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.net.URI;
+import java.net.URL;
 
 import javax.swing.Timer;
 
+
+
 public class Clock implements ActionListener {
 
+	
+	
 	private boolean clockRunning;
 	private boolean clockPaused;
 	private Timer timer;
 	private int clockSpeedMilliseconds;
+	private music juke;
 
 	private ProcessGenerator generator;
 	private SJFScheduler sjfScheduler;
@@ -23,6 +31,8 @@ public class Clock implements ActionListener {
 	// constructor
 	public Clock(int clockSpeedMilliseconds, ProcessGenerator generator, SJFScheduler sjfScheduler, CPU cpu) {
 
+		
+		
 		this.clockSpeedMilliseconds = clockSpeedMilliseconds;
 		timer = new Timer(clockSpeedMilliseconds, this);
 
@@ -32,6 +42,8 @@ public class Clock implements ActionListener {
 		this.generator = generator;
 		this.sjfScheduler = sjfScheduler;
 		this.cpu = cpu;
+		
+		juke = new music();
 
 	}
 
@@ -64,6 +76,8 @@ public class Clock implements ActionListener {
 	}
 
 	public void startClock() {
+		
+		juke.start();
 		clockRunning = true;
 		timer.start();
 		Window.getConsole().appendClockMessage("\r----------- Emulation Started -----------");
@@ -71,6 +85,7 @@ public class Clock implements ActionListener {
 	}
 
 	public void stopClock() {
+		juke.interrupt();
 		clockRunning = false;
 		timer.stop();
 		Window.getConsole().appendClockMessage("\r----------- Emulation Finished -----------");
