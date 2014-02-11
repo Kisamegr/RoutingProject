@@ -11,7 +11,7 @@ import java.util.Date;
 public class Statistics {
 
 	private int numberOfFinishedProcesses;
-	private float averageWaitingTime; // of processes waiting to be executed
+	private float averageWaitingTime; // of processes waiting to be executed //
 	private int totalWaitingTime; // total time of waiting
 	private int responseTime; // name says it all
 	private int maximumLengthOfReadyProcessesList; // name says it all
