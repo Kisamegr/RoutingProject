@@ -86,7 +86,7 @@ public class Window {
 	private Component horizontalStrut_4;
 	private Component horizontalStrut_5;
 	private JPanel table_panel;
-	private JPanel panel;
+	private JPanel tables;
 	private JScrollPane cpuScroll;
 	private JTable cpuTable;
 	private JScrollPane rdyScroll;
@@ -109,6 +109,12 @@ public class Window {
 	private JPanel panel_8;
 	private JLabel lblNewLabel_5;
 	private JPanel panel_7;
+	private JPanel stats_panel;
+	private JLabel lAvgWait;
+	private JLabel lblNewLabel_6;
+	private JLabel lblNewLabel_7;
+	private JLabel lAvgRes;
+	private JPanel clock_panel;
 
 	public Window(String name) {
 
@@ -120,6 +126,47 @@ public class Window {
 
 		initialize();
 		tInput.setText("");
+
+		clock_panel = new JPanel();
+		clock_panel.setBackground(Color.DARK_GRAY);
+		options.add(clock_panel, BorderLayout.SOUTH);
+		clock_panel.setLayout(new BorderLayout(0, 0));
+
+		sClock = new JSlider();
+		clock_panel.add(sClock);
+		sClock.setPaintTicks(true);
+		sClock.setPaintLabels(true);
+		sClock.setFont(new Font("Tahoma", Font.BOLD, 12));
+		sClock.setForeground(Color.WHITE);
+		sClock.setBackground(Color.DARK_GRAY);
+		sClock.setBorder(null);
+		sClock.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		sClock.addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent arg0) {
+
+				if (running)
+					clock.changeMilliseconds(getClockMillisFromSlider());
+			}
+		});
+		sClock.setOrientation(SwingConstants.VERTICAL);
+		sClock.setMinimum(0);
+		sClock.setMaximum(1000);
+		sClock.setMinimumSize(new Dimension(30, 23));
+		sClock.setPreferredSize(new Dimension(45, 245));
+		sClock.setMaximumSize(new Dimension(25, 34));
+		sClock.setMinorTickSpacing(25);
+		sClock.setMajorTickSpacing(250);
+		sClock.setValue(850);
+
+		lblClockSpeed = new JLabel("Clock Speed");
+		lblClockSpeed.setBorder(new MatteBorder(0, 0, 1, 0, new Color(128, 128, 128)));
+		clock_panel.add(lblClockSpeed, BorderLayout.NORTH);
+		lblClockSpeed.setForeground(new Color(245, 245, 245));
+		lblClockSpeed.setBackground(Color.DARK_GRAY);
+		lblClockSpeed.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblClockSpeed.setHorizontalAlignment(SwingConstants.CENTER);
 
 		inputPath = "";
 
@@ -170,12 +217,11 @@ public class Window {
 		bStart.setText("Start");
 		running = false;
 
-		clearProcessPanels();
-
 	}
 
-	private void clearConsole() {
+	private void clearWindow() {
 		console.setText("");
+		clearProcessPanels();
 	}
 
 	/**
@@ -187,7 +233,7 @@ public class Window {
 		frame.setMinimumSize(new Dimension(900, 500));
 		frame.getContentPane().setBackground(Color.BLACK);
 		frame.setBackground(Color.BLACK);
-		frame.setBounds(100, 100, 950, 504);
+		frame.setBounds(100, 100, 1121, 632);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		centerRenderer = new DefaultTableCellRenderer();
@@ -195,7 +241,7 @@ public class Window {
 		table_panel = new JPanel();
 		table_panel.setBorder(new MatteBorder(5, 4, 5, 0, new Color(128, 128, 128)));
 		table_panel.setBackground(Color.DARK_GRAY);
-		table_panel.setPreferredSize(new Dimension(165, 10));
+		table_panel.setPreferredSize(new Dimension(170, 10));
 		frame.getContentPane().add(table_panel, BorderLayout.WEST);
 		table_panel.setLayout(new BorderLayout(0, 0));
 
@@ -205,11 +251,11 @@ public class Window {
 		panel_1.setLayout(new BorderLayout(0, 0));
 
 		lblGrids = new JLabel("PROCESSES");
-		lblGrids.setBorder(new MatteBorder(1, 1, 1, 19, Color.GRAY));
+		lblGrids.setBorder(new MatteBorder(1, 1, 3, 5, new Color(128, 128, 128)));
 		lblGrids.setForeground(Color.LIGHT_GRAY);
 		lblGrids.setBackground(Color.DARK_GRAY);
 		panel_1.add(lblGrids);
-		lblGrids.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblGrids.setFont(new Font("Tahoma", Font.BOLD, 24));
 		lblGrids.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGrids.setHorizontalTextPosition(SwingConstants.CENTER);
 
@@ -264,15 +310,15 @@ public class Window {
 		lblNewLabel_5.setBackground(Color.GRAY);
 		lblNewLabel_5.setPreferredSize(new Dimension(19, 0));
 
-		panel = new JPanel();
-		panel.setBackground(Color.DARK_GRAY);
-		table_panel.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new BorderLayout(0, 0));
+		tables = new JPanel();
+		tables.setBackground(Color.DARK_GRAY);
+		table_panel.add(tables, BorderLayout.CENTER);
+		tables.setLayout(new BorderLayout(0, 0));
 
 		panel_2 = new JPanel();
 		panel_2.setBackground(Color.DARK_GRAY);
 		panel_2.setPreferredSize(new Dimension(10, 35));
-		panel.add(panel_2, BorderLayout.NORTH);
+		tables.add(panel_2, BorderLayout.NORTH);
 		panel_2.setLayout(new BorderLayout(0, 0));
 
 		cpuScroll = new JScrollPane();
@@ -309,7 +355,7 @@ public class Window {
 
 		panel_8 = new JPanel();
 		panel_8.setBackground(Color.DARK_GRAY);
-		panel.add(panel_8, BorderLayout.CENTER);
+		tables.add(panel_8, BorderLayout.CENTER);
 		panel_8.setLayout(new GridLayout(2, 1, 0, 0));
 
 		panel_3 = new JPanel();
@@ -369,6 +415,44 @@ public class Window {
 		lblNewList.setBackground(Color.DARK_GRAY);
 		lblNewList.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_4.add(lblNewList, BorderLayout.NORTH);
+
+		stats_panel = new JPanel();
+		stats_panel.setBorder(new MatteBorder(4, 1, 1, 5, Color.GRAY));
+		table_panel.add(stats_panel, BorderLayout.SOUTH);
+		stats_panel.setLayout(new GridLayout(4, 1, 0, 0));
+
+		lblNewLabel_6 = new JLabel("Average Waiting Time");
+		lblNewLabel_6.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblNewLabel_6.setOpaque(true);
+		lblNewLabel_6.setBackground(Color.DARK_GRAY);
+		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
+		stats_panel.add(lblNewLabel_6);
+
+		lAvgWait = new JLabel("");
+		lAvgWait.setForeground(new Color(245, 245, 245));
+		lAvgWait.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lAvgWait.setOpaque(true);
+		lAvgWait.setBackground(Color.DARK_GRAY);
+		lAvgWait.setHorizontalAlignment(SwingConstants.CENTER);
+		stats_panel.add(lAvgWait);
+
+		lblNewLabel_7 = new JLabel("Average Response Time");
+		lblNewLabel_7.setBorder(new MatteBorder(1, 0, 0, 0, Color.GRAY));
+		lblNewLabel_7.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblNewLabel_7.setOpaque(true);
+		lblNewLabel_7.setBackground(Color.DARK_GRAY);
+		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
+		stats_panel.add(lblNewLabel_7);
+
+		lAvgRes = new JLabel("");
+		lAvgRes.setForeground(new Color(245, 245, 245));
+		lAvgRes.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lAvgRes.setOpaque(true);
+		lAvgRes.setBackground(Color.DARK_GRAY);
+		lAvgRes.setHorizontalAlignment(SwingConstants.CENTER);
+		stats_panel.add(lAvgRes);
 
 		for (int k = 0; k < cpuTable.getColumnModel().getColumnCount(); k++)
 			cpuTable.getColumnModel().getColumn(k).setCellRenderer(centerRenderer);
@@ -445,7 +529,7 @@ public class Window {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				clearConsole();
+				clearWindow();
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -473,7 +557,7 @@ public class Window {
 		options.setLayout(new BorderLayout(0, 0));
 
 		lblNewLabel = new JLabel(" OPTIONS ");
-		lblNewLabel.setBorder(new MatteBorder(0, 0, 2, 0, Color.GRAY));
+		lblNewLabel.setBorder(new MatteBorder(0, 0, 3, 0, new Color(128, 128, 128)));
 		lblNewLabel.setForeground(Color.LIGHT_GRAY);
 		lblNewLabel.setBackground(Color.DARK_GRAY);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
@@ -485,7 +569,7 @@ public class Window {
 		main_options.setBackground(Color.DARK_GRAY);
 		main_options.setBorder(null);
 		options.add(main_options, BorderLayout.CENTER);
-		main_options.setLayout(new GridLayout(7, 0, 0, 0));
+		main_options.setLayout(new GridLayout(8, 0, 0, 0));
 
 		cPreemptive = new JCheckBox("Pre-Emptive");
 		cPreemptive.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -569,48 +653,13 @@ public class Window {
 
 		tInput = new JTextField();
 		tInput.setBorder(new MatteBorder(2, 0, 2, 0, new Color(128, 128, 128)));
-		tInput.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		tInput.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		tInput.setForeground(Color.LIGHT_GRAY);
 		tInput.setBackground(Color.DARK_GRAY);
 		tInput.setHorizontalAlignment(SwingConstants.CENTER);
 		tInput.setEditable(false);
 		main_options.add(tInput);
 		tInput.setColumns(10);
-
-		lblClockSpeed = new JLabel("Clock Speed");
-		lblClockSpeed.setForeground(new Color(245, 245, 245));
-		lblClockSpeed.setBackground(Color.DARK_GRAY);
-		lblClockSpeed.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblClockSpeed.setHorizontalAlignment(SwingConstants.CENTER);
-		main_options.add(lblClockSpeed);
-
-		sClock = new JSlider();
-		options.add(sClock, BorderLayout.SOUTH);
-		sClock.setPaintTicks(true);
-		sClock.setPaintLabels(true);
-		sClock.setFont(new Font("Tahoma", Font.BOLD, 12));
-		sClock.setForeground(Color.WHITE);
-		sClock.setBackground(Color.DARK_GRAY);
-		sClock.setBorder(new MatteBorder(5, 0, 0, 0, new Color(128, 128, 128)));
-		sClock.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		sClock.addChangeListener(new ChangeListener() {
-
-			@Override
-			public void stateChanged(ChangeEvent arg0) {
-
-				if (running)
-					clock.changeMilliseconds(getClockMillisFromSlider());
-			}
-		});
-		sClock.setOrientation(SwingConstants.VERTICAL);
-		sClock.setMinimum(0);
-		sClock.setMaximum(1000);
-		sClock.setMinimumSize(new Dimension(30, 23));
-		sClock.setPreferredSize(new Dimension(45, 170));
-		sClock.setMaximumSize(new Dimension(25, 34));
-		sClock.setMinorTickSpacing(25);
-		sClock.setMajorTickSpacing(250);
-		sClock.setValue(850);
 
 		ButtonGroup group = new ButtonGroup();
 		group.add(rInput);
@@ -651,6 +700,10 @@ public class Window {
 				} else {
 					newModel.addProcesses(generator.getNewList().getProcesses());
 				}
+
+				lAvgWait.setText(Double.toString(sjfScheduler.getStatistics().CalculateAverageWaitingTime()));
+				lAvgRes.setText(Float.toString(sjfScheduler.getStatistics().CalculateAverageResponseTime()));
+
 			}
 		});
 
@@ -660,6 +713,8 @@ public class Window {
 		cpuModel.clearProcesses();
 		rdyModel.clearProcesses();
 		newModel.clearProcesses();
+		lAvgWait.setText("");
+		lAvgRes.setText("");
 	}
 
 	private int getClockMillisFromSlider() {

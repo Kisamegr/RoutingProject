@@ -38,7 +38,7 @@ public class Clock implements ActionListener {
 	// increasing ticks of clock by 1
 	public void Time_Run() {
 
-		Window.getConsole().appendClockMessage("\nTick " + ticks);
+		Window.getConsole().appendClockMessage("\n@Tick " + ticks);
 		generator.runGenerator(ShowTime());
 		cpu.execute();
 		sjfScheduler.SJF(ShowTime());
@@ -66,14 +66,14 @@ public class Clock implements ActionListener {
 	public void startClock() {
 		clockRunning = true;
 		timer.start();
-		Window.getConsole().appendClockMessage("---------- Emulation Started ----------");
+		Window.getConsole().appendClockMessage("\r----------- Emulation Started -----------");
 
 	}
 
 	public void stopClock() {
 		clockRunning = false;
 		timer.stop();
-		Window.getConsole().appendClockMessage("---------- Emulation Finished ----------");
+		Window.getConsole().appendClockMessage("\r----------- Emulation Finished -----------");
 		Window.getWindow().stopEmulation();
 	}
 

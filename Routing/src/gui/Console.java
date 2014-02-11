@@ -103,7 +103,7 @@ public class Console extends JTextPane {
 				int len = console.getDocument().getLength();
 				console.setCaretPosition(len);
 				console.setCharacterAttributes(aset, false);
-				console.replaceSelection(message + "\n");
+				console.replaceSelection(" " + message + "\n");
 
 				console.setEditable(false);
 

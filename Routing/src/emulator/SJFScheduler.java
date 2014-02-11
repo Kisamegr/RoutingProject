@@ -26,13 +26,12 @@ public class SJFScheduler {
 		readyList.addProcess(process);
 	}
 
-	public void totalNumberOfProcessesUpdate()
-	{
+	public void totalNumberOfProcessesUpdate() {
 		if (stats != null)
 			stats.UpdateMaximumListLength(getReadyList().lengthOfQueue());
 	}
 
-	public void addTotalNumberOfProcesses(int n)// 
+	public void addTotalNumberOfProcesses(int n)//
 	{
 		if (stats != null)
 			stats.totalNumberOfProcesses += n;
@@ -49,12 +48,12 @@ public class SJFScheduler {
 
 			if (cpuProcess != null) {
 				if (cpuProcess.getCpuRemainingTime() == 0) {
-					// zero remaining time  means that the process is finished, therefore update number of finished processes and total waiting time
+					// zero remaining time means that the process is finished, therefore update number of finished processes and total waiting time
 
 					if (stats != null) {
 						stats.updatetotalwait(cpuProcess, currentTime); // total waiting time update
-						stats.updatemyfinished();    // update number of finished processes
-						
+						stats.updatemyfinished(); // update number of finished processes
+
 					}
 					cpu.removeProcessFromCpu();
 
@@ -74,7 +73,7 @@ public class SJFScheduler {
 
 					cpu.addProcess(forCPU);
 
-					cpu.setLastProcessStartTime(currentTime); 
+					cpu.setLastProcessStartTime(currentTime);
 
 				}
 
@@ -89,11 +88,11 @@ public class SJFScheduler {
 
 				if (cpuProcess.getCpuRemainingTime() == 0) {// same as non-preemptive
 
-					// zero remaining time  means that the process is finished, therefore update number of finished processes and total waiting time
+					// zero remaining time means that the process is finished, therefore update number of finished processes and total waiting time
 					if (stats != null) {
 						stats.updatetotalwait(cpuProcess, currentTime); // total waiting time update
-						stats.updatemyfinished();   // update number of finished processes
-						
+						stats.updatemyfinished(); // update number of finished processes
+
 					}
 
 					cpu.removeProcessFromCpu();
@@ -102,11 +101,11 @@ public class SJFScheduler {
 						stats.updateFinishedNumber(1);
 						stats.updateResponseTime(currentTime - cpuProcess.getArrivalTime());
 					}
-				} else if ((HeadofQueue != null) && (cpuProcess.getCpuRemainingTime() > HeadofQueue.getCpuRemainingTime())) {//null check + compare the remaining CPU times between the current CPU process and the one on the top of the Queue
+				} else if ((HeadofQueue != null) && (cpuProcess.getCpuRemainingTime() > HeadofQueue.getCpuRemainingTime())) {// null check + compare the remaining CPU times between the current CPU process and the one on the top of the Queue
 
-					readyList.addProcess(cpu.removeProcessFromCpu()); //remove current Process and put it again at ready list
+					readyList.addProcess(cpu.removeProcessFromCpu()); // remove current Process and put it again at ready list
 
-					Process forCPU = getReadyList().getProcessToRunInCPU();//add the one from the top of the queue
+					Process forCPU = getReadyList().getProcessToRunInCPU();// add the one from the top of the queue
 					{
 
 						if (forCPU.getCpuTotalTime() == forCPU.getCpuTotalTime()) {
@@ -116,7 +115,7 @@ public class SJFScheduler {
 
 						cpu.addProcess(forCPU);
 
-						cpu.setLastProcessStartTime(currentTime); 
+						cpu.setLastProcessStartTime(currentTime);
 
 					}
 
@@ -126,8 +125,8 @@ public class SJFScheduler {
 
 			cpuProcess = cpu.peekCpuProcess();
 
-			if (cpuProcess == null) {  //if CPU isn't occupied
-				Process forCPU = getReadyList().getProcessToRunInCPU();  //get process from the top of the Queue 
+			if (cpuProcess == null) { // if CPU isn't occupied
+				Process forCPU = getReadyList().getProcessToRunInCPU(); // get process from the top of the Queue
 				if (forCPU != null) {
 
 					if (forCPU.getCpuTotalTime() == forCPU.getCpuTotalTime()) {
@@ -135,9 +134,9 @@ public class SJFScheduler {
 							stats.updateResponseTime(currentTime - forCPU.getArrivalTime());
 					}
 
-					cpu.addProcess(forCPU); //add to CPU
+					cpu.addProcess(forCPU); // add to CPU
 
-					cpu.setLastProcessStartTime(currentTime); 
+					cpu.setLastProcessStartTime(currentTime);
 				}
 			}
 		}
@@ -155,6 +154,10 @@ public class SJFScheduler {
 
 	public void setReadyList(ReadyProcessesList readyList) {
 		this.readyList = readyList;
+	}
+
+	public Statistics getStatistics() {
+		return stats;
 	}
 
 }
