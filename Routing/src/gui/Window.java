@@ -134,7 +134,7 @@ public class Window {
 		label = new JLabel("");
 		main_options.add(label);
 
-		cAudio = new JCheckBox("Play Audio");
+		cAudio = new JCheckBox("Music");
 		cAudio.setSelected(true);
 		cAudio.setBorderPainted(true);
 		cAudio.setBackground(Color.DARK_GRAY);
