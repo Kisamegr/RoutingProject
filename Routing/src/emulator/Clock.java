@@ -20,7 +20,7 @@ public class Clock implements ActionListener {
 	private boolean clockPaused;
 	private Timer timer;
 	private int clockSpeedMilliseconds;
-	private music juke;
+	
 
 	private ProcessGenerator generator;
 	private SJFScheduler sjfScheduler;
@@ -43,7 +43,7 @@ public class Clock implements ActionListener {
 		this.sjfScheduler = sjfScheduler;
 		this.cpu = cpu;
 		
-		juke = new music();
+		
 
 	}
 
@@ -77,7 +77,6 @@ public class Clock implements ActionListener {
 
 	public void startClock() {
 		
-		juke.start();
 		clockRunning = true;
 		timer.start();
 		Window.getConsole().appendClockMessage("\r----------- Emulation Started -----------");
@@ -85,7 +84,7 @@ public class Clock implements ActionListener {
 	}
 
 	public void stopClock() {
-		juke.interrupt();
+		
 		clockRunning = false;
 		timer.stop();
 		Window.getConsole().appendClockMessage("\r----------- Emulation Finished -----------");
@@ -94,8 +93,12 @@ public class Clock implements ActionListener {
 
 	public void pauseClock(boolean pause) {
 		if (pause)
+		{
+			
 			timer.stop();
+		}
 		else
+			
 			timer.start();
 
 		clockPaused = pause;

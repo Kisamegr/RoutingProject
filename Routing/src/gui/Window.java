@@ -37,6 +37,7 @@ import emulator.Clock;
 import emulator.ProcessGenerator;
 import emulator.SJFScheduler;
 import emulator.Statistics;
+import emulator.music;
 
 public class Window {
 
@@ -62,7 +63,7 @@ public class Window {
 	private ProcessModel cpuModel;
 	private ProcessModel rdyModel;
 	private ProcessModel newModel;
-
+	private music juke; //music player
 	// Emulator variables
 	private CPU cpu;
 	private Statistics stats;
@@ -118,6 +119,8 @@ public class Window {
 
 	public Window(String name) {
 
+		juke = new music(); //music
+		
 		console = new Console();
 		m_console = console;
 		window = this;
@@ -179,6 +182,7 @@ public class Window {
 
 	private void startEmulation() {
 
+		
 		console.resetLogger();
 
 		cpu = new CPU();
@@ -207,7 +211,8 @@ public class Window {
 
 		if (clockMillis == 1000)
 			clock.pauseClock(true);
-
+		
+		juke.playmusic();
 	}
 
 	public void stopEmulation() {
@@ -216,6 +221,8 @@ public class Window {
 			clock.stopClock();
 		bStart.setText("Start");
 		running = false;
+		
+		juke.stopmusic();
 
 	}
 
