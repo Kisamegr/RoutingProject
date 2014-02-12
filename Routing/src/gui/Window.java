@@ -37,7 +37,6 @@ import emulator.Clock;
 import emulator.ProcessGenerator;
 import emulator.SJFScheduler;
 import emulator.Statistics;
-import emulator.music;
 
 public class Window {
 
@@ -63,7 +62,7 @@ public class Window {
 	private ProcessModel cpuModel;
 	private ProcessModel rdyModel;
 	private ProcessModel newModel;
-	private music juke; //music player
+	private Music juke; // Music player
 	// Emulator variables
 	private CPU cpu;
 	private Statistics stats;
@@ -116,11 +115,13 @@ public class Window {
 	private JLabel lblNewLabel_7;
 	private JLabel lAvgRes;
 	private JPanel clock_panel;
+	private JCheckBox cAudio;
+	private JLabel label;
 
 	public Window(String name) {
 
-		juke = new music(); //music
-		
+		juke = new Music(); // Music
+
 		console = new Console();
 		m_console = console;
 		window = this;
@@ -129,6 +130,19 @@ public class Window {
 
 		initialize();
 		tInput.setText("");
+
+		label = new JLabel("");
+		main_options.add(label);
+
+		cAudio = new JCheckBox("Play Audio");
+		cAudio.setSelected(true);
+		cAudio.setBorderPainted(true);
+		cAudio.setBackground(Color.DARK_GRAY);
+		cAudio.setBorder(new MatteBorder(0, 0, 2, 0, new Color(128, 128, 128)));
+		cAudio.setFont(new Font("Tahoma", Font.BOLD, 12));
+		cAudio.setForeground(new Color(100, 149, 237));
+		cAudio.setHorizontalAlignment(SwingConstants.CENTER);
+		main_options.add(cAudio);
 
 		clock_panel = new JPanel();
 		clock_panel.setBackground(Color.DARK_GRAY);
@@ -164,7 +178,7 @@ public class Window {
 		sClock.setValue(850);
 
 		lblClockSpeed = new JLabel("Clock Speed");
-		lblClockSpeed.setBorder(new MatteBorder(0, 0, 1, 0, new Color(128, 128, 128)));
+		lblClockSpeed.setBorder(new MatteBorder(0, 0, 2, 0, new Color(128, 128, 128)));
 		clock_panel.add(lblClockSpeed, BorderLayout.NORTH);
 		lblClockSpeed.setForeground(new Color(245, 245, 245));
 		lblClockSpeed.setBackground(Color.DARK_GRAY);
@@ -182,7 +196,6 @@ public class Window {
 
 	private void startEmulation() {
 
-		
 		console.resetLogger();
 
 		cpu = new CPU();
@@ -211,8 +224,14 @@ public class Window {
 
 		if (clockMillis == 1000)
 			clock.pauseClock(true);
-		
-		juke.playmusic();
+
+		if (cAudio.isSelected()) {
+			juke.playmusic();
+			cAudio.setEnabled(false);
+		}
+
+		enableOptions(false);
+
 	}
 
 	public void stopEmulation() {
@@ -221,9 +240,21 @@ public class Window {
 			clock.stopClock();
 		bStart.setText("Start");
 		running = false;
-		
-		juke.stopmusic();
 
+		if (cAudio.isSelected())
+			juke.stopmusic();
+
+		enableOptions(true);
+
+	}
+
+	private void enableOptions(boolean enable) {
+		cAudio.setEnabled(enable);
+		cPreemptive.setEnabled(enable);
+		cStatistics.setEnabled(enable);
+		bGenOptions.setEnabled(enable);
+		rInput.setEnabled(enable);
+		rOutput.setEnabled(enable);
 	}
 
 	private void clearWindow() {
