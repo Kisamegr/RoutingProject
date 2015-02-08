@@ -104,7 +104,7 @@ public class Statistics {
 		StringBuilder string = new StringBuilder();
 
 		string.append("Tick:" + tickCount + ",");
-		string.append(alignment(string, 10));
+		string.append(alignment(string, 11));
 		string.append("Total waiting time : " + totalWaitingTime + ",");
 		string.append(alignment(string, 38));
 		string.append("Total # of processes: " + totalNumberOfProcesses + ",");
