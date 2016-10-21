@@ -6,3 +6,5 @@ The goal of the project was to create a **Java** application in order to emulate
 
 ![alt tag](http://i.imgur.com/VbweGpC.png)
 
+![alt tag](http://i.imgur.com/dl05GKm.png)
+
